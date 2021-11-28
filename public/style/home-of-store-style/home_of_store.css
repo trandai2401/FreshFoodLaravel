@@ -1,0 +1,44 @@
+*{
+  font-family: 'Varela Round', sans-serif;
+  margin: O auto;
+}
+
+.sb-nav-fixed .avatar .div-avatar{
+  width: 30px;
+    height:30px;   
+    overflow: hidden;   
+}
+.sb-nav-fixed .avatar .div-avatar .img-avatar{
+  object-fit:cover;
+    width: 30px;
+    height:30px;
+  
+}
+
+#header-top{
+  background: #ffff;
+}
+
+.sb-topnav.navbar.navbar-expand.navbar-dark {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  z-index: 99999;
+}
+
+#layoutSidenav_nav{
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+  background: #ffff;
+}
+
+#layoutSidenav_content{
+  background: #EBF2F5;
+}
+
+/* Hover link nav */
+#layoutSidenav #layoutSidenav_nav .sb-sidenav-menu .nav-link:hover .iconify{
+  color: #e34;
+}
+
+.sb-sidenav-footer.bg-success {
+  color: rgb(94, 91, 91) ;
+}
+/* Ẩn thanh cuộn trang */

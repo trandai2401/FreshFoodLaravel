@@ -1,0 +1,844 @@
+*{
+    font-family: 'Varela Round', sans-serif;
+    margin: O auto;
+}
+
+body{
+    background: #ffffff;
+    /* height: 4500px; */
+}
+
+
+/* Part 1: Header */
+.header{
+    height: 50px;
+    background: #ffe923;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header .menu-header ul a{
+    text-decoration: none;
+}
+.header .menu-header ul li{
+    background: #ffe923;
+    border: none;
+    font-weight: 100;
+    color: #216e38;
+}
+
+/* menu header */
+.dropdown_menu_sanpham{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown_menu_sanpham_content{
+    display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 99999;
+}
+
+.dropdown_menu_sanpham:hover .dropdown_menu_sanpham_content {
+    display: block;
+}
+
+.dropdown_menu_sanpham:hover .dropdown_menu_sanpham_content .text_content{
+    color: #216e38;
+}
+
+.dropdown_menu_sanpham:hover .dropdown_menu_sanpham_content p:hover .text_content{
+    font-size: 17px;
+    color: #b6b398;
+    font-weight: bolder;
+
+}
+/* input search */
+.header .input-search{
+    position: relative;
+    margin-left: 60px;
+}
+
+.header .input-search .input-group.search{
+    overflow: hidden;
+     border: 1.2px solid #216e38; 
+     background-color: #ffffff; 
+     border-radius: 30px;
+     
+}
+
+.header .input-search .input-group.search .form-control{
+    background: white;
+}
+
+.header .btn_user{
+    position: relative;
+    left: -30px;
+    top: 5px;
+}
+
+
+/* Part 2 */
+.container-fluid.category-slide{
+    position: relative;
+}
+.container-fluid.category-slide ul a{
+    text-decoration: none;
+    
+}
+
+.container-fluid.category-slide ul li{
+    color: #216e38;
+}
+/* slide */
+.container-fluid.category-slide.carousel-inner img{
+    object-fit: cover;
+}
+.container-fluid.category-slide ul li .iconify.ml-2.mr-5{
+    color: #216e38;
+}
+.container-fluid.category-slide ul li:hover .iconify.ml-2.mr-5{
+    color: #216e38;
+}
+.container-fluid.category-slide ul li:hover{
+    color: #216e38;
+}
+.container-fluid.category-slide ul li:hover{
+    background-color: #ffe923;
+    opacity: 0.5;
+}
+
+/* Part 3: Khuyến mãi trong tuần */
+
+.container-fluid.khuyenmai{
+    position: relative;
+    top: 50px;
+    background: #ffffff;
+}
+.container-fluid.khuyenmai .row.khuyenmai{
+    background: #ffffff;
+}
+.container-fluid.khuyenmai{
+    background-color: #ffffff;
+}
+.container-fluid.khuyenmai .row.khuyenmai{
+    position: relative;
+    top: 100px;
+    background-color: #ffffff;
+    margin: 0 auto;
+    border: red solid 3px;
+    padding: 50px 10px;
+    border-radius: 10px;
+}
+
+.bg_traicay_boder{
+    width: 20%;
+    height: 190px;   
+    position: absolute;
+    top: 15px;
+    z-index: 99;
+    margin: 10px 40%;
+} 
+
+.bg_traicay_boder img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+.container-fluid.khuyenmai .row.khuyenmai .card_khuyenmai .card{
+    width: 250px;
+ height: 360px  ;
+ background-color: #ffffff;
+ box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+ position: relative;
+}
+
+.container-fluid.khuyenmai .row.khuyenmai .card_khuyenmai img{
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    padding: 20px 20px;
+    display: block;
+    transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.container-fluid.khuyenmai .row.khuyenmai .card_khuyenmai:hover img {
+    opacity: 0.3;
+}
+.container-fluid.khuyenmai .row.khuyenmai .card_khuyenmai:hover .middle {
+    opacity: 1;
+}
+
+.middle  .middle_cart {
+    background-color: transparent;
+    border: none;
+   
+    padding: 0px 0px;
+    border-radius: 5%;
+  }
+
+.container-fluid.khuyenmai .row.khuyenmai .card_khuyenmai .card-body .text_price{
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    color: #c52641;
+    font-size: 15px;
+}
+
+/* style for text sale */
+.text_sale_off {
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    background-color: red;
+    color: #ffff;
+    border-radius: 3px 10px 3px;
+    padding: 2px 3px;
+    top: -5px;
+    left: -5px;
+}
+
+/* Parrt 4 */
+.img_gioithieu_SP{
+    position: relative;
+    top: 180px;
+}
+.img_gioithieu_SP div img{
+    width: 600px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5%;
+  
+}
+/* Part 5: trái cây */
+
+.danhmuc_traicay{
+    position: relative;
+    top: 140px;
+   
+}
+.danhmuc_traicay .img_danhmuc_traicay_content {
+    width: 25%;
+    height: 300px;
+    /* background-color: #216e38; */
+} 
+
+.danhmuc_traicay .img_danhmuc_traicay_content img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5%;
+    opacity: 0.8;
+}
+
+.danhmuc_traicay .text_on_img{
+    position: absolute;
+    top: 18px;
+}
+
+
+ .text_on_img li{
+    list-style: none;
+}
+
+.text_on_img li::before{
+    content: "\2022";
+  color: #216e38;
+  font-size: large;
+  font-weight: bold;
+  display: inline-block; 
+  width: 2em;
+  margin-left: 1em;
+}
+
+.danhmuc_traicay .text_on_img a{
+    text-decoration: none;
+    color: #216e38;
+}
+
+.btn_danhmuc_traicay p{
+    display: inline;
+    font-size: 13px;
+    color: #ffffff;
+    padding: 10px 10px;
+    background-color: rgb(228, 224, 23);
+    border-radius: 5px 5px 5px 5px;
+    margin-left: 15%;
+    position: relative;
+    top: 15px;
+  }
+
+
+  /* Card sanr pham trai cay */
+
+.danhmuc_traicay .sanpham_traicay .card_sanpham_traicay{
+    height: 300px;
+    width: 210px;
+    /* background-color: rgb(255, 255, 255); */
+    margin: 0 0px;
+    padding: 0 5px;
+    
+}
+
+.danhmuc_traicay .sanpham_traicay .card_sanpham_traicay .card{
+    width: 100%;
+    height: 100%;
+    padding: 0 0;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.danhmuc_traicay .sanpham_traicay .card_sanpham_traicay .card img{
+    width: 95%;
+    height: 190px;
+    object-fit:contain;
+    display: block;
+    transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.danhmuc_traicay .sanpham_traicay .card_sanpham_traicay .card:hover img {
+    opacity: 0.5;
+}
+.danhmuc_traicay .sanpham_traicay .card_sanpham_traicay .card:hover .middle {
+    opacity: 1;
+}
+
+/* Part 6: rau củ*/
+
+.danhmuc_raucu{
+    position: relative;
+    top: 180px;
+    
+   
+}
+.danhmuc_raucu .img_danhmuc_raucu_content {
+    width: 25%;
+    height: 300px;
+    /* background-color: #216e38; */
+} 
+
+.danhmuc_raucu .img_danhmuc_raucu_content img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5%;
+    opacity: 0.8;
+}
+
+.danhmuc_raucu .text_on_img{
+    position: absolute;
+    top: 18px;
+}
+
+
+ .text_on_img li{
+    list-style: none;
+}
+
+.text_on_img li::before{
+    content: "\2022";
+  color: #216e38;
+  font-size: large;
+  font-weight: bold;
+  display: inline-block; 
+  width: 2em;
+  margin-left: 1em;
+}
+
+.danhmuc_raucu .text_on_img a{
+    text-decoration: none;
+    color: #216e38;
+}
+
+.btn_danhmuc_raucu p{
+    display: inline;
+    font-size: 13px;
+    color: #ffffff;
+    padding: 10px 10px;
+    background-color: rgb(228, 224, 23);
+    border-radius: 5px 5px 5px 5px;
+    margin-left: 15%;
+    position: relative;
+    top: 15px;
+  }
+
+
+  /* Card sanr pham trai cay */
+
+.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu{
+    height: 300px;
+    width: 210px;
+    
+    padding: 0 5px;
+}
+
+.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .card{
+    width: 100%;
+    height: 100%;
+    padding: 0 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .card img{
+    width: 95%;
+    height: 190px;
+    object-fit:contain;
+    display: block;
+    transition: .5s ease;
+  backface-visibility: hidden;
+}
+.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .card:hover img {
+    opacity: 0.5;
+}
+.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .card:hover .middle {
+    opacity: 1;
+}
+
+
+/* Part 7: thực phẩm khô*/
+
+.danhmuc_thucphamkho{
+    position: relative;
+    top: 200px; 
+}
+.danhmuc_thucphamkho .img_danhmuc_thucphamkho_content {
+    width: 25%;
+    height: 300px;
+    /* background-color: #216e38; */
+} 
+
+.danhmuc_thucphamkho .img_danhmuc_thucphamkho_content img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5%;
+    opacity: 0.8;
+}
+
+.danhmuc_thucphamkho .text_on_img{
+    position: absolute;
+    top: 18px;
+}
+
+
+ .text_on_img li{
+    list-style: none;
+}
+
+.danhmuc_thucphamkho li::before{
+    content: "\2022";
+  color: #216e38;
+  font-size: large;
+  font-weight: bold;
+  display: inline-block; 
+  width: 2em;
+  margin-left: 1em;
+}
+
+.danhmuc_thucphamkho .text_on_img a{
+    text-decoration: none;
+    color: #216e38;
+}
+
+.btn_danhmuc_thucphamkho p{
+    display: inline;
+    font-size: 13px;
+    color: #ffffff;
+    padding: 10px 10px;
+    background-color: rgb(228, 224, 23);
+    border-radius: 5px 5px 5px 5px;
+    margin-left: 15%;
+    position: relative;
+    top: 15px;
+  }
+
+
+  /* Card sanr pham thuc pham kho */
+
+.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho{
+    height: 300px;
+    width: 210px;   
+    padding: 0 5px;
+}
+
+.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .card{
+    width: 100%;
+    height: 100%;
+    padding: 0 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .card img{
+    width: 95%;
+    height: 190px;
+    object-fit:contain;
+    display: block;
+    transition: .5s ease;
+  backface-visibility: hidden;
+}
+.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .card:hover img {
+    opacity: 0.5;
+}
+.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .card:hover .middle {
+    opacity: 1;
+}
+
+
+/* Part 8: thực phẩm khô*/
+
+.danhmuc_haisan{
+    position: relative;
+    top: 220px; 
+}
+.danhmuc_haisan .img_danhmuc_haisan_content {
+    width: 25%;
+    height: 300px;
+    /* background-color: #216e38; */
+} 
+
+.danhmuc_haisan .img_danhmuc_haisan_content img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5%;
+    opacity: 0.8;
+}
+
+.danhmuc_haisan .text_on_img{
+    position: absolute;
+    top: 18px;
+}
+
+
+ .text_on_img li{
+    list-style: none;
+}
+
+.danhmuc_haisan li::before{
+    content: "\2022";
+  color: #216e38;
+  font-size: large;
+  font-weight: bold;
+  display: inline-block; 
+  width: 2em;
+  margin-left: 1em;
+}
+
+.danhmuc_haisan .text_on_img a{
+    text-decoration: none;
+    color: #216e38;
+}
+
+.btn_danhmuc_haisan p{
+    display: inline;
+    font-size: 13px;
+    color: #ffffff;
+    padding: 10px 10px;
+    background-color: rgb(228, 224, 23);
+    border-radius: 5px 5px 5px 5px;
+    margin-left: 15%;
+    position: relative;
+    top: 15px;
+  }
+
+
+  /* Card sanr pham thuc pham kho */
+
+.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan{
+    height: 300px;
+    width: 210px;   
+    padding: 0 5px;
+}
+
+.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .card{
+    width: 100%;
+    height: 100%;
+    padding: 0 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .card img{
+    width: 95%;
+    height: 190px;
+    object-fit:contain;
+    display: block;
+    transition: .5s ease;
+  backface-visibility: hidden;
+}
+.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .card:hover img {
+    opacity: 0.5;
+}
+.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .card:hover .middle {
+    opacity: 1;
+}
+
+/* Part 9: Thịt tươi */
+
+.danhmuc_thittuoi{
+    position: relative;
+    top: 250px; 
+}
+.danhmuc_thittuoi .img_danhmuc_thittuoi_content {
+    width: 25%;
+    height: 300px;
+    /* background-color: #216e38; */
+} 
+
+.danhmuc_thittuoi .img_danhmuc_thittuoi_content img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 5%;
+    opacity: 0.8;
+}
+
+.danhmuc_thittuoi .text_on_img{
+    position: absolute;
+    top: 18px;
+}
+
+
+ .text_on_img li{
+    list-style: none;
+}
+
+.danhmuc_thittuoi li::before{
+    content: "\2022";
+  color: #216e38;
+  font-size: large;
+  font-weight: bold;
+  display: inline-block; 
+  width: 2em;
+  margin-left: 1em;
+}
+
+.danhmuc_thittuoi .text_on_img a{
+    text-decoration: none;
+    color: #216e38;
+}
+
+.btn_danhmuc_thittuoi p{
+    display: inline;
+    font-size: 13px;
+    color: #ffffff;
+    padding: 10px 10px;
+    background-color: rgb(228, 224, 23);
+    border-radius: 5px 5px 5px 5px;
+    margin-left: 15%;
+    position: relative;
+    top: 15px;
+  }
+
+
+  /* Card sanr pham thịt tươi */
+
+.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi{
+    height: 300px;
+    width: 210px;   
+    padding: 0 5px;
+}
+
+.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .card{
+    width: 100%;
+    height: 100%;
+    padding: 0 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+
+.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .card img{
+    width: 95%;
+    height: 190px;
+    object-fit:contain;
+    display: block;
+    transition: .5s ease;
+  backface-visibility: hidden;
+}
+.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .card:hover img {
+    opacity: 0.5;
+}
+.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .card:hover .middle {
+    opacity: 1;
+}
+
+/* Part 10: */
+.container-fluid.img_banner_beforeFooter {
+    position: relative;
+    top: 550px;
+    width: 100%;
+    height: 300px;
+}
+
+.container-fluid.img_banner_beforeFooter img{
+    width: 100%;
+    height: 100%;
+    /* border-radius: 5%; */
+    object-fit: fill;
+}
+
+/* Part 11:  */
+
+.container-fluid.tintuc{
+    position: relative;
+    top: 570px;
+}
+
+/* card tin tuwcs */
+
+.container-fluid.tintuc .col-3{
+    position: relative;
+}
+
+.row.tintuc .col-3 .card_tintuc{
+    position: relative;
+    width: 290px;
+    height: 290px;
+    /* background-color: #b6b398; */
+    font-size: 15px;
+}
+
+
+.row.tintuc .col-3 .card_tintuc img{  
+    width: 290px;
+    height: 290px;
+    object-fit: cover;
+    opacity: 1;
+    filter: contrast(150%);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: transform .9s;
+}
+.row.tintuc .col-3 .card_tintuc img:hover{
+    transform: scale(1.03);
+    opacity: 0.9;
+}
+
+.row.tintuc a{
+    text-decoration: none;
+    color: #28a745;
+}
+
+.row.tintuc a b{
+    width: 100%;
+    white-space: pre-wrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+     display: -webkit-box;
+}
+
+.row.tintuc .col-3 .card_tintuc .card-text{
+    position: absolute;
+   margin: 0 2px;
+    width: 100%;
+    top: 230px;
+    opacity: 1;
+    z-index: 999;
+}
+
+/* Part 12 */
+
+/* Footer */
+.container-fluid.footer{
+    position: relative;
+    top: 600px;
+    margin: auto;
+    background-color: hsl(50,99%,53%);
+    color: #216e38;
+}
+.row.row_footer{
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.frame{
+    height: 100%;
+    width: 80%;
+}
+.frame a{
+    color: #216e38;
+    text-decoration: none;
+}
+.logo_footer{
+    width: 80%;
+    height: 180px;
+    object-fit: contain;
+}
+.text-uppercase{
+    margin-top: 20px;
+    font-family: 'Varela Round', sans-serif;
+    /* color: white; */
+    font-size: 20px;
+}
+.text_reset{
+    font-family: 'Varela Round', sans-serif;
+    /* color: #AEB4BE !important; */
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+}
+.footer_icon{
+    height: 20px;
+    margin-bottom: 20px;
+}
+.footer_icon a, .footer_icon a:hover  {
+  text-decoration: none;
+  color: #216e38;
+}
+.footer_icon .iconify{
+    margin-right: 20px;
+    width: 20px;
+    height: 20px;
+    /* color: white !important; */
+}
+.footer_icon .iconify:hover{
+    opacity: 0.6;
+}
+
+.contract, .aboutus, .image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (max-width: 991px) {
+    .category-list-col{
+        margin : 7px 0;
+    }
+    .category-list-row{
+        margin-top: 0px;
+    }
+    .contract, .aboutus{
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+    }
+    .image {
+        display: none;
+    }
+  }
+
+
+
+
+
