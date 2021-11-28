@@ -1,2 +1,2 @@
 # FreshFoodLaravel
-![FreshFood](https://gsviec.com/huong-dan-su-dung-markdown/)
+[FreshFood](https://gsviec.com/huong-dan-su-dung-markdown/)
