@@ -1,4 +1,4 @@
-@extends('masterlayout.header')
+@extends('masterlayout.web.header')
 
 @section('signup')
     <link rel="stylesheet" href="{{ asset('style/sigup-style/signup-resp.css') }}">
@@ -23,7 +23,11 @@
                         <input type="email" placeholder="Email" name="email" required id="" class="form-control">
                     </div>
                     <div class="form-user">
-                        <input type="text" placeholder="Tên đăng nhập" name="name" required id="" class="form-control">
+                        <input type="text" placeholder="Tên đăng nhập" name="username" required id=""
+                            class="form-control">
+                    </div>
+                    <div class="form-user">
+                        <input type="text" placeholder="Họ tên" name="name" required id="" class="form-control">
                     </div>
                     <div class="row form-haft">
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 form-pass">

@@ -8,6 +8,7 @@
     <!-- Boostrap -->
     <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-4.6.0-dist/css/bootstrap-grid.min.css') }}">
     <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-4.6.0-dist/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-4.6.0-dist/css/bootstrap-reboot.css') }}">
     <!-- link font-icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
         integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
@@ -148,7 +149,16 @@
                 <a class="dropdown-item" href="#">Hello</a>
             </div>
         </div>
-
+        <div style="position: absolute;top: 100px;display: none;" class="container mt-4">
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Success!</strong> Các bạn hãy nhận nút "x" bên phải để tắt thông báo.
+            </div>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Danger!</strong> Các bạn hãy nhận nút "x" bên phải để tắt thông báo.
+            </div>
+        </div>
 
     </div>
 

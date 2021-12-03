@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\add;
+use App\Http\Controllers\login;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -18,48 +20,51 @@ use PhpParser\Node\Expr\Throw_;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+
+    echo csrf_token();
+
+
+    // return view('welcome');
 });
 
 Route::get('/login', function () {
-    return view('pages.login');
+    return view('pages.web.login');
 })->name("login");
 
-Route::post('/login', function (Request $request) {
-    $username = $request['username'];
-    $password = $request['password'];
-
-    $user = Auth::attempt(['tendangnhap' => $username, 'password' => $password]);
-    if ($user) {
-        echo "Đăng nhập thành công";
-        // return redirect('home');
-    } else {
-        echo "Đăng nhập thất bại";
-    }
-});
+Route::post('/login', [login::class, 'login']);
 
 
 
 
 Route::get('/signup', function () {
-    return view('pages.signup');
+    return view('pages.web.signup');
 })->name("signup");
 
 Route::post('/signup', function (Request $request) {
     $email = $request['email'];
-    $name = $request['name'];
+    $username = $request['username'];
     $password = $request['password'];
     $address = $request['address'];
     $phone = $request['phone'];
     $DOB  = $request['DOB'];
+    $name = $request['name'];
     try {
 
         DB::table('users')->insert([
-            'tendangnhap' => $name, 'email' => $email, 'password' => bcrypt($password), 'diachi' => $address, 'sodienthoai' => $phone
+            'name' => $name,  'tendangnhap' => $username, 'email' => $email, 'password' => bcrypt($password), 'diachi' => $address, 'sodienthoai' => $phone, 'id_role' => 2
         ]);
         return redirect("login");
     } catch (Throw_ $e) {
         echo "Lỗi rồi đó thấy chưa";
     }
     echo $name;
+});
+
+
+Route::prefix('/admin')->group(function () {
+    Route::get('add-nong-san', function () {
+        return view('pages.admin.add_nong_san');
+    });
+    Route::get('add', [add::class, 'hello']);
 });
