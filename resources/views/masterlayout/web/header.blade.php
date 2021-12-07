@@ -70,11 +70,13 @@
 
                 <li class="list-group-item dropdown_menu_sanpham pt-2">Sản phẩm
                     <ul class="dropdown_menu_sanpham_content">
-                        <p class=""><a class="text_content" href="#">Trái cây</a></p>
-                        <p><a class="text_content" href="#">Rau củ</a></p>
-                        <p><a class="text_content" href="#">Thực phẩm khô</a></p>
-                        <p><a class="text_content" href="#">Hải sản</a></p>
-                        <p><a class="text_content" href="#">Thịt tươi</a></p>
+                        @foreach ($danhmucs as $dm)
+                            <p><a class="text_content"
+                                    href="{{ route('danhmuc', ['idDanhMuc' => $dm->id]) }}">{{ $dm->tenDanhMuc }}</a>
+                            </p>
+                        @endforeach
+
+
 
                     </ul>
                     <span class="iconify" data-icon="gridicons:dropdown" style="color: #216e38;"></span>
@@ -144,12 +146,28 @@
                 </svg>
             </button>
             <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Login</a>
-                <a class="dropdown-item" href="#">Sign up</a>
-                <a class="dropdown-item" href="#">Hello</a>
+
+                @if ($user == null)
+                    <a class="dropdown-item" href="{{ route('login') }}">Login</a>
+                    <a class="dropdown-item" href="{{ route('signup') }}">Sign up</a>
+                @else
+                    <a class="dropdown-item" href="{{ route('logout') }}">Đăng Xuất</a>
+                @endif
+
+
             </div>
         </div>
         <div style="position: absolute;top: 100px;display: none;" class="container mt-4">
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Success!</strong> Các bạn hãy nhận nút "x" bên phải để tắt thông báo.
+            </div>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Danger!</strong> Các bạn hãy nhận nút "x" bên phải để tắt thông báo.
+            </div>
+        </div>
+        <div class="container mt-4" style="position:absolute;top: 50px">
             <div class="alert alert-success alert-dismissible">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong>Success!</strong> Các bạn hãy nhận nút "x" bên phải để tắt thông báo.
@@ -168,6 +186,8 @@
     <!-- Part 2:  -->
     @yield('login')
     @yield('signup')
+    @yield('home')
+    @yield('sanpham-danhmuc')
     <!-- Part 3: Footer -->
 
     <script type="text/javascript" src="{{ asset('bootstrap/bootstrap-4.6.0-dist/js/bootstrap.bundle.js') }}"></script>

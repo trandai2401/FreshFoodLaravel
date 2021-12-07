@@ -1,56 +1,56 @@
-* {
-    font-family: "Varela Round", sans-serif;
+*{
+    font-family: 'Varela Round', sans-serif;
     margin: O auto;
-}
+  }
 /* Part 1: fixed for header */
-.sb-nav-fixed .avatar .div-avatar {
+  .sb-nav-fixed .avatar .div-avatar{
     width: 30px;
-    height: 30px;
-    overflow: hidden;
-}
-.sb-nav-fixed .avatar .div-avatar .img-avatar {
-    object-fit: cover;
-    width: 30px;
-    height: 30px;
-}
-
-#header-top {
+      height:30px;   
+      overflow: hidden;   
+  }
+  .sb-nav-fixed .avatar .div-avatar .img-avatar{
+    object-fit:cover;
+      width: 30px;
+      height:30px;
+    
+  }
+  
+  #header-top{
     background: #ffe923;
-}
-
-.sb-topnav.navbar.navbar-expand.navbar-dark {
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
-        rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  }
+  
+  .sb-topnav.navbar.navbar-expand.navbar-dark {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     z-index: 99999;
-}
-
-#layoutSidenav_nav {
+  }
+  
+  #layoutSidenav_nav{
     box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
     background: #ffff;
-}
-
-#layoutSidenav_content {
-    background: #ebf2f5;
-}
-
-/* Hover link nav */
-#layoutSidenav #layoutSidenav_nav .sb-sidenav-menu .nav-link:hover .iconify {
+  }
+  
+  #layoutSidenav_content{
+    background: #EBF2F5;
+  }
+  
+  /* Hover link nav */
+  #layoutSidenav #layoutSidenav_nav .sb-sidenav-menu .nav-link:hover .iconify{
     color: #216e38;
-}
+  }
+  
+  .sb-sidenav-footer.bg-success {
+    color: rgb(94, 91, 91) ;
+  }
+  /* Part 2: Nội dung chính */
 
-.sb-sidenav-footer.bg-success {
-    color: rgb(94, 91, 91);
-}
-/* Part 2: Nội dung chính */
-
-#layoutSidenav_content .path a {
+  #layoutSidenav_content .path a{
     text-decoration: none;
     color: #216e38;
-}
+  }
+  
+  /* form add voucher */
 
-/* form add voucher */
-
-#layoutSidenav_content {
+  #layoutSidenav_content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -59,51 +59,54 @@
     flex-grow: 1;
     min-height: calc(100vh - 56px);
     margin-left: -225px;
-}
+  }
 
-#layoutSidenav_content .form-add-voucher {
-    width: 60%;
-    height: 800px;
-    background: rgb(255, 255, 255);
-}
+  #layoutSidenav_content .form-add-voucher {
+      width: 60%;
+      height: 800px;
+      background: rgb(255, 255, 255); 
+     
+  }
 
-#layoutSidenav_content .form-add-voucher .titile-add-voucher-form {
-    height: 55px;
-    width: 100%;
-    background: #ffffff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-}
+  #layoutSidenav_content .form-add-voucher .titile-add-voucher-form{
+      height: 55px;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
 
-#layoutSidenav_content .form-add-voucher .form.add_voucher {
+  #layoutSidenav_content .form-add-voucher .form.add_voucher{
     font-size: 13px;
-}
-/*  */
 
-/* calendar */
+  }
+  /*  */
 
-[type="date"] {
-    background: #df2f4c url(../../image/addVoucher/ion_calendar.png) 95% 50%
-        no-repeat;
-}
-[type="date"]::-webkit-inner-spin-button {
+
+  /* calendar */
+
+  [type="date"] {
+    background:#DF2F4C url(../../image/addVoucher/ion_calendar.png)  95% 50% no-repeat ;
+  }
+  [type="date"]::-webkit-inner-spin-button {
     display: none;
-}
-[type="date"]::-webkit-calendar-picker-indicator {
+  }
+  [type="date"]::-webkit-calendar-picker-indicator {
     opacity: 0;
-}
+  }
 
-[type="time"] {
-    background: #df2f4c url(../../image/addVoucher/icon-time.png) 90% 50%
-        no-repeat;
-}
-[type="time"]::-webkit-inner-spin-button {
+
+  
+  [type="time"] {
+    background:#DF2F4C url(../../image/addVoucher/icon-time.png)  90% 50% no-repeat ;
+  }
+  [type="time"]::-webkit-inner-spin-button {
     display: none;
-}
-[type="time"]::-webkit-calendar-picker-indicator {
+  }
+  [type="time"]::-webkit-calendar-picker-indicator {
     opacity: 0;
-}
+  }
 
-#date-start {
+  #date-start{
     border: 1px solid #216e38;
     border-radius: 5px;
     background-color: #216e38;
@@ -112,78 +115,102 @@
     padding-right: 0px;
     box-shadow: rgba(192, 77, 77, 0.2) 0px 8px 24px;
     width: 50%;
-}
-
-/* btn chon anh */
-.label_input {
-    font-size: 13px;
+  }
+ #time-start{
+    border: 1px solid rgb(233, 106, 106);
     border-radius: 5px;
-    color: white;
-    background-color: #216e38;
-    display: inline-block;
-    cursor: pointer;
-    padding: 6.5px 10px;
+    background-color: #DF2F4C;
+    padding: 8px 4px;
+    box-shadow: rgba(192, 77, 77, 0.2) 0px 8px 24px;
+    width: 30.5%;
+  }
+
+ 
+  /* btn chon anh */
+ .label_input { 
+  font-size: 13px;
+  border-radius: 5px;
+  color: white;
+  background-color: #216e38;
+  display: inline-block;
+  cursor: pointer;
+  padding: 6.5px 10px;
 }
 
 /* CLEDitor */
 /* .CKEditor {
-height: 150px !important;
+  height: 150px !important;
 } */
+
+
 
 /* .inputfile:focus + .label_input,
 .inputfile + .label_input:hover {
-background-color: #DF2F4C;
+  background-color: #DF2F4C;
 } */
+
+
+
+
 
 /* css for img voucher */
 
-#layoutSidenav_content .form-img-voucher {
-    width: 30%;
+#layoutSidenav_content .form-img-voucher{
+  width: 30%;
     height: 330px;
     background: #ffffff;
 }
 
-#layoutSidenav_content .form-img-voucher .titile-add-voucher-form {
-    height: 55px;
-    width: 100%;
-    background: #ffffff;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+
+#layoutSidenav_content .form-img-voucher .titile-add-voucher-form{
+  height: 55px;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-#layoutSidenav_content .form-img-voucher {
-    font-size: 13px;
+#layoutSidenav_content .form-img-voucher{
+font-size: 13px;
 }
 
-#layoutSidenav_content .form-img-voucher #carouselExampleControls img {
-    width: 100%;
-    height: 200px;
-    margin: 5px auto;
-    object-fit: contain;
-    padding: 10px 5px;
+#layoutSidenav_content .form-img-voucher #carouselExampleControls img{
+  width: 100%;
+  height: 200px;
+  margin: 5px auto;
+  object-fit:contain;
+  padding: 10px 5px;
+  
 }
 
-#quantity-img-voucher {
-    /* display: flex; */
-    width: 70px;
-    border-radius: 5% 0.7px solid;
-    padding: 2px 5px;
-    margin-top: 10px;
-    margin-right: 20px;
-    /* justify-content: center; */
+
+
+#quantity-img-voucher{
+  /* display: flex; */
+  width: 70px;
+  border-radius: 5% 0.7px solid;
+  padding: 2px 5px;
+  margin-top: 10px;
+  margin-right: 20px;
+  /* justify-content: center; */
 }
+
 
 .middle {
-    opacity: 0;
-    position: absolute;
-    top: 100%;
-    left: 45%;
-}
+  
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 45%;
+  
+ }
 
-.carousel-inner:hover img {
-    opacity: 0.6;
-}
 
-.carousel-item:hover .middle {
-    opacity: 1;
-    margin-top: -55px;
-}
+ .carousel-inner:hover img {
+  opacity: 0.6;
+ }
+ 
+ .carousel-item:hover .middle {
+  opacity: 1;
+  margin-top: -55px;
+ }

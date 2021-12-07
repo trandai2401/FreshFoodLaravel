@@ -23,8 +23,7 @@ class Nongsan extends Migration
             $table->unsignedBigInteger('id_danhmuc');
             $table->text('noisanxuat')->nullable();
             $table->foreign('id_danhmuc')->references('id')->on('danhmuc');
-            $table->foreign('create_by')->references('id')->on('users');
-
+            $table->text('noidung')->nullable();
             $table->timestamps();
         });
     }

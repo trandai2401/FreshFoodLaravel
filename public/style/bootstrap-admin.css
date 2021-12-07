@@ -11497,8 +11497,8 @@ body {
   color: #827E7E;
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link:hover {
-  color: #e35;
-  background: rgb(255,214,214);
+  color: #216e38;
+  background: rgb(255,191,0,0.6);
 }
 .sb-sidenav-dark .sb-sidenav-menu .nav-link.active {
   color: #fff;

@@ -9,4 +9,11 @@ class danhmuc extends Model
 {
     use HasFactory;
     protected $table = "danhmuc";
+
+
+
+    public function nongsan()
+    {
+        return $this->hasMany(nongsan::class, 'id_danhmuc', 'id');
+    }
 }

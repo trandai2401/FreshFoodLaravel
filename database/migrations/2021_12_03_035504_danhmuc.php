@@ -14,11 +14,11 @@ class Danhmuc extends Migration
     public function up()
 
     {
-        Schema::create('danhmuc', function (Blueprint $table) {
-            $table->id();
-            $table->string('tenDanhMuc');
-            $table->timestamps();
-        });
+        // Schema::create('danhmuc', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('tenDanhMuc');
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -28,7 +28,7 @@ class Danhmuc extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('danhmuc');
+        // Schema::dropIfExists('danhmuc');
         //
     }
 }
