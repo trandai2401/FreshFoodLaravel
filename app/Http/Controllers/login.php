@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\giohang;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,13 @@ use PhpParser\Node\Expr\Throw_;
 class login extends Controller
 {
     //
+
+
+
+    public function getLogin()
+    {
+        return view('pages.web.login');
+    }
     public function login(Request $request)
     {
         $username = $request['username'];
@@ -23,6 +31,13 @@ class login extends Controller
         } else {
             echo "Đăng nhập thất bại";
         }
+    }
+
+
+    public function getLogout()
+    {
+        Auth::logout();
+        return redirect('login');
     }
 
 
@@ -45,10 +60,10 @@ class login extends Controller
         $DOB  = $request['DOB'];
         $name = $request['name'];
         try {
-
-            $res =  DB::table('users')->insert([
+            $res =  DB::table('users')->insertGetId([
                 'name' => $name,  'tendangnhap' => $username, 'email' => $email, 'password' => bcrypt($password), 'diachi' => $address, 'sodienthoai' => $phone, 'id_role' => 2, 'ngaysinh' => $DOB
             ]);
+            DB::table('giohang')->insert(['id_user' => $res]);
         } catch (Throw_ $e) {
             echo "Lỗi rồi đó thấy chưa";
         }

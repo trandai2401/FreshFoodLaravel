@@ -12,8 +12,14 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-
-
+    public function role()
+    {
+        return $this->belongsTo(role::class, 'id_role', 'id');
+    }
+    public function giohang()
+    {
+        return $this->hasMany(giohang::class, 'id_user', 'id');
+    }
 
 
 

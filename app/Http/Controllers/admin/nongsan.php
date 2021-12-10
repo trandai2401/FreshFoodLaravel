@@ -26,9 +26,9 @@ class nongsan extends Controller
             $soluong = $request->soluong;
             $noisanxuat  = $request->noisanxuat;
             $gia = $request->gia;
-            $ngayThuHoach = $request->ngaythuhoach;
+
             $noidung = $request->noidung;
-            echo "cCó images $ten $idDanhMuc $soluong $noisanxuat $gia $ngayThuHoach $noidung";
+            echo "cCó images $ten $idDanhMuc $soluong $noisanxuat $gia  $noidung";
 
             $id = DB::table('nongsan')->insertGetId([
                 'tennongsan' => $ten,

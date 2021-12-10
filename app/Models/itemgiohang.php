@@ -9,4 +9,9 @@ class itemgiohang extends Model
 {
     use HasFactory;
     protected $table = "itemgiohang";
+
+    public function nongsan()
+    {
+        return $this->belongsTo(nongsan::class, 'id_nongsan', 'id');
+    }
 }

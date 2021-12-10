@@ -64,7 +64,7 @@
         <!-- menu header -->
         <div class="menu-header py-1">
             <ul class="list-group list-group-horizontal">
-                <a href="#">
+                <a href="{{ route('home') }}">
                     <li class="list-group-item pt-2">Trang chủ</li>
                 </a>
 
@@ -167,14 +167,14 @@
                 <strong>Danger!</strong> Các bạn hãy nhận nút "x" bên phải để tắt thông báo.
             </div>
         </div>
-        <div class="container mt-4" style="position:absolute;top: 50px">
-            <div class="alert alert-success alert-dismissible">
+        <div id="thong-bao" class="mt-4" style="position:absolute;top: 50px">
+            <div class="alert alert-success alert-dismissible" style="display: none;">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong>Success!</strong> Các bạn hãy nhận nút "x" bên phải để tắt thông báo.
             </div>
-            <div class="alert alert-danger alert-dismissible">
+            <div class="alert alert-danger alert-dismissible" style="display: none;">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Danger!</strong> Các bạn hãy nhận nút "x" bên phải để tắt thông báo.
+                <strong>Danger!</strong> Các bạn hãy nhận nút "x" bên phải để tắt thông báo. {}
             </div>
         </div>
 
@@ -188,8 +188,27 @@
     @yield('signup')
     @yield('home')
     @yield('sanpham-danhmuc')
+    @yield('sanpham')
+    @yield('giohang')
     <!-- Part 3: Footer -->
 
+
+
+    <script>
+        var boxThongBao = document.getElementById('thong-bao');
+
+        function thongBao(tyle, noidung) {
+            var div = document.createElement('div');
+
+            div.className = 'alert ' + tyle + '  alert-dismissible';
+            div.innerHTML =
+                '<button type="button" class="close" data-dismiss="alert">&times;</button> <strong>Thông báo!</strong> ' +
+                noidung + '';
+
+
+            boxThongBao.append(div);
+        }
+    </script>
     <script type="text/javascript" src="{{ asset('bootstrap/bootstrap-4.6.0-dist/js/bootstrap.bundle.js') }}"></script>
     <script type="text/javascript" src="{{ asset('bootstrap/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js') }}">
     </script>

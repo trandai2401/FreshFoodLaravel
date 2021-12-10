@@ -9,4 +9,8 @@ class hoadon extends Model
 {
     use HasFactory;
     protected $table = "hoadon";
+
+    public function tongTienHoaDon()
+    {
+    }
 }

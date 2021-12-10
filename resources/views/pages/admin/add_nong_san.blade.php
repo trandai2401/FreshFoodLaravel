@@ -1,6 +1,8 @@
 <!-- Part 2.2: Phần nội dung chính - được thay đổi  -->
 @extends('masterlayout.admin.header')
 @section('add-nongsan')
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
     <div id="layoutSidenav_content">
         <div class="main_content">
             <h6 class="path text-success mt-4 mx-4">
@@ -71,10 +73,22 @@
                                 </div>
 
                                 <div class="CKEditor mx-5 mt-4">
-                                    <textarea class="" name="editor1"></textarea>
+                                    <div id="editor">
+                                        <p>This is some sample content.</p>
+                                    </div>
                                     <script>
-                                        CKEDITOR.replace('editor1');
+                                        let editor;
+
+                                        ClassicEditor
+                                            .create(document.querySelector('#editor'))
+                                            .then(newEditor => {
+                                                editor = newEditor;
+                                            })
+                                            .catch(error => {
+                                                console.error(error);
+                                            });
                                     </script>
+
                                 </div>
 
 
@@ -209,12 +223,6 @@
         var inputGia = document.getElementById('inputGia');
         var noidungnongsan = document.getElementById('noidungnongsan');
 
-
-
-
-
-
-
         var submit = document.getElementById('submit');
         submit.addEventListener('click', function() {
             var imagefile = document.getElementById("file").files[0];
@@ -225,7 +233,8 @@
             form.append('soluong', inputsoluong.value);
             form.append('noisanxuat', inputNoiSanXuat.value);
             form.append('gia', inputGia.value);
-            form.append('noidung', CKEDITOR.instances.editor1.getData());
+
+            form.append('noidung', editor.getData());
             form.append('images', imagefile);
             $.ajax({
                 method: 'post',

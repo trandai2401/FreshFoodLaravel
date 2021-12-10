@@ -3,7 +3,10 @@
 use App\Http\Controllers\admin\add;
 use App\Http\Controllers\admin\nongsan as AdminNongsan;
 use App\Http\Controllers\login;
+use App\Http\Controllers\web\GioHang;
+use App\Http\Controllers\web\home;
 use App\Models\danhmuc;
+use App\Models\itemgiohang;
 use App\Models\nongsan;
 use App\Models\role;
 use Illuminate\Http\Request;
@@ -24,52 +27,43 @@ use PhpParser\Node\Expr\Throw_;
 */
 
 
-// Route::get('/', function () {
-//     echo csrf_token();
-//     // return view('welcome');
-// });
+Route::get('/', function () {
+    echo csrf_token();
+    // return view('welcome');
+});
 
 
-
-Route::get('/login', function () {
-    return view('pages.web.login');
-})->name("login");
+//LOGIN SIGNUP LOGOUT
+Route::get('/login', [login::class, 'getLogin'])->name("login");
 Route::post('/login', [login::class, 'login']);
-
 
 Route::get('/signup', [login::class, 'getSignup'])->name("signup");
 Route::post('/signup', [login::class, 'postSignup']);
-Route::get('/logout', function () {
-    Auth::logout();
-    return redirect('login');
-})->name('logout');
+Route::get('/logout', [login::class, 'getLogout'])->name('logout');
 
-
-
-Route::prefix('/admin')->group(function () {
+//ADMIN
+Route::middleware('CheckLogin')->middleware('AuthAdmin')->prefix('/admin')->group(function () {
     Route::get('add-nong-san', [AdminNongsan::class, 'get']);
     Route::post('add-nong-san', [AdminNongsan::class, 'addNongSan']);
     Route::get('add', [add::class, 'hello']);
 });
 
-
-
+// HOME
 Route::prefix('/')->group(function () {
-    Route::get('home', function () {
-        return view('pages.web.home');
-    })->name('home');
-
-    Route::post('home', function () {
-        $arrayNongSAn =  nongsan::select()->where('id_danhmuc', 3)->get();
-        return view('pages.web.home', ['nongsans' => $arrayNongSAn]);
-    })->name('home');
-
-    Route::get('danhmuc/{idDanhMuc}', function ($id) {
-        $arrayNongSAn =  nongsan::select()->where('id_danhmuc', $id)->get();
-        $tenDanhMuc = danhmuc::select('*')->where('id', $id)->get();
-        return view('pages.web.san-pham-danh-muc', ['nongsans' => $arrayNongSAn, 'tenDanhMuc' => $tenDanhMuc]);
-    })->name('danhmuc');
+    Route::get('home', [home::class, 'getHome'])->name('home');
+    Route::get('danhmuc/{idDanhMuc}', [home::class, 'getSanPhamByDanhMuc'])->name('danhmuc');
+    Route::get('nongsan/{idNongSan}', [home::class, 'getNongSanByID']);
 });
-Route::get('/1234', function () {
-    echo 123;
+Route::get('/1234/{id}', function ($id) {
+    return view('pages.web.demo');
+});
+
+
+//USERS
+Route::middleware('CheckLogin')->prefix('/user')->group(function () {
+    Route::get('cart', [GioHang::class, 'getGioHang']);
+    Route::delete('cart1', [GioHang::class, 'deleteGioHang'])->name('cart1');
+
+
+    Route::post('cart', [GioHang::class, 'update']);
 });

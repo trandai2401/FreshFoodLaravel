@@ -11,8 +11,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CKEditor -->
-    <script src="//cdn.ckeditor.com/4.17.1/basic/ckeditor.js"></script>
-
+    {{-- <script src="//cdn.ckeditor.com/4.17.1/basic/ckeditor.js" charset="utf-8"></script> --}}
+    {{-- <script src="{{ asset('ckeditor/src/ckeditor.js') }}" charset="utf-8"></script> --}}
+    <script src="{{ asset('ckeditor/lang/vi.js') }}" charset="utf-8"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/translations/vi.js"></script>
+    <script src="../build/ckeditor.js"></script>
     <!-- link css bootstrap -->
     <link rel="stylesheet" href="../bootstrap/bootstrap-4.6.0-dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="../bootstrap/bootstrap-4.6.0-dist/css/bootstrap.css">

@@ -84,7 +84,6 @@ body{
 
 /* Part 2 */
 .container-fluid.category-slide{
- 
     position: relative;
 }
 .container-fluid.category-slide ul a{
@@ -263,13 +262,11 @@ body{
 /* Part 5: trái cây */
 
 .container-fluid.danhmuc_traicay{
-    margin-top: 20px;
     position: relative;
     top: 290px;
    
 }
 .danhmuc_traicay .img_danhmuc_traicay_content {
-  
     width: 25%;
     height: 300px;
 
@@ -407,7 +404,6 @@ body{
 /* Part 6: rau củ*/
 
 .container-fluid.danhmuc_raucu{
-    margin-top: 20px;
     position: relative;
     top: 350px;
     
