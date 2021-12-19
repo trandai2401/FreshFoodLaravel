@@ -1,6 +1,7 @@
 <!-- Part 2.2: Phần nội dung chính - được thay đổi  -->
 @extends('masterlayout.admin.header')
 @section('add-nongsan')
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
     <div id="layoutSidenav_content">
@@ -37,7 +38,7 @@
                                             @endforeach
 
                                         </select>
-                                        <input type="text" name="danhmuc" id="danhmuc" value="{{ $arrayDanhMuc[0]->id }}">
+
                                         <script>
                                             var danhmuc = document.getElementById('inputCategory');
                                             var idDanhMuc = {{ $arrayDanhMuc[0]->id }};
@@ -188,6 +189,7 @@
                     var result = reader.result;
 
                     var div = document.createElement("div");
+                    div.id = "image_input_nongsan";
                     div.className = "carousel-item" + " " + at;
 
 
@@ -244,12 +246,17 @@
                 contentType: false,
                 processData: false
 
-                // {
-                //     _token: "{{ csrf_token() }}",
-                //     images: imagefile
-                // }
             }).done(function(result) {
+                thongBao("alert-success", "Đã thêm nông sản này vào danh sách quản lý");
                 console.log(result);
+                ten.value = "";
+                inputsoluong.value = "";
+                inputNoiSanXuat.value = "";
+                inputGia.value = "";
+                editor.setData("");
+
+
+                document.getElementById('image_input_nongsan').remove();
             }).fail(function(result) {
                 console.log(result);
             })

@@ -11,7 +11,7 @@ class giohang extends Model
     use HasFactory;
     protected $table = "giohang";
 
-    public function gioHang()
+    public function itemGioHang()
     {
         return $this->hasMany(itemGioHang::class, 'id_giohang', 'id');
     }

@@ -28,20 +28,21 @@
             <div class="combobox_filter d-flex">
                 <span class="mr-3">Sắp xếp:</span>
                 <div class="form-group">
-                    <select class="form-control" id="exampleFormControlSelect1" style="width: 200px">
-                        <option>A - Z</option>
-                        <option>Z - A</option>
-                        <option>Sản phẩm còn</option>
-                        <option>Sản phẩm hết</option>
+                    <select onchange="loc({{ $tenDanhMuc[0]->id }})" class="form-control" id="exampleFormControlSelect1"
+                        style="width: 200px">
+                        <option value="tenNongSan asc">A - Z</option>
+                        <option value="tenNongSan desc">Z - A</option>
+                        <option value="gia desc">Giá giảm dần</option>
+                        <option value="gia asc">Giá tăng dần</option>
                         <option>Giá thấp đến cao</option>
                         <option>Giá cao đến thấp</option>
                     </select>
                 </div>
             </div>
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" placeholder="Search" id="searchByKeyWord">
                 <div class="input-group-append">
-                    <button class="btn" type="submit" style="background-color: #216e38;">
+                    <button onClick="timKiem(1)" class="btn" type="submit" style="background-color: #216e38;">
                         <span class="iconify text-white" data-icon="bx:bx-search-alt-2"></span>
                     </button>
                 </div>
@@ -58,10 +59,10 @@
                 <div class="price_range">
                     <p class="text-success ml-4 mt-3"><strong>Lọc giá sản phẩm</strong></p>
                     <div class="form-group d-flex mx-3">
-                        <input type="number" class="form-control py-3" id="formGroupExampleInput" placeholder="0"
+                        <input value="" type="number" class="form-control py-3" id="giaBatDau" placeholder="0"
                             style="width: 100px; font-size: 10px;">
                         <p class="mt-2 mx-1">&ndash;</p>
-                        <input type="number" class="form-control py-3" id="formGroupExampleInput" placeholder="1000000"
+                        <input value="" type="number" class="form-control py-3" id="giaKetThuc" placeholder="1000000"
                             style="width: 100px; font-size: 10px;">
                     </div>
                 </div>
@@ -70,22 +71,25 @@
                 <div class="salesroom">
                     <p class="text-success ml-4 my-3"><strong>Địa điểm</strong></p>
                     <label class="checkbox mx-4 mb-3">
-                        <input class="mr-3 text-danger" type="checkbox" id="checkbox_address_HaNoi" name="scales"
-                            style="background: #e94560;">
+                        <input class=" checkbox_address_item mr-3 text-danger" type="checkbox" id="checkbox_address_HaNoi"
+                            value="ha noi" name="scales" style="background: #e94560;">
                         <i class="mr-3 icon-checkbox"></i>Hà Nội
                         <!-- <label class="state p-dange" for="checkbox_address_HaNoi">Hà Nội</label> -->
                     </label>
 
                     <label class="checkbox mx-4 mb-3">
-                        <input class="mr-3" type="checkbox" id="checkbox_address_DaNang" name="horns">
+                        <input class="  checkbox_address_item mr-3" type="checkbox" id="checkbox_address_DaNang"
+                            value="da nang" name="horns">
                         <i class="mr-3 icon-checkbox"></i>Đà Nẵng
                     </label>
                     <label class="checkbox mx-4 mb-3">
-                        <input class="mr-3" type="checkbox" id="checkbox_address_HoChiMinh" name="horns">
+                        <input class=" checkbox_address_item  mr-3" type="checkbox" id="checkbox_address_HoChiMinh"
+                            value="can tho" name="horns">
                         <i class="mr-3 icon-checkbox"></i>Cần Thơ
                     </label>
                     <label class="checkbox mx-4 mb-3">
-                        <input class="mr-3" type="checkbox" id="checkbox_address_CanTho" name="horns">
+                        <input class=" checkbox_address_item  mr-3" type="checkbox" id="checkbox_address_CanTho"
+                            value="ho chi minh" name="horns">
                         <i class="mr-3 icon-checkbox"></i>Hồ Chí Minh
                     </label>
                 </div>
@@ -114,7 +118,7 @@
 
                 </div>
 
-                <button type="button" class="btn btn-outline-success mx-4"
+                <button onclick="loc({{ $tenDanhMuc[0]->id }})" type="button" class="btn btn-outline-success mx-4"
                     style="width: 80%; height: 30px; font-size: 10px; position: relative; top: 20px;">Áp dụng</button>
             </div>
 
@@ -135,7 +139,8 @@
                                         </input>
                                 </div>
                                 <div class="card-body text-center">
-                                    <p class="card-text name_product"> <a href="#">{{ $nongsan->tenNongSan }}</a>
+                                    <p class="card-text name_product"> <a
+                                            href="{{ route('nongsan', ['idNongSan' => $nongsan->id]) }}">{{ $nongsan->tenNongSan }}</a>
                                     </p>
                                     <div class="text_price"><span
                                             class="mx-4"><b>{{ number_format($nongsan->gia, 0, ',', '.') }}đ</b></span>
@@ -257,6 +262,98 @@
 
 
             }).fail(function(result) {
+                console.log(result);
+            })
+        }
+
+
+        function timKiem(idDanhMuc) {
+            var searchByKeyWord = document.getElementById('searchByKeyWord');
+            var form = new FormData();
+            form.append('_token', '{{ csrf_token() }}');
+            form.append('keyword', searchByKeyWord.value);
+            form.append('idDanhMuc', idDanhMuc);
+
+
+            $.ajax({
+                method: 'post',
+                url: "http://localhost/FreshFoodLaravel/public/1234",
+                context: document.body,
+                data: form,
+                contentType: false,
+                processData: false
+
+                // {
+                //     _token: "{{ csrf_token() }}",
+                //     images: imagefile
+                // }
+            }).done(function(result) {
+                var temp = document.getElementsByClassName('row product')[0];
+                temp.innerHTML = result;
+
+
+            }).fail(function(result) {
+                console.log(result);
+            })
+        }
+
+
+        function loc(idDanhMuc) {
+            var form = new FormData();
+            var t = document.getElementsByClassName('checkbox_address_item');
+            var exampleFormControlSelect1 = document.getElementById('exampleFormControlSelect1');
+            var arrDiaDiem = [];
+            // arrDiaDiem.push("");
+            for (let i = 0; i < t.length; i++) {
+
+                if (t[i].checked) {
+                    form.append("arrDiaDiem[]", t[i].value);
+
+                }
+
+            }
+
+
+
+
+
+
+
+            form.append('_token', '{{ csrf_token() }}');
+            form.append('sortBy', exampleFormControlSelect1.value);
+            var giaBatDau = document.getElementById('giaBatDau');
+            var giaKetThuc = document.getElementById('giaKetThuc');
+
+            var giaTribatDau = giaBatDau.value;
+            var giaTriKetThuc = giaKetThuc.value;
+            if (giaTribatDau == '') {
+                giaTribatDau = 0;
+            }
+
+
+            form.append('giaTribatDau', giaTribatDau);
+            form.append('giaTriKetThuc', giaTriKetThuc);
+            form.append('idDanhMuc', idDanhMuc);
+            // form.append('arrDiaDiem', arrDiaDiem);
+            $.ajax({
+                method: 'post',
+                url: "http://localhost/FreshFoodLaravel/public/123",
+                context: document.body,
+                data: form,
+                contentType: false,
+                processData: false
+
+                // {
+                //     _token: "{{ csrf_token() }}",
+                //     images: imagefile
+                // }
+            }).done(function(result) {
+                var temp = document.getElementsByClassName('row product')[0];
+                temp.innerHTML = result;
+                console.log(result);
+
+            }).fail(function(result) {
+                console.log("ThatBai");
                 console.log(result);
             })
         }

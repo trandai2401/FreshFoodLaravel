@@ -8,135 +8,83 @@ body{
     background: #ffffff;
 }
 
-/* fixel header */
-#site-header{
-    top: 0;
-    width: 100%;
-    height: 110px;
-    position: sticky;
-    transition: all .3s ease;
-    z-index: 100;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 2px 2px 2px #ccc;
-}
-/* css for header hiding and showing */
-#site-header.hide{
-    top: -117px;
+/* Part 1: Header */
+.header{
+    height: 50px;
+    background: #ffe923;
+    display: flex;
+    justify-content: space-around;
 }
 
-.img_logo_header{
-    width: 80%;
-    height: 60%;
-    object-fit: cover;
+.header .menu-header ul a{
+    text-decoration: none;
 }
-
-.container_input span{
-    border-radius: 30px;
-}
-
-.container_input input{
-    border-radius: 30px;
-}
-/* button category */
-#listview-category {
-    display: none;
-    position: relative;
-    top: -25px; 
-}
-
-
-#listview-category .iconify.ml-2.mr-5{
-    color: #e94560;
-}
-#listview-category  li:hover .iconify.ml-2.mr-5{
-    color: #ffffff;
-}
-#listview-category  li:hover{
-    color: #ffffff;
-}
-#listview-category  li:hover{
-    background-color: #e6a7ad;
-    opacity: 1;
-}
-
-/* button for user */
-
-/* user btn */
-#btn-cart , #btn-user02{
-    width: 45px;
-    height: 45px;
-
-}
-.btn_cart , .btn_user{
-    background-color: #DF2F4C;
-}
-
-#listview-user{
-    display: none;
-    justify-content: end;
-}
-#listview-user{
-    position: relative;
-    margin-top: -20px;
-    top: -45px;
-    right: -39%;
-}
-#listview-user li{
-   
-    background: #ffffff;
-    color: #dc3545;
-    border: 0.2px solid #dc3545;
-}
-#listview-user li:hover{
-    background: #fde4e4;
-    color: #dc3545;
-}
-@media only screen and (max-width: 587px) {
-    .search_bar{
-        display: none;
-    }
-    .container-fluid.header .row{
-        display: flex;
-    }
-}
-@media only screen and (max-width: 600px) {
-    .search_bar{
-        display: none;
-    }
-    .container-fluid.header .row{
-        display: flex;
-    }
-    #listview-user{
-        position: relative;
-        margin-top: -20px;
-        top: -30px;
-        right: -30%;
-    }
-}
-
-@media only screen and (max-width: 767px) {
-    
-    #listview-user{
-        position: relative;
-        margin-top: -20px;
-        top: -10px;
-        right: -35%;
-    }
+.header .menu-header ul li{
+    background: #ffe923;
+    border: none;
+    font-weight: 100;
+    color: #216e38;
 }
 
 /* menu header */
-.container_menu_header ul li{
-    list-style-type: none;
+.dropdown_menu_sanpham{
+    position: relative;
+    display: inline-block;
 }
 
-.container_menu_header{
-    padding-bottom: 20px;
+.dropdown_menu_sanpham_content{
+    display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 99999;
 }
+
+.dropdown_menu_sanpham:hover .dropdown_menu_sanpham_content {
+    display: block;
+}
+
+.dropdown_menu_sanpham:hover .dropdown_menu_sanpham_content .text_content{
+    color: #216e38;
+}
+
+.dropdown_menu_sanpham:hover .dropdown_menu_sanpham_content p:hover .text_content{
+    font-size: 17px;
+    color: #b6b398;
+    font-weight: bolder;
+
+}
+/* input search */
+.header .input-search{
+    position: relative;
+    margin-left: 60px;
+}
+
+.header .input-search .input-group.search{
+    overflow: hidden;
+     border: 1.2px solid #216e38; 
+     background-color: #ffffff; 
+     border-radius: 30px;
+     
+}
+
+.header .input-search .input-group.search .form-control{
+    background: white;
+}
+
+.header .btn_user{
+    position: relative;
+    left: -30px;
+    top: 5px;
+}
+
 
 
 /* Part 2.2.1: Service-left */
 .left-service{
-    margin-top: 30px;
+    margin-top: 100px;
     width: 320px;
     height: auto;
     border-radius: 5px;
@@ -151,11 +99,11 @@ body{
     color: #464444;
 }
 .left-service li:hover .iconify.ml-2.mr-5{
-    color: #dc3545;
+    color: #216e38;
 }
 .left-service li:hover   {
-    background-color: #ffdce0;
-    color: #dc3545;
+    background-color: #f2ff3a;
+    color: #216e38;
 }
 
 
@@ -164,10 +112,11 @@ body{
 /* title and button */
 .right_service{
     width: 800px;
-    margin-top: 30px;
+    margin-top: 90px;
     margin-left: 15px;
     background: #ffffff;
     border-radius: 5px;
+    font-size: 14px;
 }
 .my-profile{
     margin-left: 20px;
@@ -182,7 +131,7 @@ body{
     margin-right: 20px;
 }
 .my-profile-heading{
-    color: #DF2F4C;
+    color: #216e38;
     justify-content: center;
     align-items: center;
 }
@@ -192,7 +141,7 @@ body{
 }
 .my-profile-heading h1 {
     margin: 5px 0 0 10px;
-    color: #DF2F4C;
+    color: #216e38;
 }
 
 
@@ -236,7 +185,7 @@ body{
     
 }
 .personal-name-tilte{
-    color: #5555;
+    color: rgb(97, 97, 97);
 }
 .personal-name-tilte p, .personal-name-item p {
     width: 20%;
@@ -259,7 +208,7 @@ body{
     
 }
 .personal-adress-tilte{
-    color: #5555;
+    color: rgb(97, 97, 97);
 }
 .personal-adress-tilte p, .personal-adress-item p {
     width: 40%;
@@ -313,35 +262,42 @@ body{
 
 /* Footer */
 .container-fluid.footer{
+    position: relative;
+    /* top: 600px; */
     margin: auto;
-    background-color: #0F3460;
+    background-color: hsl(50,99%,53%);
+    color: #216e38;
 }
 .row.row_footer{
     margin-left: 0;
     margin-right: 0;
     width: 100%;
     height: 100%;
-    /* display: flex;
-    justify-content: center; */
+    display: flex;
+    justify-content: center;
 }
 .frame{
     height: 100%;
     width: 80%;
 }
+.frame a{
+    color: #216e38;
+    text-decoration: none;
+}
 .logo_footer{
-    width: 80%;
-    height: 180px;
-    
+    width: 60%;
+    height: 150px;
+    object-fit: contain;
 }
 .text-uppercase{
     margin-top: 20px;
     font-family: 'Varela Round', sans-serif;
-    color: white;
+    color: #216e38;
     font-size: 20px;
 }
 .text_reset{
     font-family: 'Varela Round', sans-serif;
-    color: #AEB4BE !important;
+    /* color: #AEB4BE !important; */
     font-size: 15px;
     text-align: center;
     text-decoration: none;
@@ -352,12 +308,13 @@ body{
 }
 .footer_icon a, .footer_icon a:hover  {
   text-decoration: none;
+  color: #216e38;
 }
 .footer_icon .iconify{
     margin-right: 20px;
     width: 20px;
     height: 20px;
-    color: white !important;
+    /* color: white !important; */
 }
 .footer_icon .iconify:hover{
     opacity: 0.6;
@@ -384,5 +341,5 @@ body{
     .image {
         display: none;
     }
-
   }
+

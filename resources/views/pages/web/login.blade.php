@@ -65,5 +65,33 @@
             </div>
         </div>
     </div>
+    <script>
+        function addNongSan(idNongSan) {
+            var form = new FormData();
+            form.append('_token', '{{ csrf_token() }}');
+            form.append('idNongSan', idNongSan);
+            form.append('soLuong', 1);
+            $.ajax({
+                method: 'post',
+                url: "http://localhost/FreshFoodLaravel/public/user/cart",
+                context: document.body,
+                data: form,
+                contentType: false,
+                processData: false
 
+                // {
+                //     _token: "{{ csrf_token() }}",
+                //     images: imagefile
+                // }
+            }).done(function(result) {
+                console.log(result);
+                var res = JSON.parse(result);
+                thongBao("alert-success", "Đã thêm " + res.soLuongThayDoi + " nông sản này vào giỏ hàng");
+
+
+            }).fail(function(result) {
+                console.log(result);
+            })
+        }
+    </script>
 @endsection

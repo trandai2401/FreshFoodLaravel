@@ -17,6 +17,10 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next)
     {
+        if (Auth::user() == null) {
+            return redirect('login');
+        }
+
         if (Auth::check())
             return $next($request);
         else return redirect('login');

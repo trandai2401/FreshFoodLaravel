@@ -16,4 +16,11 @@ class danhmuc extends Model
     {
         return $this->hasMany(nongsan::class, 'id_danhmuc', 'id');
     }
+
+
+    public function getNongSanLimit($id_danhmuc)
+    {
+
+        return nongsan::select("*")->where('id_danhmuc', $id_danhmuc)->limit(4)->get();
+    }
 }

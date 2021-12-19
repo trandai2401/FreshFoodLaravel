@@ -4,12 +4,19 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\danhmuc;
+use App\Models\nongsan as ModelsNongsan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class nongsan extends Controller
 {
     //
+
+    public function getView()
+    {
+        $nongSans = ModelsNongsan::select()->get();
+        return view('pages.admin.nongsan.nongsan', ['nongSans' => $nongSans]);
+    }
 
     function get()
     {

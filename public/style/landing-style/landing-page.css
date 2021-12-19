@@ -207,7 +207,7 @@ body{
     bottom: 10px;
     display: flex;
     justify-content: center;
-    color: #c52641;
+    color: #216e38;
     font-size: 15px;
 }
 
@@ -224,10 +224,10 @@ body{
 .card_khuyenmai .middle.d-flex input:not(:checked) ~ label:hover,
 .card_khuyenmai .middle.d-flex input:not(:checked) ~ label:hover ~ label
   {
-      color: rgb(197, 0, 43);
+      color: #216e38;
   }
 .card_khuyenmai .middle.d-flex input:checked ~ label{
-      color: rgb(197, 0, 43);
+      color: #216e38;
   }
 
 
@@ -259,11 +259,20 @@ body{
     border-radius: 5%;
   
 }
+
+/*  */
+.container.title-sanphamDM{
+    position: relative;
+    top: 300px;
+}
+
+
 /* Part 5: trái cây */
 
 .container-fluid.danhmuc_traicay{
     position: relative;
     top: 290px;
+    margin: 80px auto;
    
 }
 .danhmuc_traicay .img_danhmuc_traicay_content {
@@ -401,558 +410,14 @@ body{
     color: #216e38;
 }
 
-/* Part 6: rau củ*/
 
-.container-fluid.danhmuc_raucu{
-    position: relative;
-    top: 350px;
-    
-   
-}
-.danhmuc_raucu .img_danhmuc_raucu_content {
-    width: 25%;
-    height: 300px;
-    /* background-color: #216e38; */
-} 
-
-.danhmuc_raucu .img_danhmuc_raucu_content img{
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 5%;
-    opacity: 0.8;
-}
-
-.danhmuc_raucu .text_on_img{
-    position: absolute;
-    top: 18px;
-}
-
-
- .text_on_img li{
-    list-style: none;
-}
-
-.text_on_img li::before{
-    content: "\2022";
-  color: #216e38;
-  font-size: large;
-  font-weight: bold;
-  display: inline-block; 
-  width: 2em;
-  margin-left: 1em;
-}
-
-.danhmuc_raucu .text_on_img a{
-    text-decoration: none;
-    color: #216e38;
-}
-
-.btn_danhmuc_raucu p{
-    display: inline;
-    font-size: 13px;
-    color: #ffffff;
-    padding: 10px 10px;
-    background-color: rgb(228, 224, 23);
-    border-radius: 5px 5px 5px 5px;
-    margin-left: 15%;
-    position: relative;
-    top: 15px;
-  }
-
-
-  /* Card sanr pham trai cay */
-
-.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu{
-    height: 300px;
-    width: 210px;
-    
-    padding: 0 5px;
-}
-
-.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .card{
-    width: 100%;
-    height: 100%;
-    padding: 0 0;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-}
-
-.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .card img{
-    width: 95%;
-    height: 190px;
-    object-fit:contain;
-    display: block;
-    transition: .5s ease;
-  backface-visibility: hidden;
-}
-
-.middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.middle  .middle_cart {
-    background-color: transparent;
-    border: none;
-   
-    padding: 0px 0px;
-    border-radius: 5%;
-  }
-
-.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .card:hover img {
-    opacity: 0.5;
-}
-.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .card:hover .middle {
-    opacity: 1;
-}
-
-/* style for input heart */
-.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .middle.d-flex input{
-    display: none;
-}
-
-.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .middle.d-flex label{
-    transition: all 0.2s ease;
-    color: #b6b398;
-    }
-
-.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .middle.d-flex input:not(:checked) ~ label:hover,
-.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .middle.d-flex input:not(:checked) ~ label:hover ~ label
-  {
-      color: rgb(197, 0, 43);
-  }
-.danhmuc_raucu .sanpham_raucu .card_sanpham_raucu .middle.d-flex input:checked ~ label{
-      color: rgb(197, 0, 43);
-  }
-
-/* css cho text */
-
-.card-body .name_product a{ 
-    text-decoration: none;
-    font-weight: bold;
-    color: #216e38;
-}
-
-/* Part 7: thực phẩm khô*/
-
-.container-fluid.danhmuc_thucphamkho{
-    position: relative;
-    top: 410px; 
-}
-.danhmuc_thucphamkho .img_danhmuc_thucphamkho_content {
-    width: 25%;
-    height: 300px;
-    /* background-color: #216e38; */
-} 
-
-.danhmuc_thucphamkho .img_danhmuc_thucphamkho_content img{
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 5%;
-    opacity: 0.8;
-}
-
-.danhmuc_thucphamkho .text_on_img{
-    position: absolute;
-    top: 18px;
-}
-
-
- .text_on_img li{
-    list-style: none;
-}
-
-.danhmuc_thucphamkho li::before{
-    content: "\2022";
-  color: #216e38;
-  font-size: large;
-  font-weight: bold;
-  display: inline-block; 
-  width: 2em;
-  margin-left: 1em;
-}
-
-.danhmuc_thucphamkho .text_on_img a{
-    text-decoration: none;
-    color: #216e38;
-}
-
-.btn_danhmuc_thucphamkho p{
-    display: inline;
-    font-size: 13px;
-    color: #ffffff;
-    padding: 10px 10px;
-    background-color: rgb(228, 224, 23);
-    border-radius: 5px 5px 5px 5px;
-    margin-left: 15%;
-    position: relative;
-    top: 15px;
-  }
-
-
-  /* Card sanr pham thuc pham kho */
-
-.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho{
-    height: 300px;
-    width: 210px;   
-    padding: 0 5px;
-}
-
-.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .card{
-    width: 100%;
-    height: 100%;
-    padding: 0 0;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-}
-
-.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .card img{
-    width: 95%;
-    height: 190px;
-    object-fit:contain;
-    display: block;
-    transition: .5s ease;
-  backface-visibility: hidden;
-}
-
-.middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.middle  .middle_cart {
-    background-color: transparent;
-    border: none;
-   
-    padding: 0px 0px;
-    border-radius: 5%;
-  }
-
-
-.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .card:hover img {
-    opacity: 0.5;
-}
-.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .card:hover .middle {
-    opacity: 1;
-}
-
-/* style for input heart */
-.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .middle.d-flex input{
-    display: none;
-}
-
-.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .middle.d-flex label{
-    transition: all 0.2s ease;
-    color: #b6b398;
-    }
-
-.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .middle.d-flex input:not(:checked) ~ label:hover,
-.danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .middle.d-flex input:not(:checked) ~ label:hover ~ label
-  {
-      color: rgb(197, 0, 43);
-  }
-  .danhmuc_thucphamkho .sanpham_thucphamkho .card_sanpham_thucphamkho .middle.d-flex input:checked ~ label{
-      color: rgb(197, 0, 43);
-  }
-
-/* css cho text */
-
-.card-body .name_product a{ 
-    text-decoration: none;
-    font-weight: bold;
-    color: #216e38;
-}
-
-/* Part 8: thực phẩm khô*/
-
-.container-fluid.danhmuc_haisan{
-    position: relative;
-    top: 470px; 
-}
-.danhmuc_haisan .img_danhmuc_haisan_content {
-    width: 25%;
-    height: 300px;
-
-} 
-
-.danhmuc_haisan .img_danhmuc_haisan_content img{
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 5%;
-    opacity: 0.8;
-}
-
-.danhmuc_haisan .text_on_img{
-    position: absolute;
-    top: 18px;
-}
-
-
- .text_on_img li{
-    list-style: none;
-}
-
-.danhmuc_haisan li::before{
-    content: "\2022";
-  color: #216e38;
-  font-size: large;
-  font-weight: bold;
-  display: inline-block; 
-  width: 2em;
-  margin-left: 1em;
-}
-
-.danhmuc_haisan .text_on_img a{
-    text-decoration: none;
-    color: #216e38;
-}
-
-.btn_danhmuc_haisan p{
-    display: inline;
-    font-size: 13px;
-    color: #ffffff;
-    padding: 10px 10px;
-    background-color: rgb(228, 224, 23);
-    border-radius: 5px 5px 5px 5px;
-    margin-left: 15%;
-    position: relative;
-    top: 15px;
-  }
-
-
-  /* Card sanr pham thuc pham kho */
-
-.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan{
-    height: 300px;
-    width: 210px;   
-    padding: 0 5px;
-}
-
-.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .card{
-    width: 100%;
-    height: 100%;
-    padding: 0 0;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-}
-
-.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .card img{
-    width: 95%;
-    height: 190px;
-    object-fit:contain;
-    display: block;
-    transition: .5s ease;
-  backface-visibility: hidden;
-}
-
-.middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.middle  .middle_cart {
-    background-color: transparent;
-    border: none;
-   
-    padding: 0px 0px;
-    border-radius: 5%;
-  }
-
-
-.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .card:hover img {
-    opacity: 0.5;
-}
-.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .card:hover .middle {
-    opacity: 1;
-}
-
-/* style for input heart */
-.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .middle.d-flex input{
-    display: none;
-}
-
-.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .middle.d-flex label{
-    transition: all 0.2s ease;
-    color: #b6b398;
-    }
-
-.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .middle.d-flex input:not(:checked) ~ label:hover,
-.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .middle.d-flex input:not(:checked) ~ label:hover ~ label
-  {
-      color: rgb(197, 0, 43);
-  }
-.danhmuc_haisan .sanpham_haisan .card_sanpham_haisan .middle.d-flex input:checked ~ label{
-      color: rgb(197, 0, 43);
-  }
-
-
-/* css cho text */
-
-.card-body .name_product a{ 
-    text-decoration: none;
-    font-weight: bold;
-    color: #216e38;
-}
-/* Part 9: Thịt tươi */
-
-.container-fluid.danhmuc_thittuoi{
-    position: relative;
-    top: 530px; 
-}
-.danhmuc_thittuoi .img_danhmuc_thittuoi_content {
-    width: 25%;
-    height: 300px;
-    /* background-color: #216e38; */
-} 
-
-.danhmuc_thittuoi .img_danhmuc_thittuoi_content img{
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    border-radius: 5%;
-    opacity: 0.8;
-}
-
-.danhmuc_thittuoi .text_on_img{
-    position: absolute;
-    top: 18px;
-}
-
-
- .text_on_img li{
-    list-style: none;
-}
-
-.danhmuc_thittuoi li::before{
-    content: "\2022";
-  color: #216e38;
-  font-size: large;
-  font-weight: bold;
-  display: inline-block; 
-  width: 2em;
-  margin-left: 1em;
-}
-
-.danhmuc_thittuoi .text_on_img a{
-    text-decoration: none;
-    color: #216e38;
-}
-
-.btn_danhmuc_thittuoi p{
-    display: inline;
-    font-size: 13px;
-    color: #ffffff;
-    padding: 10px 10px;
-    background-color: rgb(228, 224, 23);
-    border-radius: 5px 5px 5px 5px;
-    margin-left: 15%;
-    position: relative;
-    top: 15px;
-  }
-
-
-  /* Card sanr pham thịt tươi */
-
-.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi{
-    height: 300px;
-    width: 210px;   
-    padding: 0 5px;
-}
-
-.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .card{
-    width: 100%;
-    height: 100%;
-    padding: 0 0;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-}
-
-.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .card img{
-    width: 95%;
-    height: 190px;
-    object-fit:contain;
-    display: block;
-    transition: .5s ease;
-  backface-visibility: hidden;
-}
-
-.middle {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.middle  .middle_cart {
-    background-color: transparent;
-    border: none;
-   
-    padding: 0px 0px;
-    border-radius: 5%;
-  }
-
-
-.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .card:hover img {
-    opacity: 0.5;
-}
-.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .card:hover .middle {
-    opacity: 1;
-}
-
-/* style for input heart */
-.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .middle.d-flex input{
-    display: none;
-}
-
-.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .middle.d-flex label{
-    transition: all 0.2s ease;
-    color: #b6b398;
-    }
-
-.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .middle.d-flex input:not(:checked) ~ label:hover,
-.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .middle.d-flex input:not(:checked) ~ label:hover ~ label
-  {
-      color: rgb(197, 0, 43);
-  }
-.danhmuc_thittuoi .sanpham_thittuoi .card_sanpham_thittuoi .middle.d-flex input:checked ~ label{
-      color: rgb(197, 0, 43);
-  }
-
-/* css cho text */
-
-.card-body .name_product a{ 
-    text-decoration: none;
-    font-weight: bold;
-    color: #216e38;
-}
 
 /* Part 10: */
 .container-fluid.img_banner_beforeFooter {
     position: relative;
-    top: 570px;
+    top:  300px;
     width: 100%;
-    height: 300px;
+    /* height: 300px; */
 }
 
 .container-fluid.img_banner_beforeFooter img{
@@ -966,7 +431,7 @@ body{
 
 .container-fluid.tintuc{
     position: relative;
-    top: 600px;
+    top: 350px;
 }
 
 /* card tin tuwcs */
@@ -1027,7 +492,7 @@ body{
 /* Footer */
 .container-fluid.footer{
     position: relative;
-    top: 600px;
+    top: 400px;
     margin: auto;
     background-color: hsl(50,99%,53%);
     color: #216e38;
@@ -1056,7 +521,7 @@ body{
 .text-uppercase{
     margin-top: 20px;
     font-family: 'Varela Round', sans-serif;
-    /* color: white; */
+    color: #216e38;
     font-size: 20px;
 }
 .text_reset{
@@ -1074,6 +539,10 @@ body{
   text-decoration: none;
   color: #216e38;
 }
+
+
+
+
 .footer_icon .iconify{
     margin-right: 20px;
     width: 20px;

@@ -23,7 +23,9 @@
     <link rel="stylesheet" href="{{ asset('style/style-header.css') }}">
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title>Login</title>
+    <title>Fresh Food</title>
+
+    <link rel='shortcut icon' href='{{ asset('image/herbs.png') }}' />
 </head>
 
 <body>
@@ -120,14 +122,15 @@
         <!-- button cart -->
         <div class="cart ml-2 mr-1 pt-2">
             <button class="bg-transparent border-0">
-                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M5.30266 13.12C5.3563 12.4517 5.65967 11.8282 6.15236 11.3735C6.64506 10.9189 7.29092 10.6665 7.96133 10.6667H24.0387C24.7091 10.6665 25.3549 10.9189 25.8476 11.3735C26.3403 11.8282 26.6437 12.4517 26.6973 13.12L27.768 26.4533C27.7974 26.8202 27.7506 27.1893 27.6304 27.5372C27.5103 27.8852 27.3194 28.2044 27.0697 28.475C26.8201 28.7455 26.5172 28.9614 26.18 29.1092C25.8429 29.2569 25.4788 29.3332 25.1107 29.3333H6.88933C6.52123 29.3332 6.15713 29.2569 5.81997 29.1092C5.48281 28.9614 5.17988 28.7455 4.93026 28.475C4.68064 28.2044 4.48973 27.8852 4.36956 27.5372C4.24939 27.1893 4.20255 26.8202 4.232 26.4533L5.30266 13.12V13.12Z"
-                        stroke="#487C2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    <path
-                        d="M21.3333 14.6667V7.99999C21.3333 6.5855 20.7714 5.22895 19.7712 4.22875C18.771 3.22856 17.4145 2.66666 16 2.66666C14.5855 2.66666 13.2289 3.22856 12.2288 4.22875C11.2286 5.22895 10.6667 6.5855 10.6667 7.99999V14.6667"
-                        stroke="#487C2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                <a href="{{ route('cart') }}"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M5.30266 13.12C5.3563 12.4517 5.65967 11.8282 6.15236 11.3735C6.64506 10.9189 7.29092 10.6665 7.96133 10.6667H24.0387C24.7091 10.6665 25.3549 10.9189 25.8476 11.3735C26.3403 11.8282 26.6437 12.4517 26.6973 13.12L27.768 26.4533C27.7974 26.8202 27.7506 27.1893 27.6304 27.5372C27.5103 27.8852 27.3194 28.2044 27.0697 28.475C26.8201 28.7455 26.5172 28.9614 26.18 29.1092C25.8429 29.2569 25.4788 29.3332 25.1107 29.3333H6.88933C6.52123 29.3332 6.15713 29.2569 5.81997 29.1092C5.48281 28.9614 5.17988 28.7455 4.93026 28.475C4.68064 28.2044 4.48973 27.8852 4.36956 27.5372C4.24939 27.1893 4.20255 26.8202 4.232 26.4533L5.30266 13.12V13.12Z"
+                            stroke="#487C2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path
+                            d="M21.3333 14.6667V7.99999C21.3333 6.5855 20.7714 5.22895 19.7712 4.22875C18.771 3.22856 17.4145 2.66666 16 2.66666C14.5855 2.66666 13.2289 3.22856 12.2288 4.22875C11.2286 5.22895 10.6667 6.5855 10.6667 7.99999V14.6667"
+                            stroke="#487C2A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg></a>
 
             </button>
         </div>
@@ -151,6 +154,11 @@
                     <a class="dropdown-item" href="{{ route('login') }}">Login</a>
                     <a class="dropdown-item" href="{{ route('signup') }}">Sign up</a>
                 @else
+                    <a class="dropdown-item" href="{{ route('userProfile') }}">{{ $user->name }}</a>
+                    @if ($user->role->code == 'ADMIN')
+                        <a class="dropdown-item" href="{{ route('AdminKhachHang') }}">Quản lý</a>
+                    @endif
+
                     <a class="dropdown-item" href="{{ route('logout') }}">Đăng Xuất</a>
                 @endif
 
@@ -190,6 +198,7 @@
     @yield('sanpham-danhmuc')
     @yield('sanpham')
     @yield('giohang')
+    @yield('user-profile')
     <!-- Part 3: Footer -->
 
 

@@ -13,10 +13,9 @@
     <!-- CKEditor -->
     {{-- <script src="//cdn.ckeditor.com/4.17.1/basic/ckeditor.js" charset="utf-8"></script> --}}
     {{-- <script src="{{ asset('ckeditor/src/ckeditor.js') }}" charset="utf-8"></script> --}}
-    <script src="{{ asset('ckeditor/lang/vi.js') }}" charset="utf-8"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/translations/vi.js"></script>
-    <script src="../build/ckeditor.js"></script>
+
     <!-- link css bootstrap -->
     <link rel="stylesheet" href="../bootstrap/bootstrap-4.6.0-dist/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="../bootstrap/bootstrap-4.6.0-dist/css/bootstrap.css">
@@ -44,7 +43,7 @@
     <nav id="header-top" class="sb-topnav navbar navbar-expand navbar-dark py-4">
         <!-- Part 1.1: Navbar Brand-->
         <!-- Part 1.1.1: Logo - image -->
-        <a class="navbar-brand ps-3" href="index.html">
+        <a class="navbar-brand ps-3" href="{{ asset('home') }}">
             <svg width="125" height="43" viewBox="0 0 125 43" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g filter="url(#filter0_d_39_477)">
                     <path
@@ -74,6 +73,8 @@
                 </defs>
             </svg>
         </a>
+
+
         <!-- Part 1.1.2: Button toggle-->
         <button class="btn btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
             <svg width="24" height="28" viewBox="0 0 24 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -84,6 +85,17 @@
 
 
         </button>
+        <div id="thong-bao" style="position: absolute;top: 60px;display: inline;width: 600px;left: 400px;"
+            class="container mt-4">
+            <div class="alert alert-success alert-dismissible" style="display: none;">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Success!</strong> Các bạn hãy nhận nút "x" bên phải để tắt thông báo.
+            </div>
+            <div class="alert alert-danger alert-dismissible" style="display: none;">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Danger!</strong> Các bạn hãy nhận nút "x" bên phải để tắt thông báo.
+            </div>
+        </div>
         <!-- Part 1.1.3: Form for search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0  mx-3">
             <div class="input-group"
@@ -140,6 +152,7 @@
         </div>
 
     </nav>
+
     <div id="layoutSidenav" class="main-content">
         <!-- Part 2.1: main - body - left fixel -->
         <div id="layoutSidenav_nav">
@@ -165,8 +178,8 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link ml-4" onclick="openStaticNavigation();">Tất cả sản phâm</a>
-                                <a class="nav-link ml-4" href="layout-sidenav-light.html">Thêm sản phẩm</a>
+                                <a class="nav-link ml-4" href="{{ route('AdminNongSan') }}">Tất cả sản phâm</a>
+                                <a class="nav-link ml-4" href="{{ route('AdminAddNongSan') }}">Thêm sản phẩm</a>
                                 <a class="nav-link ml-4" href="layout-sidenav-light.html">Sửa sản phẩm</a>
                             </nav>
                         </div>
@@ -204,13 +217,13 @@
                             </nav>
                         </div>
                         <!-- Part 2.1.5: Employee menu-->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href={{ route('AdminKhachHang') }}>
                             <div class="sb-nav-link-icon"><span class="iconify mr-3"
                                     data-icon="clarity:employee-group-solid" style="font-size: 20px;"></span></div>
                             Khách hàng
                         </a>
                         <!-- Part 2.1.6: Customer menu -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="{{ route('AdminNhanVien') }}">
                             <div class="sb-nav-link-icon"><span class="iconify mr-3"
                                     data-icon="si-glyph:customer-support" style="font-size: 20px;"></span></div>
                             Nhân viên
@@ -237,6 +250,7 @@
                 </div>
 
             </nav>
+
         </div>
 
         <!-- Part 2.2: Phần nội dung chính - được thay đổi  -->
@@ -244,7 +258,22 @@
         @yield('add-nongsan')
     </div>
     <!-- Part 2: Main - body -->
+    <script>
+        var boxThongBao = document.getElementById('thong-bao');
 
+        function thongBao(tyle, noidung) {
+
+            var div = document.createElement('div');
+
+            div.className = 'alert ' + tyle + '  alert-dismissible';
+            div.innerHTML =
+                '<button type="button" class="close" data-dismiss="alert">&times;</button> <strong>Thông báo!</strong> ' +
+                noidung + '';
+
+
+            boxThongBao.append(div);
+        }
+    </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">

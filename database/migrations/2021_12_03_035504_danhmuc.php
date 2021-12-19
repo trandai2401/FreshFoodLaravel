@@ -17,6 +17,8 @@ class Danhmuc extends Migration
         Schema::create('danhmuc', function (Blueprint $table) {
             $table->id();
             $table->string('tenDanhMuc');
+            $table->string("src");
+            $table->string("src_icon");
             $table->timestamps();
         });
     }

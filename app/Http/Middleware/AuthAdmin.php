@@ -18,7 +18,7 @@ class AuthAdmin
     public function handle(Request $request, Closure $next)
     {
 
-        if (strcmp(Auth::user()->role->code, 'ADMIN') == 0)
+        if (strcmp(Auth::user()->role->code, 'USER') != 0)
             return $next($request);
         else
             return redirect('login');
