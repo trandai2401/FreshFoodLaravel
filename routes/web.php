@@ -16,7 +16,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use PhpParser\Node\Expr\Throw_;
+use PhpParser\Node\Expr\Throw_; 
 
 /*
 |--------------------------------------------------------------------------
@@ -115,4 +115,8 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
     Route::get('cart', [GioHang::class, 'getGioHang'])->name('cart');
     Route::delete('cart1', [GioHang::class, 'deleteGioHang'])->name('cart1');
     Route::post('cart', [GioHang::class, 'update']);
+
+    Route::get('editProfile', function(){
+        return view("pages.web.user.edit-profile");
+    } );
 });
