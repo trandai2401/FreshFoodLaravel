@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\giohang;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\Throw_;
@@ -37,6 +38,7 @@ class login extends Controller
     public function getLogout()
     {
         Auth::logout();
+        Artisan::call('cache:clear');
         return redirect('login');
     }
 

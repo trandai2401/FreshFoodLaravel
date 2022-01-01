@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\KhachHangController;
 use App\Http\Controllers\admin\NhanVienController;
 use App\Http\Controllers\admin\nongsan as AdminNongsan;
 use App\Http\Controllers\login;
+use App\Http\Controllers\SocialController;
 use App\Http\Controllers\web\GioHang;
 use App\Http\Controllers\web\home;
 use App\Http\Controllers\web\UserController;
@@ -39,6 +40,10 @@ Route::get('/', function () {
 //LOGIN SIGNUP LOGOUT
 Route::get('/login', [login::class, 'getLogin'])->name("login");
 Route::post('/login', [login::class, 'login']);
+Route::get('redirect', [SocialController::class, 'redirect'])->name('loginRedirect');
+Route::get('callback', [SocialController::class,'callback']);
+
+
 
 Route::get('/signup', [login::class, 'getSignup'])->name("signup");
 Route::post('/signup', [login::class, 'postSignup']);
