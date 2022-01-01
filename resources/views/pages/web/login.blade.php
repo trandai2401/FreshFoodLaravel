@@ -20,13 +20,14 @@
                 <h3 class="content-heading-login">Đăng nhập</h3>
                 <form action="" method="post">
                     @csrf
+                    <p style="color:#BE0908" id="erorrs"></p>
                     <div class="form-user">
-                        <input type="text" placeholder="Tên đăng nhập" name="username" required id=""
+                        <input type="text" placeholder="Tên đăng nhập" name="username" required id="input_username"
                             class="form-control w-100">
                         <i class="fas fa-user"></i>
                     </div>
                     <div class="form-pass">
-                        <input type="password" placeholder="Mật khẩu" name="password" required id=""
+                        <input type="password" placeholder="Mật khẩu" name="password" required id="input_password"
                             class="form-control w-100">
                         <i class="fas fa-lock"></i>
                     </div>
@@ -39,7 +40,7 @@
                     </div>
 
                     <div class="btn-login d-flex justify-content-center mr-0">
-                        <input type="submit" class="btn btn-login-item text-white mr-0" value="Đăng Nhập"></input>
+                        <input onclick="callApiDangNhap()"  type="button" class="btn btn-login-item text-white mr-0" value="Đăng Nhập"></input>
                     </div>
 
                 </form>
@@ -66,27 +67,31 @@
         </div>
     </div>
     <script>
-        function addNongSan(idNongSan) {
+        function callApiDangNhap(idNongSan) {
+            var input_username = document.getElementById('input_username');
+            var input_password = document.getElementById('input_password');
+
             var form = new FormData();
             form.append('_token', '{{ csrf_token() }}');
-            form.append('idNongSan', idNongSan);
-            form.append('soLuong', 1);
+            form.append('username', input_username.value);
+            form.append('password', input_password.value);
             $.ajax({
                 method: 'post',
-                url: "http://localhost/FreshFoodLaravel/public/user/cart",
+                url: "{{route('login')}}",
                 context: document.body,
                 data: form,
                 contentType: false,
                 processData: false
 
-                // {
-                //     _token: "{{ csrf_token() }}",
-                //     images: imagefile
-                // }
             }).done(function(result) {
+          
+                if(result ==1){
+                    window.location.href = "{{route('home')}}";
+                }else{
+                    let  erorrs = document.getElementById("erorrs");
+                    erorrs.innerHTML = result;
+                }
                 console.log(result);
-                var res = JSON.parse(result);
-                thongBao("alert-success", "Đã thêm " + res.soLuongThayDoi + " nông sản này vào giỏ hàng");
 
 
             }).fail(function(result) {

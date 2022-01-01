@@ -26,10 +26,10 @@ class login extends Controller
 
         $user = Auth::attempt(['tendangnhap' => $username, 'password' => $password]);
         if ($user) {
-            return redirect()->route('home');
+            return 1;
             // return redirect('home');
         } else {
-            echo "Đăng nhập thất bại";
+            return "Đăng nhập thất bại ! Sai username hoặc password";
         }
     }
 
@@ -64,9 +64,10 @@ class login extends Controller
                 'name' => $name,  'tendangnhap' => $username, 'email' => $email, 'password' => bcrypt($password), 'diachi' => $address, 'sodienthoai' => $phone, 'id_role' => 2, 'ngaysinh' => $DOB
             ]);
             DB::table('giohang')->insert(['id_user' => $res]);
+            return redirect("/login");
         } catch (Throw_ $e) {
             echo "Lỗi rồi đó thấy chưa";
         }
-        echo $name;
+        
     }
 }

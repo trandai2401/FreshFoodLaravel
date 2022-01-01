@@ -1,8 +1,7 @@
-<div class="row product">
 @foreach ($nongsans as $nongsan)
     <div class="col-4 card_product">
         <div class="card">
-            <img class="card-img-top" src="{{ asset($nongsan->sr) }}" alt="Card image cap">
+            <img class="card-img-top" src="{{ asset($nongsan->hinhanh[0]->src) }}" alt="Card image cap">
             <div class="middle d-flex">
                 <button onclick="addNongSan({{ $nongsan->id }})" class="middle_cart mx-3"><span class="iconify"
                         data-icon="fa-solid:cart-plus" style="color: #216e38;  font-size: 35px"></span></button>
@@ -22,16 +21,3 @@
     </div>
     
 @endforeach
-</div>
-<div class="container pagination  d-flex">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <?php $soLuongTrang= ceil(count($nongsans)/6); ?>
-            @for($i=1;$i<=$soLuongTrang;$i++)
-            <li class="page-item phantrang_nongsan"><a class="page-link" href="#">{{$i}}</a></li>
-            @endfor
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-    </nav>
-</div>

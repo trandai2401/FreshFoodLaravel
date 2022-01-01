@@ -61,8 +61,11 @@ Route::middleware('AuthAdmin', 'CheckLogin')->prefix('/admin')->group(function (
 // HOME
 Route::prefix('/')->group(function () {
     Route::get('home', [home::class, 'getHome'])->name('home');
+    Route::get('danhmuc/{idNongSan}/{index}', [home::class, 'getPagebyIndex']);
     Route::get('danhmuc/{idDanhMuc}', [home::class, 'getSanPhamByDanhMuc'])->name('danhmuc');
+
     Route::get('nongsan/{idNongSan}', [home::class, 'getNongSanByID'])->name('nongsan');
+
 });
 Route::post('/1234', function (Request $request) {
 
@@ -76,12 +79,6 @@ Route::post('/1234', function (Request $request) {
 
 Route::post('/123', function (Request $request) {
 
-    // echo $request->giaTribatDau;
-    // if ($request->giaTriKetThuc == '') {
-    //     echo "thèn cuối rỗng ruột";
-    // } else {
-    //     echo $request->giaTriKetThuc;
-    // }
     $sortBy = $request->sortBy;
     $temp  = "";
     if ($request->giaTriKetThuc != '') {
