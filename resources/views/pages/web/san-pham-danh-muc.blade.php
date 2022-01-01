@@ -159,11 +159,11 @@
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#">5</a></li>
+                            <?php $soLuongTrang = ceil(count(App\Models\nongsan::select("*")->where("id_danhmuc",$tenDanhMuc[0]->id)->get()) / 6); ?>
+                            @for ($i = 1; $i <= $soLuongTrang; $i++)
+                                <li onclick="callApiPhanTrangByIndex('{{$i}}')" class="page-item @if ($trangDuocChon == $i)phantrang_nongsan @endif"><a class="page-link"
+                                        >{{ $i }}</a></li>
+                            @endfor
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
                         </ul>
                     </nav>
@@ -207,7 +207,7 @@
                         About us
                     </h6>
                     <p>
-                        <a href="#!" class="text_reset">Our store</a>
+                        <a href="#!" class="text_reset" >Our store</a>
                     </p>
                     <p>
                         <a href="#!" class="text_reset">Your voucher</a>
@@ -283,12 +283,8 @@
                 contentType: false,
                 processData: false
 
-                // {
-                //     _token: "{{ csrf_token() }}",
-                //     images: imagefile
-                // }
             }).done(function(result) {
-                var temp = document.getElementsByClassName('row product')[0];
+                var temp = document.getElementsByClassName('card_product_right')[0];
                 temp.innerHTML = result;
 
 
@@ -312,13 +308,6 @@
                 }
 
             }
-
-
-
-
-
-
-
             form.append('_token', '{{ csrf_token() }}');
             form.append('sortBy', exampleFormControlSelect1.value);
             var giaBatDau = document.getElementById('giaBatDau');
@@ -343,10 +332,30 @@
                 contentType: false,
                 processData: false
 
-                // {
-                //     _token: "{{ csrf_token() }}",
-                //     images: imagefile
-                // }
+            }).done(function(result) {
+                var temp = document.getElementsByClassName('card_product_right')[0];
+                temp.innerHTML = result;
+                console.log(result);
+
+            }).fail(function(result) {
+                console.log("ThatBai");
+                console.log(result);
+            })
+
+
+        }
+
+        function callApiPhanTrangByIndex(index) {
+            var form = new FormData();
+      
+            $.ajax({
+                method: 'get',
+                url: "{{ route('danhmuc', ['idDanhMuc'=>$tenDanhMuc[0]->id]) }}/"+index,
+                context: document.body,
+                data: form,
+                contentType: false,
+                processData: false
+
             }).done(function(result) {
                 var temp = document.getElementsByClassName('row product')[0];
                 temp.innerHTML = result;
