@@ -69,9 +69,10 @@ Route::prefix('/')->group(function () {
 Route::post('/1234', function (Request $request) {
 
     $res = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh  where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM  nongsan  where freshfood.bodau(tenNongSan) like freshfood.bodau('%" . $request->keyword . "%') or freshfood.bodau(noidung) like freshfood.bodau('%" . $request->keyword .  "%') and id_danhmuc = " . $request->idDanhMuc);
+    $res2 = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh  where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM  nongsan  where freshfood.bodau(tenNongSan) like freshfood.bodau('%" . $request->keyword . "%') or freshfood.bodau(noidung) like freshfood.bodau('%" . $request->keyword .  "%') and id_danhmuc = " . $request->idDanhMuc);
 
 
-    return view('pages.web.ketquatimkiem.ketquatimkiem', ['nongsans' => $res]);
+    return view('pages.web.ketquatimkiem.ketquatimkiem', ['nongsans' => $res,'solUongNongSanLocDuoc'=> count($res2),'idDanhMuc' => $request->idDanhMuc, 'trangDuocChon' => 1] );
 });
 
 Route::post('/123', function (Request $request) {
@@ -86,7 +87,7 @@ Route::post('/123', function (Request $request) {
 
         $queryByAddress = " and (";
         foreach ($request->arrDiaDiem as $diaDiem) {
-            $queryByAddress .= " freshfood.bodau(noisanxuat) like '%" . $diaDiem .  "%'  or";
+            $queryByAddress .= " freshfood.bodau(noisanxuat) like  freshfood.bodau('%" . $diaDiem .  "%')   or";
         }
         $queryByAddress .= " false )";
     }
@@ -117,5 +118,5 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
 
     Route::get('editProfile', function(){
         return view("pages.web.user.edit-profile");
-    } );
+    } )->name('editProfile');
 });

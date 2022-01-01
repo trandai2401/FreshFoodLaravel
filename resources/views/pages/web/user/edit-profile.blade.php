@@ -1,5 +1,6 @@
 @extends('masterlayout.web.header')
 @section('user-profile')
+<base href="{{asset('')}}">
 <link rel="stylesheet" href="{{ asset('style/Editprofile-style/Editprofile-resp.css') }}">
 
 <!-- part 2: Content -->
