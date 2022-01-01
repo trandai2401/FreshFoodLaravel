@@ -27,9 +27,10 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <?php $soLuongTrang= ceil(count($nongsans)/6); ?>
-            @for($i=1;$i<=$soLuongTrang;$i++)
-            <li class="page-item phantrang_nongsan"><a class="page-link" href="#">{{$i}}</a></li>
+            <?php $soLuongTrang = ceil($solUongNongSanLocDuoc / 6); ?>
+            @for ($i = 1; $i <= $soLuongTrang; $i++)
+                <li onclick="loc('{{$idDanhMuc}}',{{$i}})"  class="page-item @if ($trangDuocChon == $i)phantrang_nongsan @endif"><a id="page-item-{{$i}}" class="page-link"
+                        >{{ $i }}</a></li>
             @endfor
             <li class="page-item"><a class="page-link" href="#">Next</a></li>
         </ul>
