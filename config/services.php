@@ -13,7 +13,11 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
-
+    'google' => [
+        'client_id'     => '409778289628-go3ei6svh51h4kck6l0uv7fld3d0oo73.apps.googleusercontent.com',
+        'client_secret' => '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',
+        'redirect'      => 'http://localhost/FreshFoodLaravel/public/callback'
+    ],
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),

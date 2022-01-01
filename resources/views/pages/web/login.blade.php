@@ -40,7 +40,8 @@
                     </div>
 
                     <div class="btn-login d-flex justify-content-center mr-0">
-                        <input onclick="callApiDangNhap()"  type="button" class="btn btn-login-item text-white mr-0" value="Đăng Nhập"></input>
+                        <input onclick="callApiDangNhap()" type="button" class="btn btn-login-item text-white mr-0"
+                            value="Đăng Nhập"></input>
                     </div>
 
                 </form>
@@ -49,6 +50,13 @@
                 <div class="d-flex justify-content-between">
                     <p>Bạn chưa có tài khoản?</p>
                     <a href="{{ route('signup', ['id' => 1]) }}" class="sign-in mx-1">Đăng kí ngay</a>
+                </div>
+                <div class="btn-login d-flex justify-content-center mr-0">
+                    <a href="{{ route('loginRedirect') }}">
+                        <div
+                            style="background-color: #E34133;color: #ffffff;padding: 7px;padding-left: 25px;padding-right: 25px;border-radius: 50px">
+                            Đăng nhập với tài khoản Google</div>
+                    </a>
                 </div>
                 <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
                     <div class="toast-header">
@@ -77,18 +85,18 @@
             form.append('password', input_password.value);
             $.ajax({
                 method: 'post',
-                url: "{{route('login')}}",
+                url: "{{ route('login') }}",
                 context: document.body,
                 data: form,
                 contentType: false,
                 processData: false
 
             }).done(function(result) {
-          
-                if(result ==1){
-                    window.location.href = "{{route('home')}}";
-                }else{
-                    let  erorrs = document.getElementById("erorrs");
+
+                if (result == 1) {
+                    window.location.href = "{{ route('home') }}";
+                } else {
+                    let erorrs = document.getElementById("erorrs");
                     erorrs.innerHTML = result;
                 }
                 console.log(result);
