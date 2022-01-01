@@ -28,7 +28,7 @@
             <div class="combobox_filter d-flex">
                 <span class="mr-3">Sắp xếp:</span>
                 <div class="form-group">
-                    <select onchange="loc({{ $tenDanhMuc[0]->id }})" class="form-control" id="exampleFormControlSelect1"
+                    <select onchange="loc({{ $tenDanhMuc[0]->id }},1)" class="form-control" id="exampleFormControlSelect1"
                         style="width: 200px">
                         <option value="tenNongSan asc">A - Z</option>
                         <option value="tenNongSan desc">Z - A</option>
@@ -118,7 +118,7 @@
 
                 </div>
 
-                <button onclick="loc({{ $tenDanhMuc[0]->id }})" type="button" class="btn btn-outline-success mx-4"
+                <button onclick="loc({{ $tenDanhMuc[0]->id }},1)" type="button" class="btn btn-outline-success mx-4"
                     style="width: 80%; height: 30px; font-size: 10px; position: relative; top: 20px;">Áp dụng</button>
             </div>
 
@@ -161,7 +161,7 @@
                             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                             <?php $soLuongTrang = ceil(count(App\Models\nongsan::select("*")->where("id_danhmuc",$tenDanhMuc[0]->id)->get()) / 6); ?>
                             @for ($i = 1; $i <= $soLuongTrang; $i++)
-                                <li onclick="callApiPhanTrangByIndex('{{$i}}')" class="page-item @if ($trangDuocChon == $i)phantrang_nongsan @endif"><a class="page-link"
+                                <li onclick="callApiPhanTrangByIndex('{{$i}}')"  class="page-item @if ($trangDuocChon == $i)phantrang_nongsan @endif"><a id="page-item-{{$i}}" class="page-link"
                                         >{{ $i }}</a></li>
                             @endfor
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
@@ -294,7 +294,7 @@
         }
 
 
-        function loc(idDanhMuc) {
+        function loc(idDanhMuc,trangDuocChon) {
             var form = new FormData();
             var t = document.getElementsByClassName('checkbox_address_item');
             var exampleFormControlSelect1 = document.getElementById('exampleFormControlSelect1');
@@ -322,7 +322,9 @@
 
             form.append('giaTribatDau', giaTribatDau);
             form.append('giaTriKetThuc', giaTriKetThuc);
-            form.append('idDanhMuc', idDanhMuc);
+            form.append('idDanhMuc', idDanhMuc+'');
+            form.append('trangDuocChon', trangDuocChon);
+            
             // form.append('arrDiaDiem', arrDiaDiem);
             $.ajax({
                 method: 'post',
@@ -359,6 +361,14 @@
             }).done(function(result) {
                 var temp = document.getElementsByClassName('row product')[0];
                 temp.innerHTML = result;
+                let page_item  =document.getElementsByClassName("page-item");
+                for(let item of page_item) {
+                    item.children[0].style.backgroundColor = "#ffffff";
+                    item.children[0].style.color = "#216e38"
+                }
+                let page_item_phantrang = document.getElementById("page-item-"+index);
+                page_item_phantrang.style.backgroundColor = "#216e38";
+                page_item_phantrang.style.color = "#ffffff"
                 console.log(result);
 
             }).fail(function(result) {
