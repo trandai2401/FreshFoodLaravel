@@ -43,7 +43,9 @@
                         <span class="iconify " data-icon="fa-solid:user-alt" data-width="50" data-height="50"></span>
                         <h1>Tài khoản</h1>
                     </div>
-                    <button type="button" class="btn btn-outline-success">Chỉnh sửa</button>
+                    <button  type="button" class="btn btn-outline-success">
+                      <a href="{{route('editProfile')}}"> Chỉnh sửa</a> 
+                    </button>
                 </div>
 
                 <!-- Item 1 -->
