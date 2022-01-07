@@ -276,66 +276,66 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <!-- Part 12: Footer -->
-    <div class="container-fluid footer mt-5">
-        <div class="row row_footer">
-            <div class="col-lg-4 col-md-4 col-sm-12 image">
-                <div class="frame">
-                    <img class="logo_footer pt-4"
-                        src="https://cdni.iconscout.com/illustration/premium/thumb/healthy-food-2358006-1969921.png"
-                        alt="logo-footer">
-                </div>
+<!-- Footer -->
+<!-- Part 12: Footer -->
+<div class="container-fluid footer mt-5">
+    <div class="row row_footer">
+        <div class="col-lg-4 col-md-4 col-sm-12 image">
+            <div class="frame">
+                <img class="logo_footer pt-4"
+                    src="https://cdni.iconscout.com/illustration/premium/thumb/healthy-food-2358006-1969921.png"
+                    alt="logo-footer">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 contract">
-                <div class="frame">
-                    <h6 class="text-uppercase fw-bold">
-                        Contact Us
-                    </h6>
-                    <p>
-                        <a href="#!" class="text_reset">36 Ong Ich Khiem,Da nang, VietNam</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text_reset">Email: yourvoucher.help@gmail.com</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text_reset">Phone: +84 905 589 210 </a>
-                    </p>
-                </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 contract">
+            <div class="frame">
+                <h6 class="text-uppercase fw-bold">
+                    Contact Us
+                </h6>
+                <p>
+                    <a href="#!" class="text_reset">36 Ong Ich Khiem,Da nang, VietNam</a>
+                </p>
+                <p>
+                    <a href="#!" class="text_reset">Email: yourvoucher.help@gmail.com</a>
+                </p>
+                <p>
+                    <a href="#!" class="text_reset">Phone: +84 905 589 210 </a>
+                </p>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 aboutus">
-                <div class="frame">
-                    <h6 class="text-uppercase fw-bold">
-                        About us
-                    </h6>
-                    <p>
-                        <a href="#!" class="text_reset">Our store</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text_reset">Your voucher</a>
-                    </p>
-                    <div class="footer_icon">
-                        <a href="">
-                            <span class="iconify " data-icon="bx:bxl-facebook-circle"></span>
-                        </a>
-                        <a href="">
-                            <span class="iconify" data-icon="ant-design:twitter-circle-filled" data-width="24"
-                                data-height="24"></span>
-                        </a>
-                        <a href="">
-                            <span class="iconify" data-icon="akar-icons:instagram-fill" data-width="24"
-                                data-height="24"></span>
-                        </a>
-                        <a href="">
-                            <span class="iconify" data-icon="akar-icons:google-contained-fill" data-width="24"
-                                data-height="24"></span>
-                            </span>
-                        </a>
-                    </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 aboutus">
+            <div class="frame">
+                <h6 class="text-uppercase fw-bold">
+                    About us
+                </h6>
+                <p>
+                    <a href="#!" class="text_reset">Our store</a>
+                </p>
+                <p>
+                    <a href="#!" class="text_reset">Your voucher</a>
+                </p>
+                <div class="footer_icon">
+                    <a href="">
+                        <span class="iconify " data-icon="bx:bxl-facebook-circle"></span>
+                    </a>
+                    <a href="">
+                        <span class="iconify" data-icon="ant-design:twitter-circle-filled" data-width="24"
+                            data-height="24"></span>
+                    </a>
+                    <a href="">
+                        <span class="iconify" data-icon="akar-icons:instagram-fill" data-width="24"
+                            data-height="24"></span>
+                    </a>
+                    <a href="">
+                        <span class="iconify" data-icon="akar-icons:google-contained-fill" data-width="24"
+                            data-height="24"></span>
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
     <script>
         //   rating star
         var saoRating = document.getElementsByName("rate");

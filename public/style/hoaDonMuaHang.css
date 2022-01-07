@@ -1,0 +1,240 @@
+*{
+    font-family: 'Varela Round', sans-serif;
+    margin: O auto;
+    
+}
+
+body{
+    background: #ffffff;
+}
+
+/* Part 1: Header */
+.header{
+    height: 50px;
+    background: #ffe923;
+    display: flex;
+    justify-content: space-around;
+}
+
+.header .menu-header ul a{
+    text-decoration: none;
+}
+.header .menu-header ul li{
+    background: #ffe923;
+    border: none;
+    font-weight: 100;
+    color: #216e38;
+}
+
+/* menu header */
+.dropdown_menu_sanpham{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown_menu_sanpham_content{
+    display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  padding: 12px 16px;
+  z-index: 99999;
+}
+
+.dropdown_menu_sanpham:hover .dropdown_menu_sanpham_content {
+    display: block;
+}
+
+.dropdown_menu_sanpham:hover .dropdown_menu_sanpham_content .text_content{
+    color: #216e38;
+}
+
+.dropdown_menu_sanpham:hover .dropdown_menu_sanpham_content p:hover .text_content{
+    font-size: 17px;
+    color: #b6b398;
+    font-weight: bolder;
+
+}
+/* input search */
+.header .input-search{
+    position: relative;
+    margin-left: 60px;
+}
+
+.header .input-search .input-group.search{
+    overflow: hidden;
+     border: 1.2px solid #216e38; 
+     background-color: #ffffff; 
+     border-radius: 30px;
+     
+}
+
+.header .input-search .input-group.search .form-control{
+    background: white;
+}
+
+.header .btn_user{
+    position: relative;
+    left: -30px;
+    top: 5px;
+}
+
+
+/* Part 2.2.1: Service-left */
+.left-service{
+    margin-top: 100px;
+    width: 320px;
+    height: auto;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: -1px -1px 2px 1px #ccc;
+
+}.left-service li{
+    color: #464444;
+    background-color: transparent;
+}
+.left-service li .iconify.ml-2.mr-5{
+    color: #464444;
+}
+.left-service li:hover .iconify.ml-2.mr-5{
+    color: #216e38;
+}
+.left-service li:hover   {
+    background-color: rgb(33,110,56, 0.3);
+    color: #216e38;
+    
+}
+
+/* Right */
+/* title and button */
+.right_service{
+    width: 800px;
+    margin-top: 90px;
+    margin-left: 10px;
+    background: #ffffff;
+    border-radius: 5px;
+    font-size: 14px;
+    padding-left: 50px;
+}
+
+.my-profile{
+    margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.danhsach_hoadon{
+    width: 70%;
+}
+
+.danhsach_hoadon .card_hoadon{
+    display: flex;
+    border: 1px solid rgb(136, 134, 134);
+    padding: 20px 0px;
+    align-items: center;
+    margin: 10px 30px;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.danhsach_hoadon .card_hoadon img{
+    height: 60px;
+    width: 60px;
+    margin: 0px 30px;
+}
+
+.card_hoadon_content{
+    height: auto;
+}
+
+.card_hoadon_content a{
+    text-decoration: none;
+    color: black;
+}
+
+
+/* Footer */
+.container-fluid.footer{
+    position: relative;
+    /* top: 600px; */
+    margin: auto;
+    background-color: hsl(50,99%,53%);
+    color: #216e38;
+}
+.row.row_footer{
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.frame{
+    height: 100%;
+    width: 80%;
+}
+.frame a{
+    color: #216e38;
+    text-decoration: none;
+}
+.logo_footer{
+    width: 60%;
+    height: 150px;
+    object-fit: contain;
+}
+.text-uppercase{
+    margin-top: 20px;
+    font-family: 'Varela Round', sans-serif;
+    color: #216e38;
+    font-size: 20px;
+}
+.text_reset{
+    font-family: 'Varela Round', sans-serif;
+    /* color: #AEB4BE !important; */
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+}
+.footer_icon{
+    height: 20px;
+    margin-bottom: 20px;
+}
+.footer_icon a, .footer_icon a:hover  {
+  text-decoration: none;
+  color: #216e38;
+}
+.footer_icon .iconify{
+    margin-right: 20px;
+    width: 20px;
+    height: 20px;
+    /* color: white !important; */
+}
+.footer_icon .iconify:hover{
+    opacity: 0.6;
+}
+
+.contract, .aboutus, .image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (max-width: 991px) {
+    .category-list-col{
+        margin : 7px 0;
+    }
+    .category-list-row{
+        margin-top: 0px;
+    }
+    .contract, .aboutus{
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+    }
+    .image {
+        display: none;
+    }
+  }
+
