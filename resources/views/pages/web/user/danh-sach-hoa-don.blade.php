@@ -47,7 +47,7 @@
                     
                 </div>
                 <div class="danhsach_hoadon row">
-                    <div class="col-12 card_hoadon">
+                    <div class="col-12 card_hoadon" onclick="Redirect('HD001');">
                         <img src="https://cdn-icons-png.flaticon.com/128/859/859322.png" alt="">
                         <div class="card_hoadon_content">
                             <a href="#"> <strong>Hóa đơn số</strong> <label id="maHoaDon" for=""> MHD12</label> </a>
@@ -143,5 +143,14 @@
         </div>
     </div>
 </div>
+
+<script>
+    function Redirect(idHoaDon) {
+               window.location="{{route('chiTietHD', ['idHoaDon'=>'HD001'])}}";
+            }
+
+            //http://localhost/FreshFoodLaravel/public/user/danhsachHoadon
+</script>
+
 
     @endsection
