@@ -908,3 +908,26 @@ color: #216e38;
   background-color: #216e38;
   color: #ffff;
 }
+
+.star-widget{
+  position: relative;
+  bottom: -5px;
+}
+
+.star-widget input{
+  display: none;
+}
+
+.star-widget label{
+  transition: all 0.2s ease;
+  }
+
+  .star-widget input:not(:checked) ~ label:hover,
+  .star-widget input:not(:checked) ~ label:hover ~ label
+  {
+      color: #fd4;
+  }
+
+  .star-widget  input:checked ~ label{
+    color: #fd4;
+}
