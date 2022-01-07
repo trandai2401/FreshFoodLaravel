@@ -867,3 +867,44 @@ color: #216e38;
   margin: auto;
 }
 
+
+
+/* Thêm mới */
+
+.card_comment_user{
+  
+  border-top: 1px #ada0a2 solid;
+  margin: 0 auto;
+  font-size: 15px;
+  width: 100%;
+  position: relative;
+  top: 200px;
+  justify-content: center;
+}
+
+
+#noidung_BL_text{
+  width: 73%;
+  margin: 0 47px;
+  font-size: 13px;
+}
+
+
+/*  */
+/*Pagination // phân trang button  */
+.container.pagination.d-flex{
+  justify-content: center;
+  margin-top: 23px;
+  font-size: 15px;
+}
+
+.container.pagination .pagination li a{
+  color: #216e38;
+
+}
+
+/* hover */
+.container.pagination .pagination li:nth-of-type(2) a{
+  background-color: #216e38;
+  color: #ffff;
+}
