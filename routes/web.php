@@ -130,7 +130,7 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
         return view("pages.web.user.danh-sach-hoa-don");
     } )->name('danhsachHoadon');
 
-    Route::get('chiTietHD', function(){
+    Route::get('chiTietHD/{idHoaDon}', function($idHoaDon){
         return view("pages.web.user.chi-tiet-hoa-don");
     } )->name('chiTietHD');
 });
