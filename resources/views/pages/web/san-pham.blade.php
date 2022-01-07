@@ -97,10 +97,12 @@
             </div>
 
 
-            <!-- CHi tiết sản phẩm -->
+            <!-- Chi tiết sản phẩm -->
             <div class="content_right">
-                <p class="tenSP"><b> {{ $nongsan->tenNongSan }}</b></p>
-                <p class="giaSP">{{ number_format($nongsan->gia, 0, ',', '.') }} đ</p>
+                <p class="tenSP my-0"><b> {{ $nongsan->tenNongSan }}</b></p>
+                <p class="giaSP my-0">{{ number_format($nongsan->gia, 0, ',', '.') }} đ</p>
+                <p class="soluongSP my-0">  Hiện có:<b> <label for="">{{$nongsan->soluong}}</label> (kg)  </b></p>
+                 <p class="diaDiemSP my-0">   Nơi sản xuất: <b><label for=""> {{$nongsan->noisanxuat}}</label> <b></p>
 
                 <?= $nongsan->noidung ?>
 
@@ -117,6 +119,94 @@
 
             </div>
 
+        </div>
+
+         <!-- Part 2.4: Đánh giá bình luận -->
+         <div class="container SPlienquan card_comment_user">
+            <!-- Tilte  -->
+            <div class="d-flex mt-4 mb-2">
+                <span class="iconify" data-icon="mdi:flower-outline" style="color: #177a4c; font-size: 40px;"></span>
+                <h4 class="mt-2 mx-3">Bình luận - Đánh giá</h4>
+            </div>
+
+            <!-- Phần bình luận -->
+            <div class="container comment_content">
+                <div class="d-flex">
+                    <b class="mx-5">Tài khoản:</b> <label for="" style="color: #216e38;">Tăng Thị Thu Hòa</label>
+                </div>
+                <!-- Đánh giá -->
+                <div class="d-flex noidung mx-5">
+                    <div class="form-group" style="width: 70%">
+                        <label for="textarea_content_text" style="font-size: 12px; font-weight: 800;">Cảm ơn bạn đã sử dụng sản phẩm của chúng tôi</label>
+                        <textarea class="form-control" id="textarea_content_text" rows="2"></textarea>
+                    </div>
+
+                    <div class="btn_themBL mx-5" style="width: 20%; position: relative; top: 50px;">
+                        <button onclick="addComment();" type="button" class="btn btn-outline" style="background: #216e38; color: aliceblue; font-size: 13px;">Thêm bình luận</button>
+                    </div>
+                </div>
+
+                <!-- List bình luận cũ -->
+                <div class="title_BL mx-5">
+                    <label for="" style="font-size: 12px; font-weight: 800;">Danh sách người bình luận</label>
+                </div>
+                <div class="nguoi_binhLuan mx-5">
+                    <div class="mx-3 my-2">
+                        <div class="d-flex user_comment">
+                            <span class="iconify" data-icon="carbon:user-avatar-filled-alt" style="color: #ffbf00; font-size: 30px;"></span>
+                            <strong><label class="mx-3" style="position: relative; top: 5px;" for="">NyDienKhum</label></strong>  
+                        </div>
+
+                        <div class="noidungBL">
+                            <p id="noidung_BL_text" style="font-weight: 100;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                                Soluta voluptate, aspernatur voluptatibus, commodi alias impedit obcaecati molestiae</p>
+                        </div>
+                    </div>
+
+                    <div class="mx-3 my-2">
+                        <div class="d-flex user_comment">
+                            <span class="iconify" data-icon="carbon:user-avatar-filled-alt" style="color: #ffbf00; font-size: 30px;"></span>
+                            <strong><label class="mx-3" style="position: relative; top: 5px;" for="">NyDienKhum</label></strong>  
+                        </div>
+
+                        <div class="noidungBL">
+                        
+                            <p id="noidung_BL_text" style="font-weight: 100;"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                                Soluta voluptate, aspernatur voluptatibus, commodi alias impedit obcaecati molestiae</p>
+                        </div>
+                    </div>
+
+                    <div class="mx-3 my-2">
+                        <div class="d-flex user_comment">
+                            <span class="iconify" data-icon="carbon:user-avatar-filled-alt" style="color: #ffbf00; font-size: 30px;"></span>
+                            <strong><label class="mx-3" style="position: relative; top: 5px;" for="">NyDienKhum</label></strong>  
+                        </div>
+
+                        <div class="noidungBL">
+                            <p id="noidung_BL_text" style="font-weight: 100;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                                Soluta voluptate, aspernatur voluptatibus, commodi alias impedit obcaecati molestiae</p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Phân trang -->
+
+                <!-- Pagination // phân trang button -->
+                <div class="container pagination  d-flex">
+                    <nav aria-label="Page navigation example">
+                      <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                      </ul>
+                    </nav>
+                  </div>
+            </div>
         </div>
 
         <!-- Part 2.3: Sản phẩm liên quan -->
@@ -254,6 +344,21 @@
         </div>
     </div>
     <script>
+        function addComment(){
+            var text_cmt = document.getElementById("textarea_content_text");
+            var div = document.getElementsByClassName('nguoi_binhLuan mx-5');
+            
+            var text_content_cmt = text_cmt.value;
+
+            var div02 = document.createElement('div');
+            div02.className = "mx-3 my-2";
+            div02.innerHTML = '<div class="d-flex user_comment"> <span class="iconify" data-icon="carbon:user-avatar-filled-alt" style="color: #ffbf00; font-size: 30px;"></span> <strong><label class="mx-3" style="position: relative; top: 5px;" for="">NyDienKhum</label></strong> </div> <div class="noidungBL">   <p id="noidung_BL_text" style="font-weight: 100;">'+ text_content_cmt+'</p> </div>';
+            div[0].append(div02);
+          }
+
+
+
+
         var btnAdd = document.getElementById('add-nongsan-giohang');
         btnAdd.addEventListener('click', function() {
             var soluong = document.getElementById('input_trongLuong');
