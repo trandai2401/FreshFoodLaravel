@@ -124,14 +124,15 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
     Route::get('editProfile', function(){
         return view("pages.web.user.edit-profile");
     } )->name('editProfile');
+
+
+    Route::get('danhsachHoadon', function(){
+        return view("pages.web.user.danh-sach-hoa-don");
+    } )->name('danhsachHoadon');
+
+    Route::get('chiTietHD', function(){
+        return view("pages.web.user.chi-tiet-hoa-don");
+    } )->name('chiTietHD');
 });
 
 
-
-
-
-// php artisan cache:clear
-// php artisan view:clear
-// php artisan route:clear
-// php artisan clear-compiled
-// php artisan config:cache
