@@ -23,10 +23,8 @@
             <div class="slide-left">
 
                 <div class="heart_btn bg-transparent border-0">
-                    <button class="bg-transparent border-0">
-                        <span class="iconify" data-icon="bi:heart-fill"
-                            style="color: #f2b500; font-size: 35px;"></span>
-                    </button>
+                    <label for="">4.5</label>
+                    <span class="iconify" data-icon="bi:star-fill" style="color: #ffb416; font-size: 30px; position: relative; top: -5px;"></span>
                 </div>
 
                 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -121,94 +119,89 @@
 
         </div>
 
-         <!-- Part 2.4: Đánh giá bình luận -->
-         <div class="container SPlienquan card_comment_user">
-            <!-- Tilte  -->
-            <div class="d-flex mt-4 mb-2">
-                <span class="iconify" data-icon="mdi:flower-outline" style="color: #177a4c; font-size: 40px;"></span>
-                <h4 class="mt-2 mx-3">Bình luận - Đánh giá</h4>
+        <!-- Part 2.4: Đánh giá bình luận -->
+        <div class="container SPlienquan card_comment_user">
+            <div id="remove_div">
+                    <!-- Tilte  -->
+                <div class="d-flex mt-4 mb-2">
+                    <span class="iconify" data-icon="mdi:flower-outline" style="color: #177a4c; font-size: 40px;"></span>
+                    <h4 class="mt-2 mx-3">Bình luận - Đánh giá</h4>
+                </div>
+
+                <!-- Phần bình luận -->
+                <div class="container comment_content">
+                    <div class="d-flex">
+                        <b class="mx-5">Tài khoản:</b> <label for="" style="color: #216e38;">Tăng Thị Thu Hòa</label>
+                        <br>
+                        
+                    </div>
+                    <!-- Đánh giá -->
+                    <!-- sao đánh giá -->
+                    <div class="star-widget d-flex" style="margin-left: 50px; margin-bottom: 10px;">
+                        <div class="d-flex" style="flex-flow: row-reverse; justify-content: flex-start">
+                        <input class="mx-1 mt-2 rate" type="radio" name="rate" id="rate-1" value="5">
+                        <label for="rate-1" class="fas fa-star fa-2x mr-2 mt-1"></label>
+                        <input class="mx-1 mt-2 rate" type="radio" name="rate" id="rate-2" value="4">
+                        <label for="rate-2" class="fas fa-star  fa-2x mr-2 mt-1"></label>
+                        <input class="mx-1 mt-2 rate" type="radio" name="rate" id="rate-3" value="3">
+                        <label for="rate-3"  class="fas fa-star  fa-2x mr-2 mt-1"></label>
+                        <input class="mx-1 mt-2 rate" type="radio" name="rate" id="rate-4" value="2">
+                        <label for="rate-4"  class="fas fa-star  fa-2x mr-2 mt-1"></label>
+                        <input class="mx-1 mt-2 rate" type="radio" name="rate" id="rate-5" value="1">
+                        <label for="rate-5"  class="fas fa-star  fa-2x mr-2 mt-1"></label>
+                        </div>
+                    </div>
+                    <div class="d-flex noidung mx-5">
+                        <div class="form-group" style="width: 70%">
+                            <label for="textarea_content_text" style="font-size: 12px; font-weight: 800;">Cảm ơn bạn đã sử dụng sản phẩm của chúng tôi</label>
+                            <textarea class="form-control" id="textarea_content_text" rows="2"></textarea>
+                        </div>
+
+                        <div class="btn_themBL mx-5" style="width: 20%; position: relative; top: 50px;">
+                            <button onclick="addComment();" type="button" class="btn btn-outline" style="background: #216e38; color: aliceblue; font-size: 13px;">Thêm bình luận</button>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+
+            <!-- List bình luận cũ -->
+            <div class="title_BL mx-5">
+                <label for="" style="font-size: 12px; font-weight: 800;">Danh sách người bình luận</label>
+            </div>
+            <div class="nguoi_binhLuan mx-5">
+                <div class="mx-3 my-2">
+                    <div class="d-flex user_comment">
+                        <span class="iconify" data-icon="carbon:user-avatar-filled-alt" style="color: #ffbf00; font-size: 30px;"></span>
+                        <strong><label class="mx-3" style="position: relative; top: 5px;" for="">NyDienKhum</label></strong>  
+                        <span for="" style="font-size: 20px;" id="sao_rate">4</span> 
+                        <span class="iconify mx-1" data-icon="bi:star-fill" style="color: #ffb416; font-size: 17px; position: relative; top: 5px;"></span>  
+                    </div>
+
+                    <div class="noidungBL">
+                        <p id="noidung_BL_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
+                            Soluta voluptate, aspernatur voluptatibus, commodi alias impedit obcaecati molestiae</p>
+                    </div>
+                </div>     
             </div>
 
-            <!-- Phần bình luận -->
-            <div class="container comment_content">
-                <div class="d-flex">
-                    <b class="mx-5">Tài khoản:</b> <label for="" style="color: #216e38;">Tăng Thị Thu Hòa</label>
-                </div>
-                <!-- Đánh giá -->
-                <div class="d-flex noidung mx-5">
-                    <div class="form-group" style="width: 70%">
-                        <label for="textarea_content_text" style="font-size: 12px; font-weight: 800;">Cảm ơn bạn đã sử dụng sản phẩm của chúng tôi</label>
-                        <textarea class="form-control" id="textarea_content_text" rows="2"></textarea>
-                    </div>
 
-                    <div class="btn_themBL mx-5" style="width: 20%; position: relative; top: 50px;">
-                        <button onclick="addComment();" type="button" class="btn btn-outline" style="background: #216e38; color: aliceblue; font-size: 13px;">Thêm bình luận</button>
-                    </div>
-                </div>
+            <!-- Phân trang -->
 
-                <!-- List bình luận cũ -->
-                <div class="title_BL mx-5">
-                    <label for="" style="font-size: 12px; font-weight: 800;">Danh sách người bình luận</label>
-                </div>
-                <div class="nguoi_binhLuan mx-5">
-                    <div class="mx-3 my-2">
-                        <div class="d-flex user_comment">
-                            <span class="iconify" data-icon="carbon:user-avatar-filled-alt" style="color: #ffbf00; font-size: 30px;"></span>
-                            <strong><label class="mx-3" style="position: relative; top: 5px;" for="">NyDienKhum</label></strong>  
-                        </div>
-
-                        <div class="noidungBL">
-                            <p id="noidung_BL_text" style="font-weight: 100;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                                Soluta voluptate, aspernatur voluptatibus, commodi alias impedit obcaecati molestiae</p>
-                        </div>
-                    </div>
-
-                    <div class="mx-3 my-2">
-                        <div class="d-flex user_comment">
-                            <span class="iconify" data-icon="carbon:user-avatar-filled-alt" style="color: #ffbf00; font-size: 30px;"></span>
-                            <strong><label class="mx-3" style="position: relative; top: 5px;" for="">NyDienKhum</label></strong>  
-                        </div>
-
-                        <div class="noidungBL">
-                        
-                            <p id="noidung_BL_text" style="font-weight: 100;"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                                Soluta voluptate, aspernatur voluptatibus, commodi alias impedit obcaecati molestiae</p>
-                        </div>
-                    </div>
-
-                    <div class="mx-3 my-2">
-                        <div class="d-flex user_comment">
-                            <span class="iconify" data-icon="carbon:user-avatar-filled-alt" style="color: #ffbf00; font-size: 30px;"></span>
-                            <strong><label class="mx-3" style="position: relative; top: 5px;" for="">NyDienKhum</label></strong>  
-                        </div>
-
-                        <div class="noidungBL">
-                            <p id="noidung_BL_text" style="font-weight: 100;">Lorem ipsum dolor, sit amet consectetur adipisicing elit. 
-                                Soluta voluptate, aspernatur voluptatibus, commodi alias impedit obcaecati molestiae</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <!-- Phân trang -->
-
-                <!-- Pagination // phân trang button -->
-                <div class="container pagination  d-flex">
-                    <nav aria-label="Page navigation example">
-                      <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                      </ul>
-                    </nav>
-                  </div>
+            <!-- Pagination // phân trang button -->
+            <div class="container pagination  d-flex">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
-
         <!-- Part 2.3: Sản phẩm liên quan -->
         <div class="container SPlienquan card_product_right">
             <!-- Tilte  -->
@@ -283,68 +276,82 @@
         </div>
     </div>
 
-    <!-- Footer -->
-    <!-- Part 12: Footer -->
-    <div class="container-fluid footer mt-5">
-        <div class="row row_footer">
-            <div class="col-lg-4 col-md-4 col-sm-12 image">
-                <div class="frame">
-                    <img class="logo_footer pt-4"
-                        src="https://cdni.iconscout.com/illustration/premium/thumb/healthy-food-2358006-1969921.png"
-                        alt="logo-footer">
-                </div>
+<!-- Footer -->
+<!-- Part 12: Footer -->
+<div class="container-fluid footer mt-5">
+    <div class="row row_footer">
+        <div class="col-lg-4 col-md-4 col-sm-12 image">
+            <div class="frame">
+                <img class="logo_footer pt-4"
+                    src="https://cdni.iconscout.com/illustration/premium/thumb/healthy-food-2358006-1969921.png"
+                    alt="logo-footer">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 contract">
-                <div class="frame">
-                    <h6 class="text-uppercase fw-bold">
-                        Contact Us
-                    </h6>
-                    <p>
-                        <a href="#!" class="text_reset">36 Ong Ich Khiem,Da nang, VietNam</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text_reset">Email: yourvoucher.help@gmail.com</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text_reset">Phone: +84 905 589 210 </a>
-                    </p>
-                </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 contract">
+            <div class="frame">
+                <h6 class="text-uppercase fw-bold">
+                    Contact Us
+                </h6>
+                <p>
+                    <a href="#!" class="text_reset">36 Ong Ich Khiem,Da nang, VietNam</a>
+                </p>
+                <p>
+                    <a href="#!" class="text_reset">Email: yourvoucher.help@gmail.com</a>
+                </p>
+                <p>
+                    <a href="#!" class="text_reset">Phone: +84 905 589 210 </a>
+                </p>
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 aboutus">
-                <div class="frame">
-                    <h6 class="text-uppercase fw-bold">
-                        About us
-                    </h6>
-                    <p>
-                        <a href="#!" class="text_reset">Our store</a>
-                    </p>
-                    <p>
-                        <a href="#!" class="text_reset">Your voucher</a>
-                    </p>
-                    <div class="footer_icon">
-                        <a href="">
-                            <span class="iconify " data-icon="bx:bxl-facebook-circle"></span>
-                        </a>
-                        <a href="">
-                            <span class="iconify" data-icon="ant-design:twitter-circle-filled" data-width="24"
-                                data-height="24"></span>
-                        </a>
-                        <a href="">
-                            <span class="iconify" data-icon="akar-icons:instagram-fill" data-width="24"
-                                data-height="24"></span>
-                        </a>
-                        <a href="">
-                            <span class="iconify" data-icon="akar-icons:google-contained-fill" data-width="24"
-                                data-height="24"></span>
-                            </span>
-                        </a>
-                    </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12 aboutus">
+            <div class="frame">
+                <h6 class="text-uppercase fw-bold">
+                    About us
+                </h6>
+                <p>
+                    <a href="#!" class="text_reset">Our store</a>
+                </p>
+                <p>
+                    <a href="#!" class="text_reset">Your voucher</a>
+                </p>
+                <div class="footer_icon">
+                    <a href="">
+                        <span class="iconify " data-icon="bx:bxl-facebook-circle"></span>
+                    </a>
+                    <a href="">
+                        <span class="iconify" data-icon="ant-design:twitter-circle-filled" data-width="24"
+                            data-height="24"></span>
+                    </a>
+                    <a href="">
+                        <span class="iconify" data-icon="akar-icons:instagram-fill" data-width="24"
+                            data-height="24"></span>
+                    </a>
+                    <a href="">
+                        <span class="iconify" data-icon="akar-icons:google-contained-fill" data-width="24"
+                            data-height="24"></span>
+                        </span>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
     <script>
-        function addComment(){
+        //   rating star
+        var saoRating = document.getElementsByName("rate");
+        
+
+        //
+          function addComment(){
+            for(let item of saoRating){
+            if(item.checked == true){
+                var sao = item.value;
+                var text_sao =  document.getElementById("sao_rate");
+                text_sao.innerText = sao;
+                    console.log(item.value);
+            }
+            
+        }
             var text_cmt = document.getElementById("textarea_content_text");
             var div = document.getElementsByClassName('nguoi_binhLuan mx-5');
             
@@ -352,8 +359,11 @@
 
             var div02 = document.createElement('div');
             div02.className = "mx-3 my-2";
-            div02.innerHTML = '<div class="d-flex user_comment"> <span class="iconify" data-icon="carbon:user-avatar-filled-alt" style="color: #ffbf00; font-size: 30px;"></span> <strong><label class="mx-3" style="position: relative; top: 5px;" for="">NyDienKhum</label></strong> </div> <div class="noidungBL">   <p id="noidung_BL_text" style="font-weight: 100;">'+ text_content_cmt+'</p> </div>';
+            div02.innerHTML = '<div class="d-flex user_comment"> <span class="iconify" data-icon="carbon:user-avatar-filled-alt" style="color: #ffbf00; font-size: 30px;"></span> <strong><label class="mx-3" style="position: relative; top: 5px;" for="">NyDienKhum</label></strong><span id="sao_rate" for="" style="font-size: 20px;">'+text_sao+'</span> <span class="iconify mx-1" data-icon="bi:star-fill" style="color: #ffb416; font-size: 17px; position: relative; top: 5px;"></span>  </div> <div class="noidungBL">   <p id="noidung_BL_text" style="font-weight: 100;">'+ text_content_cmt+'</p> </div>';
             div[0].append(div02);
+
+            var rm = document.getElementById("remove_div");
+            rm.remove();
           }
 
 

@@ -123,5 +123,18 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
     Route::post('thanhtoan', [ThanhToanController::class,]);
     Route::get('editProfile', function () {
         return view("pages.web.user.edit-profile");
-    })->name('editProfile');
+
+    } )->name('editProfile');
+
+
+    Route::get('danhsachHoadon', function(){
+        return view("pages.web.user.danh-sach-hoa-don");
+    } )->name('danhsachHoadon');
+
+    Route::get('chiTietHD/{idHoaDon}', function($idHoaDon){
+        return view("pages.web.user.chi-tiet-hoa-don");
+    } )->name('chiTietHD');
+
 });
+
+
