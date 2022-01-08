@@ -230,7 +230,7 @@ body{
    /* Part 2.2: total-cart */
    .total-cart{
        width: 35%;
-       height: 690px;
+       height: 670px;
        background: #ebf2f5;
        font-size: 14px;
    }
@@ -279,7 +279,7 @@ body{
    
    .pay-voucher {
        width: 90%;
-       height: 340px;
+       height: 600px;
        background-color: #ffffff;
        margin: 0px 25px;
        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
