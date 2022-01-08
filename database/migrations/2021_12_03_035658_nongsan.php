@@ -24,6 +24,8 @@ class Nongsan extends Migration
             $table->text('noisanxuat')->nullable();
             $table->foreign('id_danhmuc')->references('id')->on('danhmuc');
             $table->text('noidung')->nullable();
+            $table->integer('soluongdanhgia')->default(0);
+            $table->double('sosao')->default(0);
             $table->timestamps();
         });
     }

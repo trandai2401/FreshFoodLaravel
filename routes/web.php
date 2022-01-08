@@ -17,7 +17,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use PhpParser\Node\Expr\Throw_; 
+use PhpParser\Node\Expr\Throw_;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ Route::get('/', function () {
 Route::get('/login', [login::class, 'getLogin'])->name("login");
 Route::post('/login', [login::class, 'login']);
 Route::get('redirect', [SocialController::class, 'redirect'])->name('loginRedirect');
-Route::get('callback', [SocialController::class,'callback']);
+Route::get('callback', [SocialController::class, 'callback']);
 
 
 
@@ -77,11 +77,11 @@ Route::post('/1234', function (Request $request) {
     $res2 = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh  where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM  nongsan  where freshfood.bodau(tenNongSan) like freshfood.bodau('%" . $request->keyword . "%') or freshfood.bodau(noidung) like freshfood.bodau('%" . $request->keyword .  "%') and id_danhmuc = " . $request->idDanhMuc);
 
 
-    return view('pages.web.ketquatimkiem.ketquatimkiem', ['nongsans' => $res,'solUongNongSanLocDuoc'=> count($res2),'idDanhMuc' => $request->idDanhMuc, 'trangDuocChon' => 1] );
+    return view('pages.web.ketquatimkiem.ketquatimkiem', ['nongsans' => $res, 'solUongNongSanLocDuoc' => count($res2), 'idDanhMuc' => $request->idDanhMuc, 'trangDuocChon' => 1]);
 });
 
 Route::post('/123', function (Request $request) {
-
+    return $request->arrDiaDiem;
     $sortBy = $request->sortBy;
     $temp  = "";
     if ($request->giaTriKetThuc != '') {
@@ -101,13 +101,13 @@ Route::post('/123', function (Request $request) {
     // return $queryByAddress;
     // return "SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan where gia >=  " . (int)$request->giaTribatDau .  $temp . "  and id_danhmuc = " . $request->idDanhMuc . $queryByAddress . " order by " . $sortBy;
     // return  "SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan where gia >=  " . (int)$request->giaTribatDau . $temp . "  and id_danhmuc = " . $request->idDanhMuc;
-    $res = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan  where gia >=  " . (int)$request->giaTribatDau .  $temp . "  and id_danhmuc = " . $request->idDanhMuc . $queryByAddress . " order by " . $sortBy . " LIMIT ".(($request->trangDuocChon-1)*6).",6");
-    $res2 = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan  where gia >=  " . (int)$request->giaTribatDau .  $temp . "  and id_danhmuc = " . $request->idDanhMuc . $queryByAddress . " order by " . $sortBy );
-   $idDanhMuc = $request->idDanhMuc;
+    $res = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan  where gia >=  " . (int)$request->giaTribatDau .  $temp . "  and id_danhmuc = " . $request->idDanhMuc . $queryByAddress . " order by " . $sortBy . " LIMIT " . (($request->trangDuocChon - 1) * 6) . ",6");
+    $res2 = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan  where gia >=  " . (int)$request->giaTribatDau .  $temp . "  and id_danhmuc = " . $request->idDanhMuc . $queryByAddress . " order by " . $sortBy);
+    $idDanhMuc = $request->idDanhMuc;
     return view('pages.web.ketquatimkiem.ketquatimkiem', [
         'nongsans' => $res,
         'trangDuocChon' => ($request->trangDuocChon),
-        'idDanhMuc' => intval( $idDanhMuc ) ,'solUongNongSanLocDuoc'=>count($res2)
+        'idDanhMuc' => intval($idDanhMuc), 'solUongNongSanLocDuoc' => count($res2)
     ]);
 });
 
@@ -120,9 +120,10 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
     Route::get('cart', [GioHang::class, 'getGioHang'])->name('cart');
     Route::delete('cart1', [GioHang::class, 'deleteGioHang'])->name('cart1');
     Route::post('cart', [GioHang::class, 'update']);
-
-    Route::get('editProfile', function(){
+    Route::post('thanhtoan', [ThanhToanController::class,]);
+    Route::get('editProfile', function () {
         return view("pages.web.user.edit-profile");
+
     } )->name('editProfile');
 
 
@@ -133,6 +134,7 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
     Route::get('chiTietHD/{idHoaDon}', function($idHoaDon){
         return view("pages.web.user.chi-tiet-hoa-don");
     } )->name('chiTietHD');
+
 });
 
 
