@@ -20,7 +20,8 @@ class Itemhoadon extends Migration
             $table->bigInteger('dongia');
             $table->foreign('id_hoadon')->references('id')->on('hoadon');
             $table->foreign('id_nongsan')->references('id')->on('nongsan');
-            $table->primary(array('id_hoadon', 'id_nongsan'));
+            // $table->primary(array('id_hoadon', 'id_nongsan'));
+            $table->integer('duocdanhgia')->default(0);
             $table->timestamps();
         });
     }

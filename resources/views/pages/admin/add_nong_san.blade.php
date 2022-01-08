@@ -174,7 +174,7 @@
         //     inp.click();
         //     console.log("1");
         // }
-
+        var arrayFile = [];
         btn.addEventListener("click", function() {
             inp.click();
         });
@@ -182,7 +182,7 @@
 
         inp.addEventListener("change", function() {
             var files = this.files[0];
-
+            arrayFile.push(files);
             if (files) {
                 var reader = new FileReader();
                 reader.onload = function() {
@@ -226,6 +226,12 @@
         var noidungnongsan = document.getElementById('noidungnongsan');
 
         var submit = document.getElementById('submit');
+
+
+
+
+
+
         submit.addEventListener('click', function() {
             var imagefile = document.getElementById("file").files[0];
             var form = new FormData();
@@ -238,6 +244,14 @@
 
             form.append('noidung', editor.getData());
             form.append('images', imagefile);
+
+            for (let i = 0; i < arrayFile.length; i++) {
+                console.log(arrayFile[i]);
+                console.log(('images' + i.toString()));
+                form.append(('images' + i.toString()), arrayFile[i]);
+            }
+
+
             $.ajax({
                 method: 'post',
                 url: "http://localhost/FreshFoodLaravel/public/admin/add-nong-san",

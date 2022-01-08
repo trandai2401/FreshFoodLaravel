@@ -19,7 +19,11 @@ class Hoadon extends Migration
             $table->unsignedBigInteger('id_trangthai');
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_trangthai')->references('id')->on('trangthai');
-
+            $table->BigInteger('tongtien')->nullable();
+            $table->String('diachi')->nullable();
+            $table->BigInteger('tienship')->nullable();
+            $table->string('sodienthoai')->nullable();
+            $table->string('nguoinhan')->nullable();
             $table->timestamps();
         });
     }
