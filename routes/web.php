@@ -4,12 +4,16 @@ use App\Http\Controllers\admin\add;
 use App\Http\Controllers\admin\KhachHangController;
 use App\Http\Controllers\admin\NhanVienController;
 use App\Http\Controllers\admin\nongsan as AdminNongsan;
+use App\Http\Controllers\ChiTietHoaDonController;
 use App\Http\Controllers\login;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\ThanhToan;
 use App\Http\Controllers\web\GioHang;
 use App\Http\Controllers\web\home;
 use App\Http\Controllers\web\UserController;
 use App\Models\danhmuc;
+use App\Models\giohang as ModelsGiohang;
+use App\Models\hoadon;
 use App\Models\itemgiohang;
 use App\Models\nongsan;
 use App\Models\role;
@@ -123,18 +127,14 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
     Route::post('thanhtoan', [ThanhToanController::class,]);
     Route::get('editProfile', function () {
         return view("pages.web.user.edit-profile");
+    })->name('editProfile');
 
-    } )->name('editProfile');
 
-
-    Route::get('danhsachHoadon', function(){
+    Route::get('danhsachHoadon', function () {
         return view("pages.web.user.danh-sach-hoa-don");
-    } )->name('danhsachHoadon');
+    })->name('danhsachHoadon');
 
-    Route::get('chiTietHD/{idHoaDon}', function($idHoaDon){
-        return view("pages.web.user.chi-tiet-hoa-don");
-    } )->name('chiTietHD');
+    Route::get('chiTietHD/{idHoaDon}', [ChiTietHoaDonController::class, 'getChiTietHoaDon'])->name('chiTietHD');
 
+    Route::post('thanhtoan', [ThanhToan::class, 'postThanhToan']);
 });
-
-
