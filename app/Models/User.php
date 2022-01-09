@@ -21,7 +21,10 @@ class User extends Authenticatable
         return $this->hasMany(giohang::class, 'id_user', 'id');
     }
 
-
+    public function hoaDon()
+    {
+        return $this->hasMany(hoadon::class, 'id_user', 'id');
+    }
 
     /**
      * The attributes that are mass assignable.

@@ -40,7 +40,7 @@ class ThanhToan extends Controller
             echo $item;
             $itemHoaDon = new itemhoadon();
             $itemHoaDon->id_hoadon =  $hoaDon->id;
-            $itemHoaDon->dongia = $item->id_nongsan;
+            $itemHoaDon->dongia = $item->soluong;
             $itemHoaDon->soluong = $item->soluong;
 
             $nongsan = ModelsNongsan::find($item->id_nongsan);
