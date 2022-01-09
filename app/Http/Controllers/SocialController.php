@@ -34,7 +34,7 @@ class SocialController extends Controller
                     'email' => $user->email,
                     'google_id' => $user->id,
                     'id_role' => '2',
-                    'password' => encrypt('123456dummy')
+                    'password' => bcrypt('123456dummy')
 
                 ]);
 

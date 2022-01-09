@@ -522,16 +522,20 @@
                 console.log(data);
                 var maPT = data.data[0].service_type_id;
                 console.log(maPT);
+
                 var maQH = formQH.value;
                 callApiGiaCuocVanChuyen(maPT, maQH);
                 
+
             });
         }
         
 
         // call api tính phí ship
+
         function callApiGiaCuocVanChuyen(maPT, maQH){
             console.log(maQH);
+
             $.ajax({
                 type: 'GET',
                 url: 'https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee',
@@ -543,9 +547,11 @@
                     "service_type_id": maPT,
                     "insurance_value": 1000,
                     "coupon": null,
-                    "to_ward_code": 340518,
+
+                    "to_ward_code": "340518",
                     "from_district_id": 1526,
                     "to_district_id": maQH,
+
                     "weight": laySLNS(),
                     "length": 15,
                     "width": 15,
@@ -557,7 +563,6 @@
                 var tongPhiShip = data.data.total;
                 var phigiao = document.getElementById("phigiaohang");
                 phigiao.innerText =String(tongPhiShip).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " đ"; 
-                
             });
         }
 
