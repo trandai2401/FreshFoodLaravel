@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             $table->unsignedBigInteger('id_role');
             $table->foreign('id_role')->references('id')->on('role');
+            $table->string("google_id");
             $table->timestamp('ngaysinh')->nullable();
             $table->timestamp('email_verified_at')->nullable();
 

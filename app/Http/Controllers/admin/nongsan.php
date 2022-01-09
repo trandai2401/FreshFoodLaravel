@@ -47,14 +47,27 @@ class nongsan extends Controller
 
 
             ]);
+            for ($i = 0; $i < 10; $i++) {
+                if ($request->has('images' . $i)) {
+                    echo 'images' . $i;
+                    DB::table('hinhanh')->insert([
+                        'id_nongsan' => $id,
+                        'src' => "img/image" . $id . "_" . $i . ".jpg"
+                    ]);
 
-            DB::table('hinhanh')->insert([
-                'id_nongsan' => $id,
-                'src' => "img/image" . $id . ".jpg"
-            ]);
+                    $images = $request['images' . $i];
+                    $images->move("img", 'image' . $id  . "_" . $i . '.jpg');
+                } else {
+                    break;
+                }
+            }
+            // DB::table('hinhanh')->insert([
+            //     'id_nongsan' => $id,
+            //     'src' => "img/image" . $id . ".jpg"
+            // ]);
 
-            $images = $request->images;
-            $images->move("img", 'image' . $id . '.jpg');
+            // $images = $request['images'];
+            // $images->move("img", 'image' . $id . '.jpg');
         } else {
             echo "không";
         }

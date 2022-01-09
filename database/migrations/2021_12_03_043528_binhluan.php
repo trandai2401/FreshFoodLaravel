@@ -14,13 +14,14 @@ class Binhluan extends Migration
     public function up()
     {
 
-        Schema::create('binhluan', function (Blueprint $table) {
+        Schema::create('danhgia', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_nongsan');
             $table->text('noidung');
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_nongsan')->references('id')->on('nongsan');
-            $table->primary(array('id_user', 'id_nongsan'));
+            // $table->primary(array('id_user', 'id_nongsan'));
             $table->timestamps();
         });
     }
@@ -32,7 +33,7 @@ class Binhluan extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('binhluan');
+        Schema::dropIfExists('danhgia');
         //
     }
 }

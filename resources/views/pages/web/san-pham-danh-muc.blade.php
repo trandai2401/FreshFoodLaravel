@@ -28,8 +28,8 @@
             <div class="combobox_filter d-flex">
                 <span class="mr-3">Sắp xếp:</span>
                 <div class="form-group">
-                    <select onchange="loc({{ $tenDanhMuc[0]->id }},1)" class="form-control" id="exampleFormControlSelect1"
-                        style="width: 200px">
+                    <select onchange="loc({{ $tenDanhMuc[0]->id }},1)" class="form-control"
+                        id="exampleFormControlSelect1" style="width: 200px">
                         <option value="tenNongSan asc">A - Z</option>
                         <option value="tenNongSan desc">Z - A</option>
                         <option value="gia desc">Giá giảm dần</option>
@@ -159,10 +159,17 @@
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                            <?php $soLuongTrang = ceil(count(App\Models\nongsan::select("*")->where("id_danhmuc",$tenDanhMuc[0]->id)->get()) / 6); ?>
+                            <?php $soLuongTrang = ceil(
+                                count(
+                                    App\Models\nongsan::select('*')
+                                        ->where('id_danhmuc', $tenDanhMuc[0]->id)
+                                        ->get(),
+                                ) / 6,
+                            ); ?>
                             @for ($i = 1; $i <= $soLuongTrang; $i++)
-                                <li onclick="callApiPhanTrangByIndex('{{$i}}')"  class="page-item @if ($trangDuocChon == $i)phantrang_nongsan @endif"><a id="page-item-{{$i}}" class="page-link"
-                                        >{{ $i }}</a></li>
+                                <li onclick="callApiPhanTrangByIndex('{{ $i }}')"
+                                    class="page-item @if ($trangDuocChon == $i)phantrang_nongsan @endif"><a id="page-item-{{ $i }}"
+                                        class="page-link">{{ $i }}</a></li>
                             @endfor
                             <li class="page-item"><a class="page-link" href="#">Next</a></li>
                         </ul>
@@ -207,7 +214,7 @@
                         About us
                     </h6>
                     <p>
-                        <a href="#!" class="text_reset" >Our store</a>
+                        <a href="#!" class="text_reset">Our store</a>
                     </p>
                     <p>
                         <a href="#!" class="text_reset">Your voucher</a>
@@ -294,7 +301,7 @@
         }
 
 
-        function loc(idDanhMuc,trangDuocChon) {
+        function loc(idDanhMuc, trangDuocChon) {
             var form = new FormData();
             var t = document.getElementsByClassName('checkbox_address_item');
             var exampleFormControlSelect1 = document.getElementById('exampleFormControlSelect1');
@@ -322,9 +329,9 @@
 
             form.append('giaTribatDau', giaTribatDau);
             form.append('giaTriKetThuc', giaTriKetThuc);
-            form.append('idDanhMuc', idDanhMuc+'');
+            form.append('idDanhMuc', idDanhMuc + '');
             form.append('trangDuocChon', trangDuocChon);
-            
+
             // form.append('arrDiaDiem', arrDiaDiem);
             $.ajax({
                 method: 'post',
@@ -349,10 +356,10 @@
 
         function callApiPhanTrangByIndex(index) {
             var form = new FormData();
-      
+
             $.ajax({
                 method: 'get',
-                url: "{{ route('danhmuc', ['idDanhMuc'=>$tenDanhMuc[0]->id]) }}/"+index,
+                url: "{{ route('danhmuc', ['idDanhMuc' => $tenDanhMuc[0]->id]) }}/" + index,
                 context: document.body,
                 data: form,
                 contentType: false,
@@ -361,12 +368,12 @@
             }).done(function(result) {
                 var temp = document.getElementsByClassName('row product')[0];
                 temp.innerHTML = result;
-                let page_item  =document.getElementsByClassName("page-item");
-                for(let item of page_item) {
+                let page_item = document.getElementsByClassName("page-item");
+                for (let item of page_item) {
                     item.children[0].style.backgroundColor = "#ffffff";
                     item.children[0].style.color = "#216e38"
                 }
-                let page_item_phantrang = document.getElementById("page-item-"+index);
+                let page_item_phantrang = document.getElementById("page-item-" + index);
                 page_item_phantrang.style.backgroundColor = "#216e38";
                 page_item_phantrang.style.color = "#ffffff"
                 console.log(result);
