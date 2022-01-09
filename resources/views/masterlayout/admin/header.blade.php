@@ -188,30 +188,23 @@
                             aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><span class="iconify mr-3"
                                     data-icon="fluent:gift-card-16-filled" style="font-size: 20px;"></span></div>
-                            Tin tức
+                            Duyệt hóa đơn
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <!-- Part 2.1.4.1: Sub menu Voucher -->
+                        <!-- Part 2.1.4.1: Sub menu DS hóa đơn -->
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link collapsed ml-4" href="#" data-bs-toggle="collapse"
                                     data-bs-target="#pagesCollapseAuth" aria-expanded="false"
                                     aria-controls="pagesCollapseAuth">
-                                    Tất cả bài viết
+                                    DS hóa đơn
                                 </a>
 
                                 <a class="nav-link collapsed ml-4" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseError" aria-expanded="false"
-                                    aria-controls="pagesCollapseError">
-                                    Thêm bài viết
-
-                                </a>
-                                <a class="nav-link collapsed ml-4" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseError" aria-expanded="false"
-                                    aria-controls="pagesCollapseError">
-                                    Sửa bài viết
-
+                                    data-bs-target="#pagesCollapseAuth" aria-expanded="false"
+                                    aria-controls="pagesCollapseAuth">
+                                    Hóa đơn đã duyệt
                                 </a>
 
                             </nav>
@@ -223,11 +216,25 @@
                             Khách hàng
                         </a>
                         <!-- Part 2.1.6: Customer menu -->
-                        <a class="nav-link" href="{{ route('AdminNhanVien') }}">
+                        <!-- Part 2.1.3: Product menu -->
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts_01" aria-expanded="false" aria-controls="collapseLayouts_01">
                             <div class="sb-nav-link-icon"><span class="iconify mr-3"
-                                    data-icon="si-glyph:customer-support" style="font-size: 20px;"></span></div>
+                                    data-icon="icon-park-outline:health-products" style="font-size: 20px;"></span></div>
                             Nhân viên
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
+                        <!-- Part 2.1.3.1: Sub menu product -->
+                        <div class="collapse" id="collapseLayouts_01" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link ml-4" href="{{ route('AdminNhanVien') }}">DS Nhân viên<nav></nav></a>
+                                <a class="nav-link ml-4" href="{{ route('AdminAddNongSan') }}">Thêm nhân viên</a>
+                                <!-- <a class="nav-link ml-4" href="layout-sidenav-light.html">Sửa sản phẩm</a> -->
+                            </nav>
+                        </div>
+
+                        
                         <!-- Part 2.1.7: Order menu -->
                         <a class="nav-link" href="index.html">
                             <div class="sb-nav-link-icon"><span class="iconify mr-3" data-icon="mdi:cart-heart"
