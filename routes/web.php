@@ -36,6 +36,7 @@ use PhpParser\Node\Expr\Throw_;
 
 
 Route::get('/', function () {
+
     echo csrf_token();
     // return view('welcome');
 });
@@ -130,8 +131,16 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
     })->name('editProfile');
 
 
-    Route::get('danhsachHoadon', function () {
-        return view("pages.web.user.danh-sach-hoa-don");
+    Route::get('danhsachHoadon', function (Request $request) {
+        $user = Auth::user();
+        $trangDuocChon = 1;
+        if (isset($request->trangDuocChon)) {
+            $trangDuocChon = $request->trangDuocChon;
+        }
+
+        $hoaDons = hoadon::offset(($trangDuocChon - 1) * 6)->limit(6)->get();
+        // return  $hoaDons;
+        return view("pages.web.user.danh-sach-hoa-don", ['hoaDons' => $hoaDons]);
     })->name('danhsachHoadon');
 
     Route::get('chiTietHD/{idHoaDon}', [ChiTietHoaDonController::class, 'getChiTietHoaDon'])->name('chiTietHD');

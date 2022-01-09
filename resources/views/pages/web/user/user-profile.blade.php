@@ -21,11 +21,15 @@
                         <p style="width: 150px; margin-right: 100px;">Yêu thích</p>
                         <p style=" margin-bottom:0 ">12</p>
                     </li>
-                    <li class="list-group-item py-2 border-0 d-flex justify-content-between">
-                        <span class="iconify ml-2 mr-5" data-icon="bx:bxs-discount" data-width="24" data-height="24"></span>
-                        <p style="width: 150px; margin-right: 100px;">Hóa đơn</p>
-                        <p style=" margin-bottom:0 ">12</p>
-                    </li>
+                    <a href="{{ route('danhsachHoadon') }}" style="text-decoration: none">
+                        <li class="list-group-item py-2 border-0 d-flex justify-content-between">
+                            <span class="iconify ml-2 mr-5" data-icon="bx:bxs-discount" data-width="24"
+                                data-height="24"></span>
+                            <p style="width: 150px; margin-right: 100px;">Hóa đơn</p>
+                            <p style=" margin-bottom:0 ">12</p>
+                        </li>
+                    </a>
+
                     <li class="list-group-item py-2 border-0 d-flex">
                         <span class="iconify ml-2 mr-5" data-icon="ant-design:user-outlined" data-width="24"
                             data-height="24" style="font-size: 16px;"></span>
@@ -43,8 +47,8 @@
                         <span class="iconify " data-icon="fa-solid:user-alt" data-width="50" data-height="50"></span>
                         <h1>Tài khoản</h1>
                     </div>
-                    <button  type="button" class="btn btn-outline-success">
-                      <a href="{{route('editProfile')}}"> Chỉnh sửa</a> 
+                    <button type="button" class="btn btn-outline-success">
+                        <a href="{{ route('editProfile') }}"> Chỉnh sửa</a>
                     </button>
                 </div>
 

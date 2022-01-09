@@ -32,6 +32,7 @@
                     </th>
                     <th id="quantity">Số lượng (kg)</th>
                     <th id="price"> &emsp;Giá </th>
+                    <th id=""> &emsp;Hành động </th>
                 </tr>
                 <!-- row1 -->
                 @foreach ($hoaDon->itemHoaDon as $item)
@@ -39,7 +40,7 @@
                     <tr id="row01">
                         <td class="voucher">
                             <div class="img-voucher-description">
-                                <img src="../image/landing/card/chuối vàng.png" alt="">
+                                <img src="{{ asset($nongSan->hinhanh[0]->src) }}" alt="">
                                 <p style="font-size: 13px; margin: 0px 10px;">{{ $nongSan->tenNongSan }}</p>
                             </div>
 
@@ -48,14 +49,22 @@
                             <span class="py-5" for="" style="font-size: 13px;">{{ $item->soluong }}</span>
                         </td>
                         <td class="price">
-                            <div style="font-size: 13px; width: 100%; display: flex; position: relative;left: -50px;">
-                                <span class="col-10 mt-2" style="font-size: 13px;">{{ $item->soluong * $item->dongia }}
+                            <div style="font-size: 13px; width: 100%; display: flex; position: relative;">
+                                <span class="col-10 mt-2"
+                                    style="font-size: 13px;">{{ number_format($item->soluong * $item->dongia, 0, ',', ' ') }}
                                     vnd</span>
+                            </div>
+
+                        </td>
+                        <td>
+                            @if ($hoaDon->id_trangthai == 5)
+
                                 <button class="bg-transparent border-0"><span class="iconify"
                                         data-icon="ant-design:comment-outlined"
                                         style="color: #177a4c; font-size: 30px;"></span></button>
-                            </div>
-
+                            @else
+                                <span class="py-5" for="" style="font-size: 13px;">Chưa thể đánh giá</span>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
@@ -168,6 +177,8 @@
         </div>
     </div>
     <script>
+        function redirectToCommentNongSan() {
 
+        }
     </script>
 @endsection
