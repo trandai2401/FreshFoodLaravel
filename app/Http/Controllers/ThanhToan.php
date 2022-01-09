@@ -37,15 +37,15 @@ class ThanhToan extends Controller
 
         $chiTietGiohangs = itemgiohang::where('id_giohang', $user->giohang[0]->id)->get();
         foreach ($chiTietGiohangs as $item) {
-            echo $item;
+
             $itemHoaDon = new itemhoadon();
             $itemHoaDon->id_hoadon =  $hoaDon->id;
-            $itemHoaDon->dongia = $item->soluong;
+
             $itemHoaDon->soluong = $item->soluong;
 
             $nongsan = ModelsNongsan::find($item->id_nongsan);
             $itemHoaDon->id_nongsan = $nongsan->id;
-
+            $itemHoaDon->dongia = $nongsan->gia;
             $itemHoaDon->save();
         }
 

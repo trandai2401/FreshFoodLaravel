@@ -351,10 +351,11 @@
 
         //
         function addComment() {
+            var text_sao = document.getElementById("sao_rate");
             for (let item of saoRating) {
                 if (item.checked == true) {
                     var sao = item.value;
-                    var text_sao = document.getElementById("sao_rate");
+
                     text_sao.innerText = sao;
                     console.log(item.value);
                 }
@@ -369,10 +370,10 @@
             div02.className = "mx-3 my-2";
             div02.innerHTML =
                 '<div class="d-flex user_comment"> <span class="iconify" data-icon="carbon:user-avatar-filled-alt" style="color: #ffbf00; font-size: 30px;"></span> <strong><label class="mx-3" style="position: relative; top: 5px;" for="">NyDienKhum</label></strong><span id="sao_rate" for="" style="font-size: 20px;">' +
-                text_sao +
+                text_sao.innerText +
                 '</span> <span class="iconify mx-1" data-icon="bi:star-fill" style="color: #ffb416; font-size: 17px; position: relative; top: 5px;"></span>  </div> <div class="noidungBL">   <p id="noidung_BL_text" style="font-weight: 100;">' +
                 text_content_cmt + '</p> </div>';
-            div[0].append(div02);
+            div[0].insertBefore(div, div[0].firstChild);
 
             var rm = document.getElementById("remove_div");
             rm.remove();
@@ -395,11 +396,6 @@
                 data: form,
                 contentType: false,
                 processData: false
-
-                // {
-                //     _token: "{{ csrf_token() }}",
-                //     images: imagefile
-                // }
             }).done(function(result) {
                 console.log(result);
 

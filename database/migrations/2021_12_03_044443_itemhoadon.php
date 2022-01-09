@@ -14,13 +14,13 @@ class Itemhoadon extends Migration
     public function up()
     {
         Schema::create('itemhoadon', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('id_hoadon');
             $table->unsignedBigInteger('id_nongsan');
             $table->integer('soluong');
             $table->bigInteger('dongia');
-            $table->foreign('id_hoadon')->references('id')->on('hoadon');
+            $table->foreign('id_hoadon')->references('id')->on('hoadon')->onDelete('cascade');
             $table->foreign('id_nongsan')->references('id')->on('nongsan');
-            // $table->primary(array('id_hoadon', 'id_nongsan'));
             $table->integer('duocdanhgia')->default(0);
             $table->timestamps();
         });
