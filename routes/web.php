@@ -86,7 +86,6 @@ Route::post('/1234', function (Request $request) {
 });
 
 Route::post('/123', function (Request $request) {
-    return $request->arrDiaDiem;
     $sortBy = $request->sortBy;
     $temp  = "";
     if ($request->giaTriKetThuc != '') {
