@@ -21,6 +21,7 @@ class Binhluan extends Migration
             $table->text('noidung');
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_nongsan')->references('id')->on('nongsan');
+            $table->integer('sosao');
             // $table->primary(array('id_user', 'id_nongsan'));
             $table->timestamps();
         });

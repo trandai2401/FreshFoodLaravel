@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\KhachHangController;
 use App\Http\Controllers\admin\NhanVienController;
 use App\Http\Controllers\admin\nongsan as AdminNongsan;
 use App\Http\Controllers\ChiTietHoaDonController;
+use App\Http\Controllers\DanhGiaController;
 use App\Http\Controllers\login;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\ThanhToan;
@@ -145,4 +146,6 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
     Route::get('chiTietHD/{idHoaDon}', [ChiTietHoaDonController::class, 'getChiTietHoaDon'])->name('chiTietHD');
 
     Route::post('thanhtoan', [ThanhToan::class, 'postThanhToan']);
+
+    Route::post('danhgia', [DanhGiaController::class, "postDanhGia"]);
 });
