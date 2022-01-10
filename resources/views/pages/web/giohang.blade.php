@@ -4,8 +4,6 @@
     <link rel="stylesheet" href="{{ asset('style/cartVoucher-style/cartVoucher.css') }}">
     <div class="container path title mt-3">
         <p> <a href="#"><b class="text-success">Trang chủ</b></a> / <b>Giỏ hàng</b></p>
-
-        <p> <a href="giohang">nhap </a></p>
     </div>
 
     <div class="container body-main">
@@ -315,9 +313,9 @@
 
                     <div class="form-group">
                         <label for="exampleFormControlSelect1" style="font-size: 10px; font-weight: 600;" >Số  nhà</label>
-                        <input  style="font-size: 13px; font-weight: 600;" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Địa chỉ số nhà">
+                        <input  style="font-size: 13px; font-weight: 600;" type="text" class="form-control" id="diachisonha" placeholder="Địa chỉ số nhà">
                     </div>
-                <button type="button" class="btn btn-success w-100 mt-2" style="font-size: 13px;">Thanh toán ngay</button>
+                <button onclick="thanhtoanGH();"  id="btn_thanhtoan" type="button" class="btn btn-success w-100 mt-2" style="font-size: 13px;">Thanh toán ngay</button>
             </div>
 
 
@@ -389,9 +387,23 @@
 
 
     <script>
+
          var formTT = document.getElementById("tinhthanh");
         var formQH = document.getElementById("quanhuyen");
         var formPX  = document.getElementById("phuongxa");
+        var tienShip_sau = 0;
+        var tongtienHang_HD_tamtinh = {{($gioHang->tongTienGioHang($gioHang->id)) }};
+        var maPT_sau = 0;
+        
+        
+        
+        
+
+
+
+
+
+
         function laySLNS(){
             var solg = 0;
             var dsInput = document.getElementsByClassName("form-control input soluongNS");
@@ -436,6 +448,7 @@
         function thuhoaxuxu(){
             console.log(formTT.value);
             callApiQuanHuyen(formTT.value);
+            
         }
 
         function changeQH(){
@@ -525,7 +538,7 @@
 
                 var maQH = formQH.value;
                 callApiGiaCuocVanChuyen(maPT, maQH);
-                
+                maPT_sau = maPT;
 
             });
         }
@@ -563,13 +576,9 @@
                 var tongPhiShip = data.data.total;
                 var phigiao = document.getElementById("phigiaohang");
                 phigiao.innerText =String(tongPhiShip).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " đ"; 
+                tienShip_sau = tongPhiShip;
             });
         }
-
-        
-
-
-
 
         function editCart(idNS, sl, gia) {
             var form = new FormData();
@@ -600,16 +609,17 @@
             })
         }
 
-        
-
         function updateTongTienThanhToan(result) {
+
             var tongtienthanhtoan = document.getElementById('tongtienthanhtoan');
-            tongtienthanhtoan.innerHTML = String(result).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " đ"
+            
+            tongtienthanhtoan.innerHTML = String((result - 0) + (tienShip_sau - 0 )).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " đ"
 
             var tamtinh = document.getElementById('tamtinh');
             tamtinh.innerHTML = String(result).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " đ";
+            tongtienHang_HD_tamtinh = result;
+            callApiGiaCuocVanChuyen(maPT_sau, formQH.value);
         }
-
 
         function removeRow(idNS) {
             var form = new FormData();
@@ -638,7 +648,54 @@
             })
         }
 
+        function thanhtoanGH(){
+            // tổng hợp địa chỉ
+            var so_diachiTT = formTT.selectedIndex;
+            var ten_diachiTT = formTT.options[so_diachiTT].text;
+            console.log(ten_diachiTT);
 
+            var so_diachiQH = formQH.selectedIndex;
+            var ten_diachiQH = formQH.options[so_diachiQH].text;
+            console.log(ten_diachiQH);
+
+            var so_diachiPX = formPX.selectedIndex;
+            var ten_diachiPX = formPX.options[so_diachiPX].text;
+            console.log(ten_diachiPX);
+
+            var diachi_chiTiet = document.getElementById("diachisonha").value;
+
+            // gộp địa chỉ
+            var diachiGiaoHang = ""+ ""+ ten_diachiTT+ ", "+ ten_diachiQH+ ", "+ ten_diachiPX+ ", "+ diachi_chiTiet;
+            console.log(diachiGiaoHang);
+
+
+            var form = new FormData();
+            form.append("_token",'{{ csrf_token() }}');
+            // form.append("diaChi", );
+            form.append("tienShip", formQH.value);
+
+
+            
+            $.ajax({
+                method: 'post',
+                url: "{{ route('cart1') }}",
+                context: document.body,
+                data : from,
+                contentType: false,
+                processData: false
+            }).done(function(result) {
+                try {
+                    
+                } catch (error) {
+                    
+                }
+            }).fail(function(result) {
+                thongBao("alert-danger", "Đã có lỗi xãy ra");
+            })
+        }
+
+
+        
 
     </script>
 
