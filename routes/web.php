@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\add;
+use App\Http\Controllers\admin\HoaDonController;
 use App\Http\Controllers\admin\KhachHangController;
 use App\Http\Controllers\admin\NhanVienController;
 use App\Http\Controllers\admin\nongsan as AdminNongsan;
@@ -67,6 +68,8 @@ Route::middleware('AuthAdmin', 'CheckLogin')->prefix('/admin')->group(function (
     Route::get('add-nong-san', [AdminNongsan::class, 'get'])->name('AdminAddNongSan');
     Route::post('add-nong-san', [AdminNongsan::class, 'addNongSan']);
     Route::get('add', [add::class, 'hello']);
+
+    Route::get("hoadon", [HoaDonController::class, 'getViewAdmin']);
 });
 
 // HOME
