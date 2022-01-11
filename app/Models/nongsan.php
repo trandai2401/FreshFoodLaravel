@@ -20,4 +20,9 @@ class nongsan extends Model
     {
         return $this->hasMany(hinhanh::class, 'id_nongsan', 'id');
     }
+
+    public function binhLuan()
+    {
+        return $this->hasMany(binhluan::class, 'id_nongsan', 'id');
+    }
 }

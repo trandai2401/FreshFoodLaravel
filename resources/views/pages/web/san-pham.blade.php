@@ -194,25 +194,31 @@
                             Soluta voluptate, aspernatur voluptatibus, commodi alias impedit obcaecati molestiae</p>
                     </div>
                 </div>
-            </div>
 
+                @foreach ($nongsan->binhLuan as $item)
+                    <div class="mx-3 my-2">
+                        <div class="d-flex user_comment">
+                            <span class="iconify" data-icon="carbon:user-avatar-filled-alt"
+                                style="color: #ffbf00; font-size: 30px;"></span>
+                            <strong><label class="mx-3" style="position: relative; top: 5px;"
+                                    for="">NyDienKhum</label></strong>
+                            <span for="" style="font-size: 20px;" id="sao_rate">4</span>
+                            <span class="iconify mx-1" data-icon="bi:star-fill"
+                                style="color: #ffb416; font-size: 17px; position: relative; top: 5px;"></span>
+                        </div>
+
+                        <div class="noidungBL">
+                            <p id="noidung_BL_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                                Soluta voluptate, aspernatur voluptatibus, commodi alias impedit obcaecati molestiae</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
 
             <!-- Phân trang -->
 
             <!-- Pagination // phân trang button -->
-            <div class="container pagination  d-flex">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
-            </div>
+
         </div>
         <!-- Part 2.3: Sản phẩm liên quan -->
         <div class="container SPlienquan card_product_right">
