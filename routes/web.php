@@ -70,6 +70,11 @@ Route::middleware('AuthAdmin', 'CheckLogin')->prefix('/admin')->group(function (
     Route::get('add', [add::class, 'hello']);
 
     Route::get("hoadon", [HoaDonController::class, 'getViewAdmin']);
+
+    Route::get("dshoadon", function(){
+        return
+        view('pages.admin.ds-hoa-don');
+    });
 });
 
 // HOME
