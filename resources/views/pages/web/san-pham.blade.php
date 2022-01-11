@@ -23,7 +23,7 @@
             <div class="slide-left">
 
                 <div class="heart_btn bg-transparent border-0">
-                    <label for="">4.5</label>
+                    <label id="sosao_TB" for="">4.5</label>
                     <span class="iconify" data-icon="bi:star-fill"
                         style="color: #ffb416; font-size: 20px; position: relative; top: -3px;"></span>
                 </div>
@@ -41,20 +41,6 @@
                             <?php $active = ''; ?>
                         @endforeach
 
-
-
-                        {{-- <div class="carousel-item border-1">
-                            <img src="../image/landing/card/bơ.png" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block text-left text-light">
-
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="../image/landing/card/chuối vàng.png" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block text-left text-light">
-
-                            </div>
-                        </div> --}}
                     </div>
                     <hr>
 
@@ -67,12 +53,6 @@
                             <?php $active = ''; ?>
                         @endforeach
 
-                        {{-- <li data-target="#carouselExampleIndicators" data-slide-to="1">
-                            <img src="../image/landing/card/chanh vàng.png" class="d-block w-100" alt="...">
-                        </li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2">
-                            <img src="../image/landing/card/cà chua bi.png" class="d-block w-100" alt="...">
-                        </li> --}}
                     </ol>
 
                     <div style="margin-top: 80px;">
@@ -134,8 +114,7 @@
                     <!-- Phần bình luận -->
                     <div class="container comment_content">
                         <div class="d-flex">
-                            <b class="mx-5">Tài khoản:</b> <label for="" style="color: #216e38;">Tăng Thị Thu
-                                Hòa</label>
+                            <b class="mx-5">Tài khoản:</b> <label id="tenUser_BL" for="" style="color: #216e38;"> {{$user->name}}</label>
                             <br>
 
                         </div>
@@ -183,7 +162,7 @@
                         <span class="iconify" data-icon="carbon:user-avatar-filled-alt"
                             style="color: #ffbf00; font-size: 30px;"></span>
                         <strong><label class="mx-3" style="position: relative; top: 5px;"
-                                for="">NyDienKhum</label></strong>
+                                for="">Khách hàng 1</label></strong>
                         <span for="" style="font-size: 20px;" id="sao_rate">4</span>
                         <span class="iconify mx-1" data-icon="bi:star-fill"
                             style="color: #ffb416; font-size: 17px; position: relative; top: 5px;"></span>
@@ -351,8 +330,9 @@
     <script>
         //   rating star
         var saoRating = document.getElementsByName("rate");
-
-
+        var sosao_DG = 0;
+        var noidung_DG = 0;
+        var trungbinh_sao = document.getElementById("sosao_TB");
         //
         function addComment() {
             var soSaoInput = 0;
@@ -361,6 +341,7 @@
                     var sao = item.value;
 
                     soSaoInput = sao - 0;
+                    sosao_DG = soSaoInput;
                     console.log(item.value);
                 }
 
@@ -369,7 +350,7 @@
             var div = document.getElementsByClassName('nguoi_binhLuan mx-5');
 
             var text_content_cmt = text_cmt.value;
-
+            noidung_DG = text_cmt.value;
             var div02 = document.createElement('div');
             div02.className = "mx-3 my-2";
             div02.innerHTML =
@@ -381,6 +362,8 @@
 
             var rm = document.getElementById("remove_div");
             rm.remove();
+
+            danhgia_BL();
         }
 
 
@@ -409,6 +392,39 @@
                 console.log(result);
             })
         })
+
+
+        // đánh giá - comment
+        function danhgia_BL(){
+            const urlParams = new URLSearchParams(window.location.search);
+            const myParam = urlParams.get('idItemHoaDon');
+            var form = new FormData();
+            form.append("_token",'{{ csrf_token() }}');
+            form.append("soSao", sosao_DG);
+            console.log(sosao_DG);
+            form.append("noiDung", noidung_DG);
+            console.log(noidung_DG);
+            form.append("idItemHoaDon", myParam);
+
+            $.ajax({
+                method: 'post',
+                url: "http://localhost/FreshFoodLaravel/public/user/danhgia",
+                context: document.body,
+                data : form,
+                contentType: false,
+                processData: false
+            }).done(function(result) {
+                try {
+                    console.log(result);
+                    trungbinh_sao.innerHTML = result.nongSan.sosao;
+                    
+                } catch (error) {
+                    
+                }
+            }).fail(function(result) {
+                thongBao("alert-danger", "Đã có lỗi xãy ra");
+            })
+        }
     </script>
     <script type=" text/javascript " src=" ../js/home.js "></script>
     <script src=" https://use.fontawesome.com/3af9727d51.js "></script>
