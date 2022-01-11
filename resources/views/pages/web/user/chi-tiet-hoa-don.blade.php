@@ -59,7 +59,8 @@
                         <td>
                             @if ($hoaDon->id_trangthai == 5)
 
-                                <button class="bg-transparent border-0"><span class="iconify"
+                                <button onclick="redirectToCommentNongSan({{ $item->id }})"
+                                    class="bg-transparent border-0"><span class="iconify"
                                         data-icon="ant-design:comment-outlined"
                                         style="color: #177a4c; font-size: 30px;"></span></button>
                             @else
@@ -177,8 +178,8 @@
         </div>
     </div>
     <script>
-        function redirectToCommentNongSan() {
-
+        function redirectToCommentNongSan(id) {
+            window.location = "http://localhost/FreshFoodLaravel/public/nongsan/1?idItemHoaDon=" + id;
         }
     </script>
 @endsection
