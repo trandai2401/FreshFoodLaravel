@@ -75,6 +75,16 @@ Route::middleware('AuthAdmin', 'CheckLogin')->prefix('/admin')->group(function (
         return
         view('pages.admin.ds-hoa-don');
     });
+
+    Route::get("ds-hd-daduyet", function(){
+        return
+        view('pages.admin.ds-hoa-don-daduyet');
+    });
+
+    Route::get("chitiet-hd-kh", function(){
+        return
+        view('pages.admin.chitiet_hd_khachhang');
+    });
 });
 
 // HOME

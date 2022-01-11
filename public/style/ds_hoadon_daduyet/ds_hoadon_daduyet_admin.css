@@ -1,0 +1,16 @@
+#table_datatablesSimple{
+    position: absolute;
+    top: 50px;
+    margin: 20px 0%;
+    width: 80%;
+}
+
+.chitiet_HD{
+    text-decoration: none;
+    color: brown;
+}
+
+.chitiet_HD:hover{
+    text-decoration: none;
+    color: brown;}
+    
