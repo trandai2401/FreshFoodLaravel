@@ -671,21 +671,21 @@
 
             var form = new FormData();
             form.append("_token",'{{ csrf_token() }}');
-            // form.append("diaChi", );
-            form.append("tienShip", formQH.value);
+            form.append("diaChi", diachiGiaoHang);
+            form.append("tienShip", tienShip_sau);
 
-
-            
             $.ajax({
                 method: 'post',
-                url: "{{ route('cart1') }}",
+                url: "http://localhost/FreshFoodLaravel/public/user/thanhtoan",
                 context: document.body,
-                data : from,
+                data : form,
                 contentType: false,
                 processData: false
             }).done(function(result) {
                 try {
-                    
+                    console.log(result);
+
+                    window.location="http://localhost/FreshFoodLaravel/public/user/chiTietHD/" + result.id;
                 } catch (error) {
                     
                 }
@@ -694,7 +694,7 @@
             })
         }
 
-
+   
         
 
     </script>

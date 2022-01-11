@@ -51,6 +51,6 @@ class ThanhToan extends Controller
 
 
         itemgiohang::where('id_giohang', $user->giohang[0]->id)->delete();
-        return  $user->giohang;
+        return  $hoaDon;
     }
 }
