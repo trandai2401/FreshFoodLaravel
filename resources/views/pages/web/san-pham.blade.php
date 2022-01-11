@@ -23,7 +23,7 @@
             <div class="slide-left">
 
                 <div class="heart_btn bg-transparent border-0">
-                    <label id="sosao_TB" for="">4.5</label>
+                    <label id="sosao_TB" for="">{{ $nongsan->sosao }}</label>
                     <span class="iconify" data-icon="bi:star-fill"
                         style="color: #ffb416; font-size: 20px; position: relative; top: -3px;"></span>
                 </div>
@@ -114,7 +114,8 @@
                     <!-- Phần bình luận -->
                     <div class="container comment_content">
                         <div class="d-flex">
-                            <b class="mx-5">Tài khoản:</b> <label id="tenUser_BL" for="" style="color: #216e38;"> {{$user->name}}</label>
+                            <b class="mx-5">Tài khoản:</b> <label id="tenUser_BL" for="" style="color: #216e38;">
+                                {{ $user->name }}</label>
                             <br>
 
                         </div>
@@ -157,22 +158,6 @@
                 <label for="" style="font-size: 12px; font-weight: 800;">Danh sách người bình luận</label>
             </div>
             <div class="nguoi_binhLuan mx-5">
-                <div class="mx-3 my-2">
-                    <div class="d-flex user_comment">
-                        <span class="iconify" data-icon="carbon:user-avatar-filled-alt"
-                            style="color: #ffbf00; font-size: 30px;"></span>
-                        <strong><label class="mx-3" style="position: relative; top: 5px;"
-                                for="">Khách hàng 1</label></strong>
-                        <span for="" style="font-size: 20px;" id="sao_rate">4</span>
-                        <span class="iconify mx-1" data-icon="bi:star-fill"
-                            style="color: #ffb416; font-size: 17px; position: relative; top: 5px;"></span>
-                    </div>
-
-                    <div class="noidungBL">
-                        <p id="noidung_BL_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                            Soluta voluptate, aspernatur voluptatibus, commodi alias impedit obcaecati molestiae</p>
-                    </div>
-                </div>
 
                 @foreach ($nongsan->binhLuan as $item)
                     <div class="mx-3 my-2">
@@ -180,15 +165,14 @@
                             <span class="iconify" data-icon="carbon:user-avatar-filled-alt"
                                 style="color: #ffbf00; font-size: 30px;"></span>
                             <strong><label class="mx-3" style="position: relative; top: 5px;"
-                                    for="">NyDienKhum</label></strong>
-                            <span for="" style="font-size: 20px;" id="sao_rate">4</span>
+                                    for="">{{ $item->user->name }}</label></strong>
+                            <span for="" style="font-size: 20px;" id="sao_rate">{{ $item->sosao }}</span>
                             <span class="iconify mx-1" data-icon="bi:star-fill"
                                 style="color: #ffb416; font-size: 17px; position: relative; top: 5px;"></span>
                         </div>
 
                         <div class="noidungBL">
-                            <p id="noidung_BL_text">Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                                Soluta voluptate, aspernatur voluptatibus, commodi alias impedit obcaecati molestiae</p>
+                            <p id="noidung_BL_text">{{ $item->noidung }}</p>
                         </div>
                     </div>
                 @endforeach
@@ -401,11 +385,11 @@
 
 
         // đánh giá - comment
-        function danhgia_BL(){
+        function danhgia_BL() {
             const urlParams = new URLSearchParams(window.location.search);
             const myParam = urlParams.get('idItemHoaDon');
             var form = new FormData();
-            form.append("_token",'{{ csrf_token() }}');
+            form.append("_token", '{{ csrf_token() }}');
             form.append("soSao", sosao_DG);
             console.log(sosao_DG);
             form.append("noiDung", noidung_DG);
@@ -416,16 +400,16 @@
                 method: 'post',
                 url: "http://localhost/FreshFoodLaravel/public/user/danhgia",
                 context: document.body,
-                data : form,
+                data: form,
                 contentType: false,
                 processData: false
             }).done(function(result) {
                 try {
                     console.log(result);
                     trungbinh_sao.innerHTML = result.nongSan.sosao;
-                    
+
                 } catch (error) {
-                    
+
                 }
             }).fail(function(result) {
                 thongBao("alert-danger", "Đã có lỗi xãy ra");

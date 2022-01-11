@@ -9,4 +9,10 @@ class binhluan extends Model
 {
     use HasFactory;
     protected $table = "danhgia";
+
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 }
