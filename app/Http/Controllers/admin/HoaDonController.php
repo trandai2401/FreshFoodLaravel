@@ -18,5 +18,6 @@ class HoaDonController extends Controller
     function putTrangThaiHoaDon(Request $request)
     {
         $idTrangThai = $request->idTrangThai;
+        $id_HoaDon = $request->idHoaDon;
     }
 }
