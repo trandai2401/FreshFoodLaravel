@@ -3,6 +3,9 @@
 
 <head>
     
+    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+<div class="elfsight-app-ee4ee904-4f83-4ad8-9b9d-3b00ae61810c"></div>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
