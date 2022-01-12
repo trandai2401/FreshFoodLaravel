@@ -22,4 +22,9 @@ class hoadon extends Model
     {
         return $this->belongsTo(trangthai::class, 'id_trangthai', 'id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id');
+    }
 }
