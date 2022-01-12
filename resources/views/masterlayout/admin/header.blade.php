@@ -12,8 +12,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-    <div class="elfsight-app-ee4ee904-4f83-4ad8-9b9d-3b00ae61810c"></div>
+    {{-- <script src="https://apps.elfsight.com/p/platform.js" defer></script>
+    <div class="elfsight-app-ee4ee904-4f83-4ad8-9b9d-3b00ae61810c"></div> --}}
 
     <!-- CKEditor -->
     {{-- <script src="//cdn.ckeditor.com/4.17.1/basic/ckeditor.js" charset="utf-8"></script> --}}
@@ -245,7 +245,7 @@
                             Giỏ hàng
                         </a>
                         <!-- Part 2.1.8: Statistics menu -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="{{asset('http://localhost/FreshFoodLaravel/public/admin/thongke')}}">
                             <div class="sb-nav-link-icon"><span class="iconify mr-3" data-icon="wpf:statistics"
                                     style="font-size: 20px;"></span></div>
                             Thống kê
