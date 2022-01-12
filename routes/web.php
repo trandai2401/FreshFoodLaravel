@@ -19,6 +19,7 @@ use App\Models\hoadon;
 use App\Models\itemgiohang;
 use App\Models\nongsan;
 use App\Models\role;
+use App\Models\trangthai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -71,19 +72,35 @@ Route::middleware('AuthAdmin', 'CheckLogin')->prefix('/admin')->group(function (
 
     Route::get("hoadon", [HoaDonController::class, 'getViewAdmin']);
 
-    Route::get("dshoadon", function(){
-        return
-        view('pages.admin.ds-hoa-don');
-    });
+    Route::get("dshoadon", function () {
+        $hoaDons = hoadon::orderByDesc('created_at')->get();
 
-    Route::get("ds-hd-daduyet", function(){
         return
-        view('pages.admin.ds-hoa-don-daduyet');
-    });
+            view('pages.admin.ds-hoa-don', ["hoaDons" => $hoaDons]);
+    })->name("DSHoaDon");
 
-    Route::get("chitiet-hd-kh", function(){
+
+
+
+    Route::get("ds-hd-daduyet", function () {
+        $hoaDons = hoadon::where('id_trangthai', 5)->orderByDesc('created_at')->get();
         return
-        view('pages.admin.chitiet_hd_khachhang');
+            view('pages.admin.ds-hoa-don-daduyet', ["hoaDons" => $hoaDons]);
+    })->name('dsHoaDonDaNhanHang');
+
+    Route::get("chitiet-hd-kh/{idHoaDon}", function ($idHoaDon) {
+        $hoaDon = hoaDon::find($idHoaDon);
+        $trangThai = trangthai::get();
+        return
+            view('pages.admin.chitiet_hd_khachhang', ['hoaDon' => $hoaDon, 'trangThai' => $trangThai]);
+    })->name('chiTietHoaDon');
+
+
+    Route::post("chitiet-hd-kh/{idHoaDon}", function ($idHoaDon, Request $request) {
+        $hoaDon = hoaDon::find($idHoaDon);
+        $hoaDon->id_trangthai = $request->idTrangthai;
+        $hoaDon->save();
+        return $hoaDon;
     });
 });
 
@@ -156,7 +173,7 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
             $trangDuocChon = $request->trangDuocChon;
         }
 
-        $hoaDons = hoadon::offset(($trangDuocChon - 1) * 6)->limit(6)->get();
+        $hoaDons = hoadon::offset(($trangDuocChon - 1) * 6)->limit(6)->orderByDesc('created_at')->get();
         // return  $hoaDons;
         return view("pages.web.user.danh-sach-hoa-don", ['hoaDons' => $hoaDons]);
     })->name('danhsachHoadon');

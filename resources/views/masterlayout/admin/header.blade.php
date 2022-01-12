@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    <base href="{{ asset('public') }}">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,17 +18,17 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/31.1.0/classic/translations/vi.js"></script>
 
     <!-- link css bootstrap -->
-    <link rel="stylesheet" href="../bootstrap/bootstrap-4.6.0-dist/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="../bootstrap/bootstrap-4.6.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/bootstrap-4.6.0-dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="bootstrap/bootstrap-4.6.0-dist/css/bootstrap.css">
     <!-- link font family -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
     <!-- link style css -->
-    <link rel="stylesheet" href="../style/addVoucher-style/addVoucher.css">
+    <link rel="stylesheet" href="style/addVoucher-style/addVoucher.css">
 
     <!-- link style css style-for-adminShop -->
-    <link rel="stylesheet" href="../style/bootstrap-admin.css">
+    <link rel="stylesheet" href="style/bootstrap-admin.css">
 
 
     <!-- jQuery -->
@@ -195,15 +196,11 @@
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed ml-4" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
+                                <a class="nav-link collapsed ml-4" href="{{ route('DSHoaDon') }}">
                                     DS hóa đơn
                                 </a>
 
-                                <a class="nav-link collapsed ml-4" href="#" data-bs-toggle="collapse"
-                                    data-bs-target="#pagesCollapseAuth" aria-expanded="false"
-                                    aria-controls="pagesCollapseAuth">
+                                <a class=" nav-link collapsed ml-4" href="{{ route('dsHoaDonDaNhanHang') }}">
                                     Hóa đơn đã duyệt
                                 </a>
 
@@ -218,7 +215,8 @@
                         <!-- Part 2.1.6: Customer menu -->
                         <!-- Part 2.1.3: Product menu -->
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts_01" aria-expanded="false" aria-controls="collapseLayouts_01">
+                            data-bs-target="#collapseLayouts_01" aria-expanded="false"
+                            aria-controls="collapseLayouts_01">
                             <div class="sb-nav-link-icon"><span class="iconify mr-3"
                                     data-icon="icon-park-outline:health-products" style="font-size: 20px;"></span></div>
                             Nhân viên
@@ -228,13 +226,14 @@
                         <div class="collapse" id="collapseLayouts_01" aria-labelledby="headingOne"
                             data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link ml-4" href="{{ route('AdminNhanVien') }}">DS Nhân viên<nav></nav></a>
+                                <a class="nav-link ml-4" href="{{ route('AdminNhanVien') }}">DS Nhân viên<nav></nav>
+                                </a>
                                 <a class="nav-link ml-4" href="{{ route('AdminAddNongSan') }}">Thêm nhân viên</a>
                                 <!-- <a class="nav-link ml-4" href="layout-sidenav-light.html">Sửa sản phẩm</a> -->
                             </nav>
                         </div>
 
-                        
+
                         <!-- Part 2.1.7: Order menu -->
                         <a class="nav-link" href="index.html">
                             <div class="sb-nav-link-icon"><span class="iconify mr-3" data-icon="mdi:cart-heart"
