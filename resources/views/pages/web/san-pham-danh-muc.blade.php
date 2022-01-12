@@ -54,6 +54,8 @@
 
             <!-- Part 2.2.1: Service-left -->
             <div class="service_left mr-3">
+                <button onclick="loc({{ $tenDanhMuc[0]->id }},1)" type="button" class="btn btn-outline-success mx-4"
+                    style=" margin-bottom: 30px; width: 80%; height: 30px; font-size: 10px; position: relative; top: 20px;">Áp dụng</button>
 
                 <!-- item-2: Price range -->
                 <div class="price_range">
@@ -96,30 +98,65 @@
 
                 <!-- item-4: Salesroom -->
                 <div class="salesroom">
-                    <p class="text-success ml-4 my-3"><strong>Giảm giá</strong></p>
+                    <p class="text-success ml-4 my-3"><strong>Lọc theo sao đánh giá</strong></p>
                     <label class="checkbox mx-4 mb-3">
                         <input class="mr-3 text-danger" type="checkbox" id="checkbox_address_HaNoi" name="scales"
                             style="background: #e94560;">
-                        <i class="mr-3 icon-checkbox"></i>Giảm giá trong ngày
+                        <i class="mr-3 icon-checkbox"></i>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #c0c0c0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #c0c0c0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #c0c0c0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #c0c0c0; font-size: 25px;"></span>
+                        
                         <!-- <label class="state p-dange" for="checkbox_address_HaNoi">Hà Nội</label> -->
                     </label>
                     <label class="checkbox mx-4 mb-3">
                         <input class="mr-3 text-danger" type="checkbox" id="checkbox_address_HaNoi" name="scales"
                             style="background: #e94560;">
-                        <i class="mr-3 icon-checkbox"></i>Giảm giá trong tuần
+                        <i class="mr-3 icon-checkbox"></i>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #c0c0c0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #c0c0c0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #c0c0c0; font-size: 25px;"></span>
                         <!-- <label class="state p-dange" for="checkbox_address_HaNoi">Hà Nội</label> -->
                     </label>
                     <label class="checkbox mx-4 mb-3">
                         <input class="mr-3 text-danger" type="checkbox" id="checkbox_address_HaNoi" name="scales"
                             style="background: #e94560;">
-                        <i class="mr-3 icon-checkbox"></i>Giảm giá trong tháng
+                        <i class="mr-3 icon-checkbox"></i>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #c0c0c0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #c0c0c0; font-size: 25px;"></span>
+                        <!-- <label class="state p-dange" for="checkbox_address_HaNoi">Hà Nội</label> -->
+                    </label>
+                    <label class="checkbox mx-4 mb-3">
+                        <input class="mr-3 text-danger" type="checkbox" id="checkbox_address_HaNoi" name="scales" style="background: #e94560;">
+                        <i class="mr-3 icon-checkbox"></i>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #c0c0c0; font-size: 25px;"></span>
+                        <!-- <label class="state p-dange" for="checkbox_address_HaNoi">Hà Nội</label> -->
+                    </label>
+                    <label class="checkbox mx-4 mb-3">
+                        <input class="mr-3 text-danger" type="checkbox" id="checkbox_address_HaNoi" name="scales" style="background: #e94560;">
+                        <i class="mr-3 icon-checkbox"></i>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
+                        <span class="iconify" data-icon="ant-design:star-filled" style="color: #fb0; font-size: 25px;"></span>
                         <!-- <label class="state p-dange" for="checkbox_address_HaNoi">Hà Nội</label> -->
                     </label>
 
                 </div>
 
-                <button onclick="loc({{ $tenDanhMuc[0]->id }},1)" type="button" class="btn btn-outline-success mx-4"
-                    style="width: 80%; height: 30px; font-size: 10px; position: relative; top: 20px;">Áp dụng</button>
+                
             </div>
 
             <!-- Part 2.2.2: Card-product-right -->

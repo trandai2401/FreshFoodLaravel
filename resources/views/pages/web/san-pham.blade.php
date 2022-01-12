@@ -154,8 +154,35 @@
 
 
             <!-- List bình luận cũ -->
+            <div class="loc_sao mx-5">
+                <label for="" style="font-size: 15px; font-weight: 800;"> Lọc theo sao đánh giá</label>
+
+                <div class="hienthi_text" style="font-size: 20px; font-weight: 800;color: #0e8b25">
+                    <label for="" id="sosao_chon">4</label>
+                    <label for="">sao trên 5 sao</label>
+                </div>
+
+                <div>
+                    <button onclick="chonSao(5);" id="btn_sao5" type="button" class="btn  text-white px-4 mx-2 mb-4" value="5" style="font-size: 25px; background-color: #0e8b25;">
+                        5 <span class="iconify" data-icon="carbon:location-star" style="color: #ffffff; font-size: 40px;"></span>
+                    </button>
+                    <button onclick="chonSao(4);" id="btn_sao4" type="button" class="btn  text-white px-4 mx-2 mb-4" value="4" style="font-size: 25px; background-color: #0e8b25;">
+                        4 <span class="iconify" data-icon="carbon:location-star" style="color: #ffffff; font-size: 40px;"></span>
+                    </button>
+                    <button onclick="chonSao(3);" id="btn_sao3" type="button" class="btn  text-white px-4 mx-2  mb-4" value="3" style="font-size: 25px; background-color: #0e8b25;">
+                        3 <span class="iconify" data-icon="carbon:location-star" style="color: #ffffff; font-size: 40px;"></span>
+                    </button>
+                    <button onclick="chonSao(2);" id="btn_sao2" type="button" class="btn  text-white px-4 mx-2 mb-4" value="2" style="font-size: 25px; background-color: #0e8b25;">
+                        2 <span class="iconify" data-icon="carbon:location-star" style="color: #ffffff; font-size: 40px;"></span>
+                    </button>
+                    <button onclick="chonSao(1);" id="btn_sao1" type="button" class="btn  text-white px-4 mx-2 mb-4" value="1" style="font-size: 25px; background-color: #0e8b25;">
+                        1 <span class="iconify" data-icon="carbon:location-star" style="color: #ffffff; font-size: 40px;"></span>
+                    </button>
+                </div>
+                
+            </div>
             <div class="title_BL mx-5">
-                <label for="" style="font-size: 12px; font-weight: 800;">Danh sách người bình luận</label>
+                <label for="" style="font-size: 15px; font-weight: 800;">Danh sách người bình luận</label>
             </div>
             <div class="nguoi_binhLuan mx-5">
 
@@ -415,6 +442,15 @@
                 thongBao("alert-danger", "Đã có lỗi xãy ra");
             })
         }
+
+        var sosao_Chon = document.getElementById("sosao_chon");
+
+        function chonSao(soSao){
+            sosao_Chon.innerHTML = soSao;
+        }
+
+
+
     </script>
     <script type=" text/javascript " src=" ../js/home.js "></script>
     <script src=" https://use.fontawesome.com/3af9727d51.js "></script>
