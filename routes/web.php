@@ -102,6 +102,12 @@ Route::middleware('AuthAdmin', 'CheckLogin')->prefix('/admin')->group(function (
         $hoaDon->save();
         return $hoaDon;
     });
+
+
+    Route::get("thongke", function(){
+        return
+        view('pages.admin.thongke');
+    });
 });
 
 // HOME
