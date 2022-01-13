@@ -19,5 +19,9 @@
             </div>
         </div>
     </div>
-    
+
 @endforeach
+<script>
+    var soLuongNongSan = document.getElementById('soLuongNongSan');
+    soLuongNongSan.innerHTML = "{{ count($nongsans) }}"
+</script>

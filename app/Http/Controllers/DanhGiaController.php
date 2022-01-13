@@ -41,7 +41,7 @@ class DanhGiaController extends Controller
         $nongSan->sosao = ($nongSan->sosao * ($nongSan->soluongdanhgia - 1) + $danhGia->sosao) / ($nongSan->soluongdanhgia);
 
         $nongSan->save();
-        $result  = ["danhGia" => $danhGia, "nongSan" => $nongSan];
+        $result  = ["danhGia" => $danhGia, "nongSan" => $nongSan, 'user' => $user];
         return $result;
     }
 }
