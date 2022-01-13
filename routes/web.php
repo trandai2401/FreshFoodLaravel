@@ -104,9 +104,9 @@ Route::middleware('AuthAdmin', 'CheckLogin')->prefix('/admin')->group(function (
     });
 
 
-    Route::get("thongke", function(){
+    Route::get("thongke", function () {
         return
-        view('pages.admin.thongke');
+            view('pages.admin.thongke');
     });
 });
 
@@ -117,6 +117,7 @@ Route::prefix('/')->group(function () {
     Route::get('danhmuc/{idDanhMuc}', [home::class, 'getSanPhamByDanhMuc'])->name('danhmuc');
 
     Route::get('nongsan/{idNongSan}', [home::class, 'getNongSanByID'])->name('nongsan');
+    Route::get('phantrangcomment/{idNongSan}', [home::class, 'getCommentByNongSanByID']);
 });
 Route::post('/1234', function (Request $request) {
 
@@ -142,11 +143,6 @@ Route::post('/123', function (Request $request) {
         }
         $queryByAddress .= " false )";
     }
-
-
-    // return $queryByAddress;
-    // return "SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan where gia >=  " . (int)$request->giaTribatDau .  $temp . "  and id_danhmuc = " . $request->idDanhMuc . $queryByAddress . " order by " . $sortBy;
-    // return  "SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan where gia >=  " . (int)$request->giaTribatDau . $temp . "  and id_danhmuc = " . $request->idDanhMuc;
     $res = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan  where gia >=  " . (int)$request->giaTribatDau .  $temp . "  and id_danhmuc = " . $request->idDanhMuc . $queryByAddress . " order by " . $sortBy . " LIMIT " . (($request->trangDuocChon - 1) * 6) . ",6");
     $res2 = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan  where gia >=  " . (int)$request->giaTribatDau .  $temp . "  and id_danhmuc = " . $request->idDanhMuc . $queryByAddress . " order by " . $sortBy);
     $idDanhMuc = $request->idDanhMuc;
@@ -183,6 +179,8 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
         // return  $hoaDons;
         return view("pages.web.user.danh-sach-hoa-don", ['hoaDons' => $hoaDons]);
     })->name('danhsachHoadon');
+
+
 
     Route::get('chiTietHD/{idHoaDon}', [ChiTietHoaDonController::class, 'getChiTietHoaDon'])->name('chiTietHD');
 

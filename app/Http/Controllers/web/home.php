@@ -4,6 +4,7 @@ namespace App\Http\Controllers\web;
 
 use App\Http\Controllers\admin\nongsan;
 use App\Http\Controllers\Controller;
+use App\Models\binhluan;
 use App\Models\danhmuc;
 use App\Models\itemhoadon;
 use App\Models\nongsan as ModelsNongsan;
@@ -37,8 +38,16 @@ class home extends Controller
         }
 
 
+        $trangDuocChon = 1;
+        if (isset($request->trangDuocChon)) {
+            $trangDuocChon = $request->trangDuocChon;
+        }
+
+        $binhLuan = binhluan::offset(($trangDuocChon - 1) * 3)->limit(3)->where('id_nongsan', $idNongSan)->orderByDesc('created_at')->get();
+
+
         $nongsan = ModelsNongsan::select()->where('id', $idNongSan)->get();
-        return view('pages.web.san-pham', ['nongsan' => $nongsan[0], "idItemHoaDon" => $idItemHoaDon]);
+        return view('pages.web.san-pham', ['nongsan' => $nongsan[0], "idItemHoaDon" => $idItemHoaDon, 'binhLuans' => $binhLuan]);
     }
 
 
@@ -47,5 +56,20 @@ class home extends Controller
         $arrayNongSAn =  ModelsNongsan::select()->where('id_danhmuc', $idDanhMuc)->offset(($index - 1) * 6)->limit(6)->get();
 
         return view('pages.web.ketquatimkiem.ketqua-timkiem-phantrang', ['nongsans' => $arrayNongSAn]);
+    }
+
+    public function getCommentByNongSanByID($idNongSan, Request $request)
+    {
+
+
+
+        $trangDuocChon = 1;
+        if (isset($request->trangDuocChon)) {
+            $trangDuocChon = $request->trangDuocChon;
+        }
+
+        $binhLuan = binhluan::offset(($trangDuocChon - 1) * 3)->limit(3)->where('id_nongsan', $idNongSan)->orderByDesc('created_at')->get();
+
+        return view('pages.web.ketquatimkiem.PhanTrangCommentNongSan', ['binhLuans' => $binhLuan]);
     }
 }
