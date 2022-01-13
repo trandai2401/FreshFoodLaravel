@@ -144,7 +144,7 @@
                             </div>
 
                             <div class="btn_themBL mx-5" style="width: 20%; position: relative; top: 50px;">
-                                <button onclick="addComment();" type="button" class="btn btn-outline"
+                                <button onclick="danhgia_BL()" type="button" class="btn btn-outline"
                                     style="background: #216e38; color: aliceblue; font-size: 13px;">Thêm bình luận</button>
                             </div>
                         </div>
@@ -158,11 +158,12 @@
                 <label for="" style="font-size: 15px; font-weight: 800;"> Lọc theo sao đánh giá</label>
 
                 <div class="hienthi_text" style="font-size: 20px; font-weight: 800;color: #0e8b25">
-                    <label for="" id="sosao_chon">4</label>
+                    <label for="" id="sosao_chon">{{ $nongsan->sosao }}</label>
                     <label for="">sao trên 5 sao</label>
                 </div>
 
                 <div>
+
 
                     <button onclick="chonSao(5);" id="btn_sao5" type="button" class="btn  px-4 mx-2 mb-4" value="5" style="font-size: 25px; background-color: #0e8b25; color:#ffff;">
                         Tất cả 
@@ -182,16 +183,16 @@
                     </button>
                     <button onclick="chonSao(1);" id="btn_sao1" type="button" class="btn  px-4 mx-2 mb-4" value="1" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
                         1 <span class="iconify" data-icon="clarity:star-solid" style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
-                    </button>
+
                 </div>
-                
+
             </div>
             <div class="title_BL mx-5">
                 <label for="" style="font-size: 15px; font-weight: 800;">Danh sách người bình luận</label>
             </div>
             <div class="nguoi_binhLuan mx-5">
 
-                @foreach ($nongsan->binhLuan as $item)
+                @foreach ($binhLuans as $item)
                     <div class="mx-3 my-2">
                         <div class="d-flex user_comment">
                             <span class="iconify" data-icon="carbon:user-avatar-filled-alt"
@@ -209,7 +210,24 @@
                     </div>
                 @endforeach
             </div>
+            <!-- Pagination // phân trang button -->
+            <div class="container pagination  d-flex">
+                <nav aria-label="Page navigation example" style="margin: auto;">
+                    <ul class="pagination">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <?php $soLuongTrang = ceil(count($nongsan->binhLuan) / 3); ?>
+                        <a href=""></a>
+                        @for ($i = 1; $i <= $soLuongTrang; $i++)
 
+                            <li class="page-item "><a id="page-item-{{ $i }}"
+                                    onclick="callPhanTrang({{ $nongsan->id }}, {{ $i }})"
+                                    class="page-link">{{ $i }}</a>
+                            </li>
+                        @endfor
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
             <!-- Phân trang -->
 
             <!-- Pagination // phân trang button -->
@@ -356,6 +374,34 @@
         var noidung_DG = 0;
         var trungbinh_sao = document.getElementById("sosao_TB");
         //
+        var sosao_Chon = document.getElementById("sosao_chon");
+
+        function chonSao(soSao) {
+            sosao_Chon.innerHTML = soSao;
+            trungbinh_sao.innerHTML = soSao;
+        }
+
+        function capNhatSoSaotrungBinh(soSao) {
+            sosao_Chon.innerHTML = soSao;
+        };
+
+        function hienThiComment(danhGia, nongSan, user) {
+            var div = document.getElementsByClassName('nguoi_binhLuan mx-5');
+            var div02 = document.createElement('div');
+            div02.className = "mx-3 my-2";
+            div02.innerHTML =
+                '<div class="d-flex user_comment"> <span class="iconify" data-icon="carbon:user-avatar-filled-alt" style="color: #ffbf00; font-size: 30px;"></span> <strong><label class="mx-3" style="position: relative; top: 5px;" for="">' +
+                user.name + '</label></strong><span id="sao_rate" for="" style="font-size: 20px;">' +
+                danhGia.sosao +
+                '</span> <span class="iconify mx-1" data-icon="bi:star-fill" style="color: #ffb416; font-size: 17px; position: relative; top: 5px;"></span>  </div> <div class="noidungBL">   <p id="noidung_BL_text" style="font-weight: 100;">' +
+                danhGia.noidung + '</p> </div>';
+            div[0].insertBefore(div02, div[0].firstChild);
+
+            var rm = document.getElementById("remove_div");
+            rm.remove();
+        }
+
+
         function addComment() {
             var soSaoInput = 0;
             for (let item of saoRating) {
@@ -391,9 +437,12 @@
 
 
 
+
+
         var btnAdd = document.getElementById('add-nongsan-giohang');
         btnAdd.addEventListener('click', function() {
             var soluong = document.getElementById('input_trongLuong');
+
             var form = new FormData();
             form.append('_token', '{{ csrf_token() }}');
             form.append('idNongSan', this.value);
@@ -418,8 +467,24 @@
 
         // đánh giá - comment
         function danhgia_BL() {
+            var soSaoInput = 0;
+            for (let item of saoRating) {
+                if (item.checked == true) {
+                    var sao = item.value;
+
+                    soSaoInput = sao - 0;
+                    sosao_DG = soSaoInput;
+                    break;
+                }
+
+            }
             const urlParams = new URLSearchParams(window.location.search);
             const myParam = urlParams.get('idItemHoaDon');
+            var text_cmt = document.getElementById("textarea_content_text");
+            var div = document.getElementsByClassName('nguoi_binhLuan mx-5');
+
+
+            noidung_DG = text_cmt.value;
             var form = new FormData();
             form.append("_token", '{{ csrf_token() }}');
             form.append("soSao", sosao_DG);
@@ -439,7 +504,9 @@
                 try {
                     console.log(result);
                     trungbinh_sao.innerHTML = result.nongSan.sosao;
+                    capNhatSoSaotrungBinh(result.nongSan.sosao);
 
+                    hienThiComment(result.danhGia, result.nongSan, result.user)
                 } catch (error) {
 
                 }
@@ -448,14 +515,39 @@
             })
         }
 
-        var sosao_Chon = document.getElementById("sosao_chon");
+        function hienThiPhanTrang() {
 
-        function chonSao(soSao){
-            sosao_Chon.innerHTML = soSao;
         }
 
+        function callPhanTrang(idNongSan, trangDuocChon) {
+            var form = new FormData();
+            $.ajax({
+                method: 'get',
+                url: "http://localhost/FreshFoodLaravel/public/phantrangcomment/" + idNongSan +
+                    "?trangDuocChon=" + trangDuocChon,
+                context: document.body,
+                data: form,
+                contentType: false,
+                processData: false
+            }).done(function(result) {
+                try {
+                    var div = document.getElementsByClassName('nguoi_binhLuan mx-5')[0];
+                    div.innerHTML = result;
+                    let page_item = document.getElementsByClassName("page-item");
+                    for (let item of page_item) {
+                        item.children[0].style.backgroundColor = "#ffffff";
+                        item.children[0].style.color = "#216e38"
+                    }
+                    let page_item_phantrang = document.getElementById("page-item-" + trangDuocChon);
+                    page_item_phantrang.style.backgroundColor = "#216e38";
+                    page_item_phantrang.style.color = "#ffffff"
+                } catch (error) {
 
-
+                }
+            }).fail(function(result) {
+                thongBao("alert-danger", "Đã có lỗi xãy ra");
+            })
+        }
     </script>
     <script type=" text/javascript " src=" ../js/home.js "></script>
     <script src=" https://use.fontawesome.com/3af9727d51.js "></script>

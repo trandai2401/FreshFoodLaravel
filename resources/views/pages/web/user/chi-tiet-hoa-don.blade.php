@@ -58,11 +58,19 @@
                         </td>
                         <td>
                             @if ($hoaDon->id_trangthai == 5)
+                                @if ($item->duocdanhgia == 1)
+                                    <span
+                                        onclick="redirectToCommentNongSan({{ $item->id }},{{ $item->id_nongsan }})"
+                                        class="py-5" for="" style="font-size: 13px;">Đã đánh giá</span>
 
-                                <button onclick="redirectToCommentNongSan({{ $item->id }})"
-                                    class="bg-transparent border-0"><span class="iconify"
-                                        data-icon="ant-design:comment-outlined"
-                                        style="color: #177a4c; font-size: 30px;"></span></button>
+                                @else
+                                    <button
+                                        onclick="redirectToCommentNongSan({{ $item->id }},{{ $item->id_nongsan }})"
+                                        class="bg-transparent border-0"><span class="iconify"
+                                            data-icon="ant-design:comment-outlined"
+                                            style="color: #177a4c; font-size: 30px;"></span></button>
+                                @endif
+
                             @else
                                 <span class="py-5" for="" style="font-size: 13px;">Chưa thể đánh giá</span>
                             @endif
@@ -178,8 +186,8 @@
         </div>
     </div>
     <script>
-        function redirectToCommentNongSan(id) {
-            window.location = "http://localhost/FreshFoodLaravel/public/nongsan/1?idItemHoaDon=" + id;
+        function redirectToCommentNongSan(id, idNongSan) {
+            window.location = "http://localhost/FreshFoodLaravel/public/nongsan/" + idNongSan + "?idItemHoaDon=" + id;
         }
     </script>
 @endsection
