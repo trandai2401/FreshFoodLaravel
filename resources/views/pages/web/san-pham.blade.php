@@ -163,20 +163,25 @@
                 </div>
 
                 <div>
-                    <button onclick="chonSao(5);" id="btn_sao5" type="button" class="btn  text-white px-4 mx-2 mb-4" value="5" style="font-size: 25px; background-color: #0e8b25;">
-                        5 <span class="iconify" data-icon="carbon:location-star" style="color: #ffffff; font-size: 40px;"></span>
+
+                    <button onclick="chonSao(5);" id="btn_sao5" type="button" class="btn  px-4 mx-2 mb-4" value="5" style="font-size: 25px; background-color: #0e8b25; color:#ffff;">
+                        Tất cả 
                     </button>
-                    <button onclick="chonSao(4);" id="btn_sao4" type="button" class="btn  text-white px-4 mx-2 mb-4" value="4" style="font-size: 25px; background-color: #0e8b25;">
-                        4 <span class="iconify" data-icon="carbon:location-star" style="color: #ffffff; font-size: 40px;"></span>
+
+                    <button onclick="chonSao(5);" id="btn_sao5" type="button" class="btn  px-4 mx-2 mb-4" value="5" style="font-size: 25px; background-color: #0e8b25; color:#ffff;">
+                        5 <span class="iconify" data-icon="clarity:star-solid" style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
                     </button>
-                    <button onclick="chonSao(3);" id="btn_sao3" type="button" class="btn  text-white px-4 mx-2  mb-4" value="3" style="font-size: 25px; background-color: #0e8b25;">
-                        3 <span class="iconify" data-icon="carbon:location-star" style="color: #ffffff; font-size: 40px;"></span>
+                    <button onclick="chonSao(4);" id="btn_sao4" type="button" class="btn  px-4 mx-2 mb-4" value="4" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
+                        4 <span class="iconify" data-icon="clarity:star-solid" style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
                     </button>
-                    <button onclick="chonSao(2);" id="btn_sao2" type="button" class="btn  text-white px-4 mx-2 mb-4" value="2" style="font-size: 25px; background-color: #0e8b25;">
-                        2 <span class="iconify" data-icon="carbon:location-star" style="color: #ffffff; font-size: 40px;"></span>
+                    <button onclick="chonSao(3);" id="btn_sao3" type="button" class="btn  px-4 mx-2  mb-4" value="3" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
+                        3 <span class="iconify" data-icon="clarity:star-solid" style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
                     </button>
-                    <button onclick="chonSao(1);" id="btn_sao1" type="button" class="btn  text-white px-4 mx-2 mb-4" value="1" style="font-size: 25px; background-color: #0e8b25;">
-                        1 <span class="iconify" data-icon="carbon:location-star" style="color: #ffffff; font-size: 40px;"></span>
+                    <button onclick="chonSao(2);" id="btn_sao2" type="button" class="btn px-4 mx-2 mb-4" value="2" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
+                        2 <span class="iconify" data-icon="clarity:star-solid" style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
+                    </button>
+                    <button onclick="chonSao(1);" id="btn_sao1" type="button" class="btn  px-4 mx-2 mb-4" value="1" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
+                        1 <span class="iconify" data-icon="clarity:star-solid" style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
                     </button>
                 </div>
                 
