@@ -84,85 +84,34 @@
 
             <!-- hàng card cho sản phẩm khuyến mãi -->
             <div class="container-fluid row khuyenmai bg-white">
-                <div class="col-3 card_khuyenmai">
-                    <div class="card">
-                        <div class="text_sale_off"><b> Mới </b></div>
-                        <img class="card-img-top" src="image/landing/card/cà rốt.png" alt="Card image cap">
-                        <div class="middle d-flex">
-                            <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
-                                    style="color: #216e38;  font-size: 35px"></span></button>
-                            <input class="middle_cart mx-3" type="radio"><label class="fas fa-2x fa-heart mt-2"></lable>
-                                </input>
-                        </div>
-                        <div class="card-body text-center">
-                            <p class="card-text name_product"> <a href="#"> Cà rốt Đà Lạt Cà rốt Đà Lạt Cà rốt Đà Lạ</a></p>
-                            <div class="text_price">
-                                <span class="mx-4"><b>50.000đ</b></span>
-                                <span style="color: rgb(165, 165, 165);"><del>65.000đ</del></span>
+                @foreach ($nongSanNoiBat as $item)
+                    <div class="col-3 card_khuyenmai">
+                        <div class="card">
+                            <div class="text_sale_off"><b> Mới </b></div>
+                            <img class="card-img-top" src="{{ asset($item->hinhanh[0]->src) }}" alt="Card image cap">
+                            <div class="middle d-flex">
+                                <button onclick="addNongSan({{ $item->id }})" class="middle_cart mx-3"><span
+                                        class="iconify" data-icon="fa-solid:cart-plus"
+                                        style="color: #216e38;  font-size: 35px"></span></button>
+                                <input class="middle_cart mx-3" type="radio"><label class="fas fa-2x fa-heart mt-2"></lable>
+                                    </input>
                             </div>
-                        </div>
-                    </div>
-                </div>
+                            <div class="card-body text-center">
+                                <p class="card-text name_product"> <a
+                                        href="{{ route('nongsan', ['idNongSan' => $item->id]) }}">{{ $item->tenNongSan }}</a>
+                                </p>
+                                <div class="">
+                                    <span class="mx-4"><b>{{ number_format($item->gia, 0, '', ',') }}
+                                            đ</b></span>
 
-                <div class="col-3 card_khuyenmai">
-                    <div class="card">
-                        <div class="text_sale_off"><b> Mới </b></div>
-                        <img class="card-img-top" src="image/landing/card/cà rốt.png" alt="Card image cap">
-                        <div class="middle d-flex">
-                            <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
-                                    style="color: #216e38;  font-size: 35px"></span></button>
-                            <input class="middle_cart mx-3" type="radio"><label class="fas fa-2x fa-heart mt-2"></lable>
-                                </input>
-                        </div>
-                        <div class="card-body text-center">
-                            <p class="card-text name_product"> <a href="#"> Cà rốt Đà Lạt Cà rốt Đà Lạt Cà rốt Đà Lạ</a></p>
-                            <div class="text_price">
-                                <span class="mx-4"><b>50.000đ</b></span>
-                                <span style="color: rgb(165, 165, 165);"><del>65.000đ</del></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="col-3 card_khuyenmai">
-                    <div class="card">
-                        <div class="text_sale_off"><b> Mới </b></div>
-                        <img class="card-img-top" src="image/landing/card/cà rốt.png" alt="Card image cap">
-                        <div class="middle d-flex">
-                            <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
-                                    style="color: #216e38;  font-size: 35px"></span></button>
-                            <input class="middle_cart mx-3" type="radio"><label class="fas fa-2x fa-heart mt-2"></lable>
-                                </input>
-                        </div>
-                        <div class="card-body text-center">
-                            <p class="card-text name_product"> <a href="#"> Cà rốt Đà Lạt Cà rốt Đà Lạt Cà rốt Đà Lạ</a></p>
-                            <div class="text_price">
-                                <span class="mx-4"><b>50.000đ</b></span>
-                                <span style="color: rgb(165, 165, 165);"><del>65.000đ</del></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-3 card_khuyenmai">
-                    <div class="card">
-                        <div class="text_sale_off"><b> Mới </b></div>
-                        <img class="card-img-top" src="image/landing/card/cà rốt.png" alt="Card image cap">
-                        <div class="middle d-flex">
-                            <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
-                                    style="color: #216e38;  font-size: 35px"></span></button>
-                            <input class="middle_cart mx-3" type="radio"><label class="fas fa-2x fa-heart mt-2"></lable>
-                                </input>
-                        </div>
-                        <div class="card-body text-center">
-                            <p class="card-text name_product"> <a href="#"> Cà rốt Đà Lạt Cà rốt Đà Lạt Cà rốt Đà Lạ</a></p>
-                            <div class="text_price">
-                                <span class="mx-4"><b>50.000đ</b></span>
-                                <span style="color: rgb(165, 165, 165);"><del>65.000đ</del></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
         </div>
@@ -225,7 +174,8 @@
                                             href="{{ route('nongsan', ['idNongSan' => $nongsan->id]) }}">
                                             {{ $nongsan->tenNongSan }}</a></p>
                                     <div class="text_price">
-                                        <span class="mx-4"><b>50.000đ</b></span>
+                                        <span class="mx-4"><b>{{ number_format($nongsan->gia, 0, '', ',') }}
+                                                đ</b></span>
 
                                     </div>
                                 </div>
@@ -345,9 +295,9 @@
         </div>
 
         <!-- <div class="container title_tintuc d-flex mb-1 bg-white">
-                                                                                                                                                              <span class="iconify" data-icon="bx:bxs-book-heart" style="color: #216e38; font-size: 45px;"></span>
-                                                                                                                                                              <h4 class="py-4 pl-4"><b>Bảng tin bạn đọc</b></h4>
-                                                                                                                                                          </div> -->
+                                                                                                                                                                                                                          <span class="iconify" data-icon="bx:bxs-book-heart" style="color: #216e38; font-size: 45px;"></span>
+                                                                                                                                                                                                                          <h4 class="py-4 pl-4"><b>Bảng tin bạn đọc</b></h4>
+                                                                                                                                                                                                                      </div> -->
 
         <!-- Hình ảnh giới thiệu cho 4 card tin tức -->
         <div class="row tintuc">

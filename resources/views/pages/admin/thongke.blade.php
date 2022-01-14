@@ -59,11 +59,6 @@
         });
     </script>
 
-
-
-
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
     </script>
@@ -74,9 +69,6 @@
     <script>
         var form = new FormData();
         form.append('_token', '{{ csrf_token() }}');
-
-
-
         $.ajax({
             method: 'get',
             url: "http://localhost/FreshFoodLaravel/public/thongke",
@@ -86,7 +78,7 @@
             processData: false
 
         }).done(function(result) {
-            arrayData = [''];
+            arrayData = [];
             for (let item of result) {
                 arrayData.push(item.SOlUONG);
                 console.log(item.SOlUONG);
@@ -140,9 +132,6 @@
                 }
             });
 
-
-
-            // document.getElementById('image_input_nongsan').remove();
         }).fail(function(result) {
             console.log(result);
         })
