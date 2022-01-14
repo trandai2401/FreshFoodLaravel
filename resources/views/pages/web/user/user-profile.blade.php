@@ -19,14 +19,15 @@
                         <span class="iconify ml-2 mr-5" data-icon="carbon:favorite" data-width="24" data-height="24"
                             style="font-size: 16px;"></span>
                         <p style="width: 150px; margin-right: 100px;">Yêu thích</p>
-                        <p style=" margin-bottom:0 ">12</p>
+                        <p style=" margin-bottom:0 ">0</p>
                     </li>
                     <a href="{{ route('danhsachHoadon') }}" style="text-decoration: none">
                         <li class="list-group-item py-2 border-0 d-flex justify-content-between">
                             <span class="iconify ml-2 mr-5" data-icon="bx:bxs-discount" data-width="24"
                                 data-height="24"></span>
                             <p style="width: 150px; margin-right: 100px;">Hóa đơn</p>
-                            <p style=" margin-bottom:0 ">12</p>
+                            <?php $user = Auth::user(); ?>
+                            <p style=" margin-bottom:0 ">{{ count($user->hoadon) }}</p>
                         </li>
                     </a>
 

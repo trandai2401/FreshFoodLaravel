@@ -26,7 +26,8 @@
                     <li class="list-group-item py-2 border-0 d-flex justify-content-between">
                         <span class="iconify ml-2 mr-5" data-icon="bx:bxs-discount" data-width="24" data-height="24"></span>
                         <p style="width: 150px; margin-right: 100px;">Hóa đơn</p>
-                        <p style=" margin-bottom:0 ">{{ count($hoaDons) }}</p>
+                        <?php $user = Auth::user(); ?>
+                        <p style=" margin-bottom:0 ">{{ count($user->hoadon) }}</p>
                     </li>
                     <li class="list-group-item py-2 border-0 d-flex">
                         <span class="iconify ml-2 mr-5" data-icon="ant-design:user-outlined" data-width="24"
