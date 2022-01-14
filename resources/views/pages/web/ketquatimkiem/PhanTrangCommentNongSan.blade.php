@@ -8,6 +8,8 @@
             <span for="" style="font-size: 20px;" id="sao_rate">{{ $item->sosao }}</span>
             <span class="iconify mx-1" data-icon="bi:star-fill"
                 style="color: #ffb416; font-size: 17px; position: relative; top: 5px;"></span>
+            <label class="mx-3" style="position: relative; top: 5px;"
+                for="">{{ substr($item->created_at, 0, 10) }}</label>
         </div>
 
         <div class="noidungBL">

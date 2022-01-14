@@ -101,8 +101,8 @@
                 <div class="salesroom">
                     <p class="text-success ml-4 my-3"><strong>Lọc theo sao đánh giá</strong></p>
                     <label class="checkbox mx-4 mb-3">
-                        <input class="mr-3 text-danger" type="checkbox" id="checkbox_address_HaNoi" name="scales"
-                            style="background: #e94560;">
+                        <input class="mr-3 text-danger loc_SoSao" type="checkbox" id="checkbox_address_HaNoi" value="1"
+                            name="loc_SoSao" style="background: #e94560;">
                         <i class="mr-3 icon-checkbox"></i>
                         <span class="iconify" data-icon="ant-design:star-filled"
                             style="color: #fb0; font-size: 25px;"></span>
@@ -118,8 +118,8 @@
                         <!-- <label class="state p-dange" for="checkbox_address_HaNoi">Hà Nội</label> -->
                     </label>
                     <label class="checkbox mx-4 mb-3">
-                        <input class="mr-3 text-danger" type="checkbox" id="checkbox_address_HaNoi" name="scales"
-                            style="background: #e94560;">
+                        <input class="mr-3 text-danger loc_SoSao" type="checkbox" id="checkbox_address_HaNoi" value="2"
+                            name="loc_SoSao" style="background: #e94560;">
                         <i class="mr-3 icon-checkbox"></i>
                         <span class="iconify" data-icon="ant-design:star-filled"
                             style="color: #fb0; font-size: 25px;"></span>
@@ -134,8 +134,8 @@
                         <!-- <label class="state p-dange" for="checkbox_address_HaNoi">Hà Nội</label> -->
                     </label>
                     <label class="checkbox mx-4 mb-3">
-                        <input class="mr-3 text-danger" type="checkbox" id="checkbox_address_HaNoi" name="scales"
-                            style="background: #e94560;">
+                        <input class="mr-3 text-danger loc_SoSao" type="checkbox" id="checkbox_address_HaNoi" value="3"
+                            name="loc_SoSao" style="background: #e94560;">
                         <i class="mr-3 icon-checkbox"></i>
                         <span class="iconify" data-icon="ant-design:star-filled"
                             style="color: #fb0; font-size: 25px;"></span>
@@ -150,8 +150,8 @@
                         <!-- <label class="state p-dange" for="checkbox_address_HaNoi">Hà Nội</label> -->
                     </label>
                     <label class="checkbox mx-4 mb-3">
-                        <input class="mr-3 text-danger" type="checkbox" id="checkbox_address_HaNoi" name="scales"
-                            style="background: #e94560;">
+                        <input class="mr-3 text-danger loc_SoSao" type="checkbox" id="checkbox_address_HaNoi" value="4"
+                            name="loc_SoSao" style="background: #e94560;">
                         <i class="mr-3 icon-checkbox"></i>
                         <span class="iconify" data-icon="ant-design:star-filled"
                             style="color: #fb0; font-size: 25px;"></span>
@@ -166,8 +166,8 @@
                         <!-- <label class="state p-dange" for="checkbox_address_HaNoi">Hà Nội</label> -->
                     </label>
                     <label class="checkbox mx-4 mb-3">
-                        <input class="mr-3 text-danger" type="checkbox" id="checkbox_address_HaNoi" name="scales"
-                            style="background: #e94560;">
+                        <input class="mr-3 text-danger loc_SoSao" type="checkbox" id="checkbox_address_HaNoi" value="5"
+                            name="loc_SoSao" style="background: #e94560;">
                         <i class="mr-3 icon-checkbox"></i>
                         <span class="iconify" data-icon="ant-design:star-filled"
                             style="color: #fb0; font-size: 25px;"></span>
@@ -384,6 +384,17 @@
                 }
 
             }
+
+            var danhSachSaoCanLoc = document.getElementsByClassName('mr-3 text-danger loc_SoSao');
+            for (let i = 0; i < danhSachSaoCanLoc.length; i++) {
+                if (danhSachSaoCanLoc[i].checked) {
+                    form.append("arrSoSao[]", danhSachSaoCanLoc[i].value);
+                }
+            }
+
+
+
+
             form.append('_token', '{{ csrf_token() }}');
             form.append('sortBy', exampleFormControlSelect1.value);
             var giaBatDau = document.getElementById('giaBatDau');
