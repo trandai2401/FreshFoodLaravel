@@ -105,18 +105,18 @@
 
                     <tr>
                         <td>Tiền :</td>
-                        <td>{{ $hoaDon->tongtien }} đ</td>
+                        <td>{{ number_format($hoaDon->tongtien, 0, '', ',') }} đ</td>
                     </tr>
 
                     <tr>
                         <td>Phí giao :</td>
-                        <td>{{ $hoaDon->tienship }} đ</td>
+                        <td>{{ number_format($hoaDon->tienship, 0, '', ',') }} đ</td>
                     </tr>
 
 
                     <tr style="border-top: 0.7px rgb(172, 172, 172) solid;">
                         <td style="border-top: 0.7px rgb(172, 172, 172) solid;">Tổng cộng :</td>
-                        <td>{{ $hoaDon->tienship + $hoaDon->tongtien }} đ</td>
+                        <td>{{ number_format($hoaDon->tienship + $hoaDon->tongtien, 0, '', ',') }} đ</td>
                     </tr>
                 </table>
 

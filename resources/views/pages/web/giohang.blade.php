@@ -45,9 +45,9 @@
                                         class="btn btn-outline-success" type="button"><span id="icon-minus"
                                             class="iconify" data-icon="entypo:minus"></span></button>
                                 </div>
-                                <input id="input-quantity{{ $item->id_nongsan }}" type="text" class="form-control input soluongNS"
-                                    value="{{ $item->soluong }}" aria-label="" aria-describedby="basic-addon1"
-                                    style="font-size: 13px;">
+                                <input id="input-quantity{{ $item->id_nongsan }}" type="text"
+                                    class="form-control input soluongNS" value="{{ $item->soluong }}" aria-label=""
+                                    aria-describedby="basic-addon1" style="font-size: 13px;">
                                 <div class="input-group-append">
                                     <button onclick="editCart({{ $item->nongsan->id }},1,{{ $item->nongsan->gia }})"
                                         class="btn btn-outline-success" type="button"><span id="icon-plus"
@@ -240,7 +240,7 @@
 
 
         <!-- Part 2.2: total-cart  -->
-        <div class="total-cart" >
+        <div class="total-cart">
             <div class="container-fluid pay-voucher  bg-white">
                 <table id="pay-voucher">
                     <tr class="d-none">
@@ -280,42 +280,47 @@
                     </tr>
 
                     <tr style="border-top: 0.7px rgb(172, 172, 172) solid;">
-                            <td  style="border-top: 0.7px rgb(172, 172, 172) solid;">Địa chỉ người dùng</td>
-                            <td></td>                     
+                        <td style="border-top: 0.7px rgb(172, 172, 172) solid;">Địa chỉ người dùng</td>
+                        <td></td>
                     </tr>
                 </table>
                 <!-- tinh thanh -->
-                    <div class="form-group">
-                        <!-- <label for="exampleFormControlSelect1" style="font-size: 10px; font-weight: 600;" >Tỉnh/ Thành phố</label> -->
-                        <select onchange="thuhoaxuxu();" class="form-control" id="tinhthanh" style="font-size: 13px; font-weight: 600;">
+                <div class="form-group">
+                    <!-- <label for="exampleFormControlSelect1" style="font-size: 10px; font-weight: 600;" >Tỉnh/ Thành phố</label> -->
+                    <select onchange="thuhoaxuxu();" class="form-control" id="tinhthanh"
+                        style="font-size: 13px; font-weight: 600;">
                         <option>Tỉnh/ Thành phố</option>
-                        
-                        </select>
-                    </div>
 
-                    <!-- huyện quận -->
-                    <div class="form-group">
-                        <!-- <label for="exampleFormControlSelect1" style="font-size: 10px; font-weight: 600;" >Tỉnh/ Thành phố</label> -->
-                        <select onchange="changeQH();" class="form-control" id="quanhuyen" style="font-size: 13px; font-weight: 600;">
+                    </select>
+                </div>
+
+                <!-- huyện quận -->
+                <div class="form-group">
+                    <!-- <label for="exampleFormControlSelect1" style="font-size: 10px; font-weight: 600;" >Tỉnh/ Thành phố</label> -->
+                    <select onchange="changeQH();" class="form-control" id="quanhuyen"
+                        style="font-size: 13px; font-weight: 600;">
                         <option>Huyện/ Quận</option>
-                        
-                        </select>
-                    </div>
 
-                    <!-- xã phường -->
-                    <div class="form-group">
-                        <!-- <label for="exampleFormControlSelect1" style="font-size: 10px; font-weight: 600;" >Tỉnh/ Thành phố</label> -->
-                        <select onchange="changePX();" class="form-control" id="phuongxa" style="font-size: 13px; font-weight: 600;">
+                    </select>
+                </div>
+
+                <!-- xã phường -->
+                <div class="form-group">
+                    <!-- <label for="exampleFormControlSelect1" style="font-size: 10px; font-weight: 600;" >Tỉnh/ Thành phố</label> -->
+                    <select onchange="changePX();" class="form-control" id="phuongxa"
+                        style="font-size: 13px; font-weight: 600;">
                         <option>Phường/ Xã</option>
-                        
-                        </select>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="exampleFormControlSelect1" style="font-size: 10px; font-weight: 600;" >Số  nhà</label>
-                        <input  style="font-size: 13px; font-weight: 600;" type="text" class="form-control" id="diachisonha" placeholder="Địa chỉ số nhà">
-                    </div>
-                <button onclick="thanhtoanGH();"  id="btn_thanhtoan" type="button" class="btn btn-success w-100 mt-2" style="font-size: 13px;">Thanh toán ngay</button>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1" style="font-size: 10px; font-weight: 600;">Số nhà</label>
+                    <input style="font-size: 13px; font-weight: 600;" type="text" class="form-control" id="diachisonha"
+                        placeholder="Địa chỉ số nhà">
+                </div>
+                <button onclick="thanhtoanGH();" id="btn_thanhtoan" type="button" class="btn btn-success w-100 mt-2"
+                    style="font-size: 13px;">Thanh toán ngay</button>
             </div>
 
 
@@ -387,127 +392,127 @@
 
 
     <script>
-
-         var formTT = document.getElementById("tinhthanh");
+        var formTT = document.getElementById("tinhthanh");
         var formQH = document.getElementById("quanhuyen");
-        var formPX  = document.getElementById("phuongxa");
+        var formPX = document.getElementById("phuongxa");
         var tienShip_sau = 0;
-        var tongtienHang_HD_tamtinh = {{($gioHang->tongTienGioHang($gioHang->id)) }};
+        var tongtienHang_HD_tamtinh = {{ $gioHang->tongTienGioHang($gioHang->id) }};
         var maPT_sau = 0;
-        
-        
-        
-        
 
 
 
 
 
 
-        function laySLNS(){
+
+
+
+
+        function laySLNS() {
             var solg = 0;
             var dsInput = document.getElementsByClassName("form-control input soluongNS");
-            for(let item of dsInput){
+            for (let item of dsInput) {
                 solg = solg + (item.value - 0);
-                
+
             }
-            return solg*1000;
+            return solg * 1000;
         }
 
 
 
-        function callApiTinhThanh(){
-           
+        function callApiTinhThanh() {
+
             $.ajax({
                 type: 'POST',
                 url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/province',
                 headers: {
-                    "token":"8d38601c-7035-11ec-9054-0a1729325323"
+                    "token": "8d38601c-7035-11ec-9054-0a1729325323"
                 }
                 //OR
                 //beforeSend: function(xhr) {
                 //  xhr.setRequestHeader("My-First-Header", "first value");
                 //  xhr.setRequestHeader("My-Second-Header", "second value");
                 //}
-            }).done(function(data) { 
+            }).done(function(data) {
                 var a = data.data;
-                for(let item = 0 ; item  < a.length; item++ ){
+                for (let item = 0; item < a.length; item++) {
                     var optionTT = document.createElement('OPTION');
                     optionTT.value = a[item].ProvinceID;
                     optionTT.innerText = a[item].ProvinceName;
                     formTT.append(optionTT);
-                    
+
                 }
                 console.log(optionTT.value);
             });
         }
-        
+
 
         callApiTinhThanh();
 
-        function thuhoaxuxu(){
+        function thuhoaxuxu() {
             console.log(formTT.value);
             callApiQuanHuyen(formTT.value);
-            
+
         }
 
-        function changeQH(){
+        function changeQH() {
             console.log(formQH.value);
             callApiPhuongXa(formQH.value);
         }
 
-        function changePX(){
+        function changePX() {
             callApiPhuongXa(formQH.value);
             callApiPTTT();
         }
-        
 
-        function callApiQuanHuyen(idTinhThanh){
-            
+
+        function callApiQuanHuyen(idTinhThanh) {
+
             var form = new FormData();
-            form.append('province_id',idTinhThanh);
-            
+            form.append('province_id', idTinhThanh);
+
             $.ajax({
                 type: 'GET',
-                url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/district?province_id='+idTinhThanh,
+                url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/district?province_id=' +
+                    idTinhThanh,
                 headers: {
-                    "token":"8d38601c-7035-11ec-9054-0a1729325323"
+                    "token": "8d38601c-7035-11ec-9054-0a1729325323"
                 }
-            }).done(function(data) { 
-                for(let i = 0; formQH.children.length > 0 ; i++){
+            }).done(function(data) {
+                for (let i = 0; formQH.children.length > 0; i++) {
                     formQH.children[0].remove();
 
                 }
                 var a = data.data;
-                for(let item = 0 ; item  < a.length; item++ ){
+                for (let item = 0; item < a.length; item++) {
                     var optionQH = document.createElement('OPTION');
                     optionQH.value = a[item].DistrictID;
                     optionQH.innerText = a[item].DistrictName;
                     formQH.append(optionQH);
-                    
+
                 }
                 console.log(a);
             });
         }
 
         // call api phường xã
-        function callApiPhuongXa(idPhuongXa){
-            
+        function callApiPhuongXa(idPhuongXa) {
+
             var form = new FormData();
-            form.append('district_id',idPhuongXa);
-            
+            form.append('district_id', idPhuongXa);
+
             $.ajax({
                 type: 'GET',
-                url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id='+idPhuongXa,
+                url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id=' + idPhuongXa,
                 headers: {
-                    "token":"8d38601c-7035-11ec-9054-0a1729325323"
+                    "token": "8d38601c-7035-11ec-9054-0a1729325323"
                 }
-            }).done(function(data) { 
-                for(let i = 0; formPX.children.length > 0 ;i++){
+            }).done(function(data) {
+                for (let i = 0; formPX.children.length > 0; i++) {
                     formPX.children[0].remove();
                 }
                 var a = data.data;
-                for(let item = 0 ; item  < a.length; item++ ){
+                for (let item = 0; item < a.length; item++) {
                     var optionPX = document.createElement('OPTION');
                     optionPX.value = a[item].WardCode;
                     optionPX.innerText = a[item].WardName;
@@ -518,20 +523,20 @@
         }
 
         // call api phương thức thanh toán
-        function callApiPTTT(){
+        function callApiPTTT() {
             $.ajax({
                 type: 'GET',
                 url: 'https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/available-services',
                 headers: {
-                    "token":"8d38601c-7035-11ec-9054-0a1729325323"
+                    "token": "8d38601c-7035-11ec-9054-0a1729325323"
                 },
                 data: {
                     "shop_id": 2413843,
                     "from_district": 3186,
                     "to_district": formQH.value
                 }
-                
-            }).done(function(data) { 
+
+            }).done(function(data) {
                 console.log(data);
                 var maPT = data.data[0].service_type_id;
                 console.log(maPT);
@@ -542,18 +547,18 @@
 
             });
         }
-        
+
 
         // call api tính phí ship
 
-        function callApiGiaCuocVanChuyen(maPT, maQH){
+        function callApiGiaCuocVanChuyen(maPT, maQH) {
             console.log(maQH);
 
             $.ajax({
                 type: 'GET',
                 url: 'https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/fee',
                 headers: {
-                    "token":"8d38601c-7035-11ec-9054-0a1729325323",
+                    "token": "8d38601c-7035-11ec-9054-0a1729325323",
                     "shop_id": 2413843
                 },
                 data: {
@@ -570,13 +575,19 @@
                     "width": 15,
                     "height": 15
                 }
-                
-            }).done(function(data) { 
+
+            }).done(function(data) {
                 console.log(data);
                 var tongPhiShip = data.data.total;
                 var phigiao = document.getElementById("phigiaohang");
-                phigiao.innerText =String(tongPhiShip).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " đ"; 
+                phigiao.innerText = String(tongPhiShip).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " đ";
                 tienShip_sau = tongPhiShip;
+
+
+                tongtienthanhtoan.innerHTML = String((tongtienHang_HD_tamtinh - 0) + (tienShip_sau - 0)).replace(
+                        /(.)(?=(\d{3})+$)/g,
+                        '$1,') +
+                    " đ"
             });
         }
 
@@ -612,12 +623,14 @@
         function updateTongTienThanhToan(result) {
 
             var tongtienthanhtoan = document.getElementById('tongtienthanhtoan');
-            
-            tongtienthanhtoan.innerHTML = String((result - 0) + (tienShip_sau - 0 )).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " đ"
+
+            tongtienthanhtoan.innerHTML = String((result - 0) + (tienShip_sau - 0)).replace(/(.)(?=(\d{3})+$)/g, '$1,') +
+                " đ"
 
             var tamtinh = document.getElementById('tamtinh');
             tamtinh.innerHTML = String(result).replace(/(.)(?=(\d{3})+$)/g, '$1,') + " đ";
             tongtienHang_HD_tamtinh = result;
+
             callApiGiaCuocVanChuyen(maPT_sau, formQH.value);
         }
 
@@ -648,7 +661,7 @@
             })
         }
 
-        function thanhtoanGH(){
+        function thanhtoanGH() {
             // tổng hợp địa chỉ
             var so_diachiTT = formTT.selectedIndex;
             var ten_diachiTT = formTT.options[so_diachiTT].text;
@@ -665,12 +678,12 @@
             var diachi_chiTiet = document.getElementById("diachisonha").value;
 
             // gộp địa chỉ
-            var diachiGiaoHang = ""+ ""+ ten_diachiTT+ ", "+ ten_diachiQH+ ", "+ ten_diachiPX+ ", "+ diachi_chiTiet;
+            var diachiGiaoHang = "" + "" + ten_diachiTT + ", " + ten_diachiQH + ", " + ten_diachiPX + ", " + diachi_chiTiet;
             console.log(diachiGiaoHang);
 
 
             var form = new FormData();
-            form.append("_token",'{{ csrf_token() }}');
+            form.append("_token", '{{ csrf_token() }}');
             form.append("diaChi", diachiGiaoHang);
             form.append("tienShip", tienShip_sau);
 
@@ -678,25 +691,21 @@
                 method: 'post',
                 url: "http://localhost/FreshFoodLaravel/public/user/thanhtoan",
                 context: document.body,
-                data : form,
+                data: form,
                 contentType: false,
                 processData: false
             }).done(function(result) {
                 try {
                     console.log(result);
 
-                    window.location="http://localhost/FreshFoodLaravel/public/user/chiTietHD/" + result.id;
+                    window.location = "http://localhost/FreshFoodLaravel/public/user/chiTietHD/" + result.id;
                 } catch (error) {
-                    
+
                 }
             }).fail(function(result) {
                 thongBao("alert-danger", "Đã có lỗi xãy ra");
             })
         }
-
-   
-        
-
     </script>
 
 
