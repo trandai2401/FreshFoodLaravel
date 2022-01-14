@@ -75,7 +75,7 @@
         <div class="container-fluid khuyenmai bg-white">
             <div class="container title_khuyenmai d-flex mb-1 bg-white">
                 <span class="iconify" data-icon="whh:salealt" style="color: #216e38; font-size: 40px;"></span>
-                <h4 class="pt-3 pl-4"><b>Khuyến mãi trong tuần</b></h4>
+                <h4 class="pt-3 pl-4"><b>Sản phẩm mới nhất</b></h4>
             </div>
             <div class="bg_traicay_boder">
                 <img src="image/landing/card/bưởi.png" alt="" class="">
@@ -86,7 +86,7 @@
             <div class="container-fluid row khuyenmai bg-white">
                 <div class="col-3 card_khuyenmai">
                     <div class="card">
-                        <div class="text_sale_off"><b> -21% </b></div>
+                        <div class="text_sale_off"><b> Mới </b></div>
                         <img class="card-img-top" src="image/landing/card/cà rốt.png" alt="Card image cap">
                         <div class="middle d-flex">
                             <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
@@ -106,7 +106,7 @@
 
                 <div class="col-3 card_khuyenmai">
                     <div class="card">
-                        <div class="text_sale_off"><b> -21% </b></div>
+                        <div class="text_sale_off"><b> Mới </b></div>
                         <img class="card-img-top" src="image/landing/card/cà rốt.png" alt="Card image cap">
                         <div class="middle d-flex">
                             <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
@@ -126,7 +126,7 @@
 
                 <div class="col-3 card_khuyenmai">
                     <div class="card">
-                        <div class="text_sale_off"><b> -21% </b></div>
+                        <div class="text_sale_off"><b> Mới </b></div>
                         <img class="card-img-top" src="image/landing/card/cà rốt.png" alt="Card image cap">
                         <div class="middle d-flex">
                             <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
@@ -146,7 +146,7 @@
 
                 <div class="col-3 card_khuyenmai">
                     <div class="card">
-                        <div class="text_sale_off"><b> -21% </b></div>
+                        <div class="text_sale_off"><b> Mới </b></div>
                         <img class="card-img-top" src="image/landing/card/cà rốt.png" alt="Card image cap">
                         <div class="middle d-flex">
                             <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
