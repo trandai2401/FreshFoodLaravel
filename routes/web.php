@@ -43,7 +43,13 @@ Route::get('/', function () {
     echo csrf_token();
     // return view('welcome');
 });
+Route::get('/thongke', function () {
+    // $thongke = DB::select('SELECT ten, DATE_ADD(?, INTERVAL id DAY) AS ngay, (SELECT COUNT(id) FROM freshfood.hoadon WHERE created_at < DATE_ADD(?, INTERVAL (thu_table.id + 1) DAY) AND created_at >= DATE_ADD(?, INTERVAL thu_table.id DAY)) AS SOlUONG FROM thu_table;', ["'2022/1/9'", "'2022/1/9'", "'2022/1/9'"]);
 
+    $thongke = DB::select("SELECT ten, DATE_ADD('2022/1/9', INTERVAL id DAY) AS ngay, (SELECT COUNT(id) FROM freshfood.hoadon WHERE created_at < DATE_ADD('2022/1/9', INTERVAL (thu_table.id + 1) DAY) AND created_at >= DATE_ADD('2022/1/9', INTERVAL thu_table.id DAY)) AS SOlUONG FROM thu_table;");
+    return $thongke;
+    // DB::select('select * from users where active = ?', [1]);
+});
 
 //LOGIN SIGNUP LOGOUT
 Route::get('/login', [login::class, 'getLogin'])->name("login");
@@ -190,7 +196,7 @@ Route::middleware('CheckLogin')->prefix('/user')->group(function () {
             $trangDuocChon = $request->trangDuocChon;
         }
 
-        $hoaDons = hoadon::offset(($trangDuocChon - 1) * 6)->limit(6)->orderByDesc('created_at')->get();
+        $hoaDons = hoadon::where('id_user', $user->id)->offset(($trangDuocChon - 1) * 6)->limit(6)->orderByDesc('created_at')->get();
         // return  $hoaDons;
         return view("pages.web.user.danh-sach-hoa-don", ['hoaDons' => $hoaDons]);
     })->name('danhsachHoadon');
