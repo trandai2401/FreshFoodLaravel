@@ -86,16 +86,23 @@
                 <?= $nongsan->noidung ?>
 
                 <p class="title_TrongLuong"> <b>Trọng lượng (kg)</b></p>
-                <div class="trongLuong">
-                    <button class="btnDau btn_dautru rounded-circle border-0 text-dark px-2">-</button>
-                    <input class="input_trongLuong pl-1" type="number" value="1" id="input_trongLuong"
-                        onchange="validateInput()">
-                    <button class="btnDau btn_daucong rounded-circle border-0 text-dark px-2">+</button>
-                </div>
-                <div class="btn_themGioHang mt-4">
-                    <button id="add-nongsan-giohang" value="{{ $nongsan->id }}" class="py-2 px-3" type="">Thêm vào
-                        giỏ hàng</button>
-                </div>
+                @if ($nongsan->soluong > 0)
+                    <div class="trongLuong">
+                        <button class="btnDau btn_dautru rounded-circle border-0 text-dark px-2">-</button>
+                        <input class="input_trongLuong pl-1" type="number" value="1" id="input_trongLuong"
+                            onchange="validateInput()">
+                        <button class="btnDau btn_daucong rounded-circle border-0 text-dark px-2">+</button>
+                    </div>
+                    <div class="btn_themGioHang mt-4">
+                        <button id="add-nongsan-giohang" value="{{ $nongsan->id }}" class="py-2 px-3" type="">Thêm
+                            vào
+                            giỏ hàng</button>
+                    </div>
+
+                @else
+                    <h3 style="margin-top: 35px">Mặt hàng đã hết</h3>
+                @endif
+
 
             </div>
 

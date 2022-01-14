@@ -192,16 +192,24 @@
                 <div class="row product">
                     @foreach ($nongsans as $nongsan)
                         <div class="col-4 card_product">
-                            <div class="hethang">
-                                <p for="">Hết  hàng</p>
-                            </div>
+                            @if ($nongsan->soluong == 0)
+                                <div class="hethang">
+                                    <p for="">Hết hàng</p>
+                                </div>
+                            @endif
+
                             <div class="card">
-                                <img class="card-img-top" src="{{ asset($nongsan->hinhanh[0]->src) }}"
-                                    alt="Card image cap">
+                                <img style="opacity:      @if ($nongsan->soluong == 0)
+                                0.5
+                                @endif;" class="card-img-top" src="{{ asset($nongsan->hinhanh[0]->src) }}"
+                                alt="Card image cap">
                                 <div class="middle d-flex">
-                                    <button onclick="addNongSan({{ $nongsan->id }})" class="middle_cart mx-3"><span
-                                            class="iconify" data-icon="fa-solid:cart-plus"
-                                            style="color: #216e38;  font-size: 35px"></span></button>
+                                    @if ($nongsan->soluong > 0)
+                                        <button onclick="addNongSan({{ $nongsan->id }})" class="middle_cart mx-3"><span
+                                                class="iconify" data-icon="fa-solid:cart-plus"
+                                                style="color: #216e38;  font-size: 35px"></span></button>
+                                    @endif
+
                                     <input class="middle_cart mx-3" type="radio"><label class="fas fa-2x fa-heart mt-2">
                                         </lable>
                                         </input>
