@@ -75,7 +75,7 @@
         <div class="container-fluid khuyenmai bg-white">
             <div class="container title_khuyenmai d-flex mb-1 bg-white">
                 <span class="iconify" data-icon="whh:salealt" style="color: #216e38; font-size: 40px;"></span>
-                <h4 class="pt-3 pl-4"><b>Sản phẩm mới nhất</b></h4>
+                <h4 class="pt-3 pl-4"><b>Sản phẩm nỗi bật</b></h4>
             </div>
             <div class="bg_traicay_boder">
                 <img src="image/landing/card/bưởi.png" alt="" class="">
@@ -86,9 +86,9 @@
             <div class="container-fluid row khuyenmai bg-white">
                 @foreach ($nongSanNoiBat as $item)
                     <div class="col-3 card_khuyenmai">
-                        
+
                         <div class="card">
-                            <div class="text_sale_off"><b> Mới </b></div>
+                            <div class="text_sale_off"><b> &nbsp;Hot </b></div>
                             <img class="card-img-top" src="{{ asset($item->hinhanh[0]->src) }}" alt="Card image cap">
                             <div class="middle d-flex">
                                 <button onclick="addNongSan({{ $item->id }})" class="middle_cart mx-3"><span
@@ -158,10 +158,14 @@
                 <div class="row sanpham_traicay">
 
                     @foreach ($item->getNongSanLimit($item->id) as $nongsan)
+
                         <div class="col-3 card_sanpham_traicay">
-                            <div class="hethang">
-                                <p for="">Hết hàng</p>
-                            </div>
+                            @if ($nongsan->soluong == 0)
+                                <div class="hethang">
+                                    <p for="">Hết hàng</p>
+                                </div>
+                            @endif
+
                             <div class="card">
                                 <img class="card-img-top" src="{{ asset($nongsan->hinhanh[0]->src) }}"
                                     alt="Card image cap">
@@ -299,9 +303,9 @@
         </div>
 
         <!-- <div class="container title_tintuc d-flex mb-1 bg-white">
-                                                                                                                                                                                                                          <span class="iconify" data-icon="bx:bxs-book-heart" style="color: #216e38; font-size: 45px;"></span>
-                                                                                                                                                                                                                          <h4 class="py-4 pl-4"><b>Bảng tin bạn đọc</b></h4>
-                                                                                                                                                                                                                      </div> -->
+                                                                                                                                                                                                                                                      <span class="iconify" data-icon="bx:bxs-book-heart" style="color: #216e38; font-size: 45px;"></span>
+                                                                                                                                                                                                                                                      <h4 class="py-4 pl-4"><b>Bảng tin bạn đọc</b></h4>
+                                                                                                                                                                                                                                                  </div> -->
 
         <!-- Hình ảnh giới thiệu cho 4 card tin tức -->
         <div class="row tintuc">
