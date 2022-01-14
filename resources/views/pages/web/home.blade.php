@@ -86,6 +86,7 @@
             <div class="container-fluid row khuyenmai bg-white">
                 @foreach ($nongSanNoiBat as $item)
                     <div class="col-3 card_khuyenmai">
+                        
                         <div class="card">
                             <div class="text_sale_off"><b> Mới </b></div>
                             <img class="card-img-top" src="{{ asset($item->hinhanh[0]->src) }}" alt="Card image cap">
@@ -158,6 +159,9 @@
 
                     @foreach ($item->getNongSanLimit($item->id) as $nongsan)
                         <div class="col-3 card_sanpham_traicay">
+                            <div class="hethang">
+                                <p for="">Hết hàng</p>
+                            </div>
                             <div class="card">
                                 <img class="card-img-top" src="{{ asset($nongsan->hinhanh[0]->src) }}"
                                     alt="Card image cap">
