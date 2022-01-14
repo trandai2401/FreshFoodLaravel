@@ -3,6 +3,7 @@
 
 <head>
     <base href="{{ asset('public') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('logo.png') }}" />
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -245,7 +246,8 @@
                             Giỏ hàng
                         </a>
                         <!-- Part 2.1.8: Statistics menu -->
-                        <a class="nav-link" href="{{asset('http://localhost/FreshFoodLaravel/public/admin/thongke')}}">
+                        <a class="nav-link"
+                            href="{{ asset('http://localhost/FreshFoodLaravel/public/admin/thongke') }}">
                             <div class="sb-nav-link-icon"><span class="iconify mr-3" data-icon="wpf:statistics"
                                     style="font-size: 20px;"></span></div>
                             Thống kê

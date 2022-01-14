@@ -2,9 +2,9 @@
 <html lang="en">
 
 <head>
-    
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('logo.png') }}" />
     <script src="https://apps.elfsight.com/p/platform.js" defer></script>
-<div class="elfsight-app-13b58ef6-c228-41cf-a8a6-6b87eddc9b2c"></div>
+    <div class="elfsight-app-13b58ef6-c228-41cf-a8a6-6b87eddc9b2c"></div>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +31,7 @@
 
 
 
-    <link rel='shortcut icon' href='{{ asset('image/herbs.png') }}' />
+
 </head>
 
 <body>
