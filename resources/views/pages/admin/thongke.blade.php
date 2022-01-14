@@ -64,7 +64,7 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
     {{-- <script src="{{asset('js/chart-bar-demo.js')}}"></script> --}}
-    <script src="{{ asset('js/chart-pie-demo.js') }}"></script>
+    {{-- <script src="{{ asset('js/chart-pie-demo.js') }}"></script> --}}
 
     <script>
         var form = new FormData();
@@ -81,9 +81,9 @@
             arrayData = [];
             for (let item of result) {
                 arrayData.push(item.SOlUONG);
-                console.log(item.SOlUONG);
+                // console.log(item.SOlUONG);
             }
-            console.log(arrayData);
+            // console.log(arrayData);
 
             Chart.defaults.global.defaultFontFamily =
                 '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
@@ -131,6 +131,73 @@
                     }
                 }
             });
+
+        }).fail(function(result) {
+            console.log(result);
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var form = new FormData();
+        form.append('_token', '{{ csrf_token() }}');
+        $.ajax({
+            method: 'get',
+            url: "http://localhost/FreshFoodLaravel/public/thongKeTron",
+            context: document.body,
+            data: form,
+            contentType: false,
+            processData: false
+
+        }).done(function(result) {
+            // arrayData = [];
+            // for (let item of result) {
+            //     arrayData.push(item.SOlUONG);
+            //     console.log(item.SOlUONG);
+            // }
+            // console.log(arrayData);
+            // console.log(result)
+            arrayTenDanhMuc = [];
+            arrayDataDanhMuc = [];
+            for (let item of result) {
+                arrayTenDanhMuc.push(item.tenDanhMuc);
+                arrayDataDanhMuc.push(item.soluong);
+                console.log(item.tenDanhMuc);
+            }
+            console.log(arrayTenDanhMuc);
+            console.log(arrayDataDanhMuc);
+
+
+            // Set new default font family and font color to mimic Bootstrap's default styling
+            Chart.defaults.global.defaultFontFamily =
+                '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+            Chart.defaults.global.defaultFontColor = '#292b2c';
+
+            // Pie Chart Example
+            var ctx = document.getElementById("myPieChart");
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: arrayTenDanhMuc,
+                    datasets: [{
+                        data: arrayDataDanhMuc,
+                        backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745', '#153043'],
+                    }],
+                },
+            });
+
 
         }).fail(function(result) {
             console.log(result);

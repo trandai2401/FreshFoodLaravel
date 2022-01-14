@@ -83,7 +83,8 @@
                             <p> {{ $itemHoaDon->nongsan->tenNongSan }}</p>
                         </td>
                         <td style="vertical-align: middle;">{{ $itemHoaDon->soluong }}</td>
-                        <td style="vertical-align: middle;">{{ number_format($itemHoaDon->dongia, 0, ',', ' ') }} đ</td>
+                        <td style="vertical-align: middle;">
+                            {{ number_format($itemHoaDon->dongia * $itemHoaDon->soluong, 0, ',', ' ') }} đ</td>
                         <td style="vertical-align: middle;">{{ $itemHoaDon->created_at }}</td>
                     </tr>
                 @endforeach
@@ -136,28 +137,13 @@
 
 
     <script>
+        var trangThaiDonhangHienTai = {{ $hoaDon->id_trangthai }};
         var selectTTDH = document.getElementById('selectTTDH');
         selectTTDH.selectedIndex = {{ $hoaDon->trangThai->id }} - 1
 
 
         selectTTDH.addEventListener('change', function() {
-            console.log(selectTTDH.selectedOptions[0].value);
-            var form = new FormData();
-            form.append('_token', '{{ csrf_token() }}');
-            form.append('idTrangthai', selectTTDH.selectedOptions[0].value);
-            $.ajax({
-                method: 'post',
-                url: "{{ route('chiTietHoaDon', ['idHoaDon' => $hoaDon->id]) }}",
-                context: document.body,
-                data: form,
-                contentType: false,
-                processData: false
-            }).done(function(result) {
-                console.log(result);
-                thongBao("alert-success", "Đã thanh đổi trạng thái hoa đơn");
-            }).fail(function(result) {
-                console.log(result);
-            })
+            getHoaDon();
 
 
         })
@@ -172,6 +158,52 @@
                 new simpleDatatables.DataTable(datatablesSimple);
             }
         });
+
+        function changeTrangThaiDonHang() {
+            console.log(selectTTDH.selectedOptions[0].value);
+            var form = new FormData();
+            form.append('_token', '{{ csrf_token() }}');
+            form.append('idTrangthai', selectTTDH.selectedOptions[0].value);
+            $.ajax({
+                method: 'post',
+                url: "{{ route('chiTietHoaDon', ['idHoaDon' => $hoaDon->id]) }}",
+                context: document.body,
+                data: form,
+                contentType: false,
+                processData: false
+            }).done(function(result) {
+                console.log(result);
+                trangThaiDonhangHienTai = result.id_trangthai;
+                thongBao("alert-success", "Đã thanh đổi trạng thái hoa đơn");
+            }).fail(function(result) {
+                console.log(result);
+            })
+        }
+
+        function getHoaDon() {
+            // console.log(selectTTDH.selectedOptions[0].value);
+            var form = new FormData();
+
+            $.ajax({
+                method: 'get',
+                url: "{{ route('getHoaDon', ['idHoaDon' => $hoaDon->id]) }}",
+                context: document.body,
+                data: form,
+                contentType: false,
+                processData: false
+            }).done(function(result) {
+                // console.log(result);
+                if (result.id_trangthai > (selectTTDH.selectedOptions[0].value - 0)) {
+                    thongBao("alert-danger", "Không thể trở về các trạng thái trước đó");
+                    selectTTDH.selectedIndex = trangThaiDonhangHienTai - 1;
+                } else {
+                    changeTrangThaiDonHang();
+                }
+
+            }).fail(function(result) {
+                console.log(result);
+            })
+        }
     </script>
 
 
