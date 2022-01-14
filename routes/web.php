@@ -25,6 +25,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Expr\Throw_;
+use Barryvdh\DomPDF\PDF;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Illuminate\Support\Facades\App;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,16 +43,45 @@ use PhpParser\Node\Expr\Throw_;
 
 
 Route::get('/', function () {
-
-    echo csrf_token();
-    // return view('welcome');
 });
 Route::get('/thongke', function () {
     // $thongke = DB::select('SELECT ten, DATE_ADD(?, INTERVAL id DAY) AS ngay, (SELECT COUNT(id) FROM freshfood.hoadon WHERE created_at < DATE_ADD(?, INTERVAL (thu_table.id + 1) DAY) AND created_at >= DATE_ADD(?, INTERVAL thu_table.id DAY)) AS SOlUONG FROM thu_table;', ["'2022/1/9'", "'2022/1/9'", "'2022/1/9'"]);
-
     $thongke = DB::select("SELECT ten, DATE_ADD('2022/1/9', INTERVAL id DAY) AS ngay, (SELECT COUNT(id) FROM freshfood.hoadon WHERE created_at < DATE_ADD('2022/1/9', INTERVAL (thu_table.id + 1) DAY) AND created_at >= DATE_ADD('2022/1/9', INTERVAL thu_table.id DAY)) AS SOlUONG FROM thu_table;");
     return $thongke;
     // DB::select('select * from users where active = ?', [1]);
+});
+
+Route::get('pdf', function (Request $request) {
+    $options = new Options();
+    $options->set('defaultFont', 'Time New Roman');
+    $options->set('isRemoteEnabled', TRUE);
+    $options->set('debugKeepTemp', TRUE);
+    $options->set('isHtml5ParserEnabled', true);
+    $options->set('isRemoteEnabled', true);
+    $dompdf = new Dompdf($options);
+    $dompdf->setPaper(array(0, 0, 800, 1200), 'potrait');
+    $dompdf->loadHtml('');
+
+    $dompdf->render();
+    return $dompdf->stream("'.haizz.'.pdf", array("Attachment" => 0));
+
+    // $pdf = App::make('dompdf.wrapper');
+
+    // $pdf->set_paper("DEFAULT_PDF_PAPER_SIZE", 'portrait');
+    // $pdf->loadHTML('<html>
+    // <head>
+    // <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    // <style>
+    //   body { font-family: DejaVu Sans, sans-serif; }
+    // </style>
+    // <title>č s š Š</title>
+    // </head>
+    // <body>
+    //   <p>để t nói mày nghe nè mòe Ny t bị đin lắm
+    //    <br></p>
+    // </body>
+    // </html>', 'UTF-8');
+    // return $pdf->stream();
 });
 
 //LOGIN SIGNUP LOGOUT
@@ -125,6 +158,10 @@ Route::prefix('/')->group(function () {
     Route::get('nongsan/{idNongSan}', [home::class, 'getNongSanByID'])->name('nongsan');
     Route::get('phantrangcomment/{idNongSan}', [home::class, 'getCommentByNongSanByID']);
     Route::get('CmtTheoSao/{idNongSan}', [home::class, 'getCommentByNongSanByIDTheoSao']);
+    Route::get('checkSoLuong/{idNongSan}', function ($idNongSan) {
+        $nongSan = nongsan::find($idNongSan);
+        return $nongSan->soluong;
+    });
 });
 Route::post('/1234', function (Request $request) {
 

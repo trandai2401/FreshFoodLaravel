@@ -88,7 +88,8 @@
                 <p class="title_TrongLuong"> <b>Trọng lượng (kg)</b></p>
                 <div class="trongLuong">
                     <button class="btnDau btn_dautru rounded-circle border-0 text-dark px-2">-</button>
-                    <input class="input_trongLuong pl-1" type="number" value="1" id="input_trongLuong">
+                    <input class="input_trongLuong pl-1" type="number" value="1" id="input_trongLuong"
+                        onchange="validateInput()">
                     <button class="btnDau btn_daucong rounded-circle border-0 text-dark px-2">+</button>
                 </div>
                 <div class="btn_themGioHang mt-4">
@@ -165,7 +166,7 @@
                 <div>
 
 
-                    <button onclick="callApiLocCmtTheoSao(0);" id="btn_sao5" type="button" class="btn  px-4 mx-2 mb-4"
+                    <button onclick="callApiLocCmtTheoSao(0);" id="btn_sao0" type="button" class="btn  px-4 mx-2 mb-4"
                         value="5" style="font-size: 25px; background-color: #0e8b25; color:#ffff;">
                         Tất cả
                     </button>
@@ -399,6 +400,47 @@
         //
         var sosao_Chon = document.getElementById("sosao_chon");
 
+
+        // soLuong.addEventListener("change", function() {
+
+        //     if (soluong.value <= 0) {
+        //         soluong.value = 1;
+        //     }
+        //     console.log(1234)
+        // })
+        function validateInput() {
+            var soluongInput = document.getElementById('input_trongLuong');
+            if (soluongInput.value <= 0) {
+                soluongInput.value = 1;
+                thongBao("alert-danger", "Không thể nhập số âm");
+            } else {
+                var form = new FormData();
+
+                $.ajax({
+                    method: 'get',
+                    url: "http://localhost/FreshFoodLaravel/public/checkSoLuong/{{ $nongsan->id }}",
+                    context: document.body,
+                    data: form,
+                    contentType: false,
+                    processData: false
+                }).done(function(result) {
+                    console.log(result);
+                    if ((result - 0) < soluongInput.value) {
+                        soluongInput.value = result;
+                        thongBao("alert-danger", "Không thể nhập quá số lượng hiện có của cửa hàng");
+                    }
+
+                }).fail(function(result) {
+                    console.log(result);
+                })
+
+
+            }
+            console.log(":>>")
+        }
+
+
+
         function chonSao(soSao) {
             sosao_Chon.innerHTML = soSao;
             trungbinh_sao.innerHTML = soSao;
@@ -531,7 +573,11 @@
                     trungbinh_sao.innerHTML = result.nongSan.sosao;
                     capNhatSoSaotrungBinh(result.nongSan.sosao);
 
-                    hienThiComment(result.danhGia, result.nongSan, result.user)
+                    var btn_sao0 = document.getElementById("btn_sao0");
+                    btn_sao0.click();
+                    var rm = document.getElementById("remove_div");
+                    rm.remove();
+                    // hienThiComment(result.danhGia, result.nongSan, result.user)
                 } catch (error) {
 
                 }

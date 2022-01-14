@@ -47,6 +47,8 @@ class ThanhToan extends Controller
             $itemHoaDon->id_nongsan = $nongsan->id;
             $itemHoaDon->dongia = $nongsan->gia;
             $itemHoaDon->save();
+            $nongsan->soluong -= $item->soluong;
+            $nongsan->save();
         }
 
 

@@ -62,11 +62,11 @@
                 <div class="price_range">
                     <p class="text-success ml-4 mt-3"><strong>Lọc giá sản phẩm</strong></p>
                     <div class="form-group d-flex mx-3">
-                        <input value="" type="number" class="form-control py-3" id="giaBatDau" placeholder="0"
-                            style="width: 100px; font-size: 10px;">
+                        <input value="" onchange="validateBatDau()" type="number" class="form-control py-3" id="giaBatDau"
+                            placeholder="0" style="width: 100px; font-size: 10px;">
                         <p class="mt-2 mx-1">&ndash;</p>
-                        <input value="" type="number" class="form-control py-3" id="giaKetThuc" placeholder="1000000"
-                            style="width: 100px; font-size: 10px;">
+                        <input value="" type="number" class="form-control py-3" id="giaKetThuc" onchange="validateKetThuc()"
+                            placeholder="1000000" style="width: 100px; font-size: 10px;">
                     </div>
                 </div>
 
@@ -246,34 +246,47 @@
 
         </div>
 
-         <!-- part 5 -->
-         <div class="mx-5" style="margin-bottom: 100px; margin-top: 100px; height: 120px;">
+        <!-- part 5 -->
+        <div class="mx-5" style="margin-bottom: 100px; margin-top: 100px; height: 120px;">
             <div style="background-color: #727272; width: 80%; height: 0.5px; margin:10px 10%;"></div>
             <div class="title">
-                <span class="iconify" data-icon="healthicons:eyeglasses-outline" style="color: #0e8b25; font-size:50px;"></span>
+                <span class="iconify" data-icon="healthicons:eyeglasses-outline"
+                    style="color: #0e8b25; font-size:50px;"></span>
                 <label for=""><strong>Có thể bạn chưa biết?</strong> </label>
             </div>
             <div class="container card_tintuc_danhmuc" style="margin-top: 20px;">
                 <nav style="background-color: rgba(255, 253, 234, 0.5);">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                      <a class="nav-item nav-link active text-success" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Công thức món ngon</a>
-                      <a class="nav-item nav-link text-success" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Bảo quản thực phẩm của bạn</a>
-                      <a class="nav-item nav-link text-success" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Cách chọn thực phẩm sạch</a>
-                      <a class="nav-item nav-link text-success" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Món chay    </a>
-                      <a class="nav-item nav-link text-success" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Bữa trưa vui khỏe</a>
+                        <a class="nav-item nav-link active text-success" id="nav-home-tab" data-toggle="tab"
+                            href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Công thức món ngon</a>
+                        <a class="nav-item nav-link text-success" id="nav-profile-tab" data-toggle="tab"
+                            href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Bảo quản thực
+                            phẩm của bạn</a>
+                        <a class="nav-item nav-link text-success" id="nav-contact-tab" data-toggle="tab"
+                            href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Cách chọn thực
+                            phẩm sạch</a>
+                        <a class="nav-item nav-link text-success" id="nav-contact-tab" data-toggle="tab"
+                            href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Món chay </a>
+                        <a class="nav-item nav-link text-success" id="nav-contact-tab" data-toggle="tab"
+                            href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Bữa trưa vui
+                            khỏe</a>
                     </div>
                 </nav>
-                  <div class="tab-content" id="nav-tabContent" style="">
+                <div class="tab-content" id="nav-tabContent" style="">
                     <!-- dành cho tab 1 -->
-                    <div class="tab-pane fade show active congthuc_list" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="tab-pane fade show active congthuc_list" id="nav-home" role="tabpanel"
+                        aria-labelledby="nav-home-tab">
                         <div class="title_congthuc my-4 mx-2">
                             <p>BỘ SƯU TẬP NỔI BẬC</p>
-                            <div class="line" style="height: 0.1px; width: 100px; background-color: rgb(40, 212, 40);"></div>
+                            <div class="line"
+                                style="height: 0.1px; width: 100px; background-color: rgb(40, 212, 40);"></div>
                         </div>
                         <div class="row mx-5">
                             <div class="col-3">
                                 <div class="card bg-white card_congthuc border-0">
-                                    <img class="card-img" src="https://media.cooky.vn/collections/g121/1209974/s270x350/cooky-collection-cover-c1209974.jpg" alt="Card image">
+                                    <img class="card-img"
+                                        src="https://media.cooky.vn/collections/g121/1209974/s270x350/cooky-collection-cover-c1209974.jpg"
+                                        alt="Card image">
                                     <div class="background_img_overlay text-white">
                                         <div class="text_content_title">
                                             <a href="#">Trộn bộ các món ngon từ đu đủ</a>
@@ -285,7 +298,9 @@
                             </div>
                             <div class="col-3">
                                 <div class="card bg-white card_congthuc border-0">
-                                    <img class="card-img" src="https://media.cooky.vn/collections/g114/1136059/s270x350/cooky-collection-cover-c1136059.jpg" alt="Card image">
+                                    <img class="card-img"
+                                        src="https://media.cooky.vn/collections/g114/1136059/s270x350/cooky-collection-cover-c1136059.jpg"
+                                        alt="Card image">
                                     <div class="background_img_overlay text-white">
                                         <div class="text_content_title">
                                             <a href="#">20+ Cách dùng nấm để chế biến món ăn</a>
@@ -297,7 +312,9 @@
                             </div>
                             <div class="col-3">
                                 <div class="card bg-white card_congthuc border-0">
-                                    <img class="card-img" src="https://media.cooky.vn/collections/g112/1118788/s270x350/cooky-collection-cover-c1118788.jpg" alt="Card image">
+                                    <img class="card-img"
+                                        src="https://media.cooky.vn/collections/g112/1118788/s270x350/cooky-collection-cover-c1118788.jpg"
+                                        alt="Card image">
                                     <div class="background_img_overlay text-white">
                                         <div class="text_content_title">
                                             <a href="#">40+ Cách nấu canh chua ba miền</a>
@@ -309,7 +326,9 @@
                             </div>
                             <div class="col-3">
                                 <div class="card bg-white card_congthuc border-0">
-                                    <img class="card-img" src="https://media.cooky.vn/collections/g111/1106844/s270x350/cooky-collection-cover-c1106844.jpg" alt="Card image">
+                                    <img class="card-img"
+                                        src="https://media.cooky.vn/collections/g111/1106844/s270x350/cooky-collection-cover-c1106844.jpg"
+                                        alt="Card image">
                                     <div class="background_img_overlay text-white">
                                         <div class="text_content_title">
                                             <a href="#">20+ Món gỏi chứa đầy ắp Topping</a>
@@ -322,32 +341,47 @@
                         </div>
                     </div>
                     <!-- dành cho tab 2 -->
-                    <div class="tab-pane fade baoquanTP_list" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="tab-pane fade baoquanTP_list" id="nav-profile" role="tabpanel"
+                        aria-labelledby="nav-profile-tab">
                         <div class="title_congthuc my-4 mx-2">
                             <p>BỘ SƯU TẬP NỔI BẬC</p>
-                            <div class="line" style="height: 0.1px; width: 100px; background-color: rgb(40, 212, 40);"></div>
+                            <div class="line"
+                                style="height: 0.1px; width: 100px; background-color: rgb(40, 212, 40);"></div>
                         </div>
                         <ul class="list-unstyled">
-                            <li class="media"  style="margin: 30px 10%;">
-                              <img class="mr-3" src="https://images.unsplash.com/photo-1606588347049-62bfd0c118d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c2FsdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60" alt="Generic placeholder image">
-                              <div class="media-body">
-                                <h6 class="mt-0 mb-1"> <b>Bảo quản thực phẩm bằng cách ướp muối</b> </h6>
-                                <p>Muối được xem là “chất bảo quản thực phẩm” hiệu quả mà ông bà ta thường áp dụng. Đặc biệt, những thực phẩm tươi sống như cá, thịt... thường được ướp muối để được tươi, ngon hơn. Nồng độ mặn của muối giúp tiêu diệt đa số các loại nấm và vi khuẩn có hại. Thịt heo, trâu,
-                                     bò và thịt cừu cũng có thể áp dụng ướp muối tương tự,... <a href="#">Xem chi tiết</a></p>
-                                
-                              </div>
-                            </li>
-                            <li class="media"  style="margin: 30px 10%;">
-                                <img class="mr-3" src="https://media.istockphoto.com/photos/woman-taking-raw-food-from-refrigerator-picture-id1199457758?b=1&k=20&m=1199457758&s=170667a&w=0&h=gyE5JSBn72XNGwWdNvDTCq9iHH5SYk0moxt_GPnSTyY=" alt="Generic placeholder image">
+                            <li class="media" style="margin: 30px 10%;">
+                                <img class="mr-3"
+                                    src="https://images.unsplash.com/photo-1606588347049-62bfd0c118d5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8c2FsdHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60"
+                                    alt="Generic placeholder image">
                                 <div class="media-body">
-                                  <h6 class="mt-0 mb-1"> <b>Bảo quản thực phẩm bằng cách làm lạnh</b> </h6>
-                                  <p>Đây là cách dễ dàng và đơn giản nhất mà ai cũng có thể thực hiện được. Không cần dùng đến chất bảo quản thực phẩm, bạn cũng có thể duy trì độ tươi sống, chỉ với việc đưa thực phẩm ráo vào ngăn đá tủ lạnh. Thời gian bảo quản thực phẩm tươi sống ở nhiệt độ từ 0 - 2 độ C và tối đa là 30 ngày. Nhìn chung, đây là cách phổ biến nhất vì tiết kiệm thời gian. 
-                                      Tuy nhiên, nhược điểm của phương pháp này là thực phẩm không được khử trùng hoặc tiêu diệt vi khuẩn.
-                                       Bên cạnh đó, làm giảm độ tươi ngon,... <a href="#">Xem chi tiết</a></p>
-                                  
+                                    <h6 class="mt-0 mb-1"> <b>Bảo quản thực phẩm bằng cách ướp muối</b> </h6>
+                                    <p>Muối được xem là “chất bảo quản thực phẩm” hiệu quả mà ông bà ta thường áp dụng. Đặc
+                                        biệt, những thực phẩm tươi sống như cá, thịt... thường được ướp muối để được tươi,
+                                        ngon hơn. Nồng độ mặn của muối giúp tiêu diệt đa số các loại nấm và vi khuẩn có hại.
+                                        Thịt heo, trâu,
+                                        bò và thịt cừu cũng có thể áp dụng ướp muối tương tự,... <a href="#">Xem chi
+                                            tiết</a></p>
+
                                 </div>
-                              </li>
-                              {{-- <li class="media"  style="margin: 30px 10%;">
+                            </li>
+                            <li class="media" style="margin: 30px 10%;">
+                                <img class="mr-3"
+                                    src="https://media.istockphoto.com/photos/woman-taking-raw-food-from-refrigerator-picture-id1199457758?b=1&k=20&m=1199457758&s=170667a&w=0&h=gyE5JSBn72XNGwWdNvDTCq9iHH5SYk0moxt_GPnSTyY="
+                                    alt="Generic placeholder image">
+                                <div class="media-body">
+                                    <h6 class="mt-0 mb-1"> <b>Bảo quản thực phẩm bằng cách làm lạnh</b> </h6>
+                                    <p>Đây là cách dễ dàng và đơn giản nhất mà ai cũng có thể thực hiện được. Không cần dùng
+                                        đến chất bảo quản thực phẩm, bạn cũng có thể duy trì độ tươi sống, chỉ với việc đưa
+                                        thực phẩm ráo vào ngăn đá tủ lạnh. Thời gian bảo quản thực phẩm tươi sống ở nhiệt độ
+                                        từ 0 - 2 độ C và tối đa là 30 ngày. Nhìn chung, đây là cách phổ biến nhất vì tiết
+                                        kiệm thời gian.
+                                        Tuy nhiên, nhược điểm của phương pháp này là thực phẩm không được khử trùng hoặc
+                                        tiêu diệt vi khuẩn.
+                                        Bên cạnh đó, làm giảm độ tươi ngon,... <a href="#">Xem chi tiết</a></p>
+
+                                </div>
+                            </li>
+                            {{-- <li class="media"  style="margin: 30px 10%;">
                                 <img class="mr-3" src="https://media.istockphoto.com/photos/various-kimchi-in-jar-korean-food-picture-id1183017964?b=1&k=20&m=1183017964&s=170667a&w=0&h=HpVzr-VGW18UYGxuPGkgho9Z3kSMWanN239IQ2JDFok=" alt="Generic placeholder image">
                                 <div class="media-body">
                                   <h6 class="mt-0 mb-1"> <b>Bảo quản thực phẩm bằng cách muối chua</b> </h6>
@@ -357,12 +391,14 @@
                                   
                                 </div>
                               </li> --}}
-                          </ul>
+                        </ul>
                     </div>
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores officia id soluta obcaecati aspernatur necessitatibus corporis quo omnis fugiat inventore temporibus quos voluptate nesciunt nisi porro accusamus, aperiam, molestiae doloremque.
+                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores officia id soluta obcaecati
+                        aspernatur necessitatibus corporis quo omnis fugiat inventore temporibus quos voluptate nesciunt
+                        nisi porro accusamus, aperiam, molestiae doloremque.
                     </div>
-                  </div>
+                </div>
             </div>
         </div>
     </div>
@@ -488,6 +524,50 @@
                 console.log(result);
             })
         }
+
+
+        function validateBatDau() {
+            var giaBatDau = document.getElementById('giaBatDau');
+            var giaKetThuc = document.getElementById('giaKetThuc');
+
+            if (giaBatDau.value < 0) {
+                thongBao("alert-danger", "không thể nhập số bé hơn 0");
+                giaBatDau.value = 0;
+            }
+
+        }
+
+        function validateKetThuc() {
+            var giaBatDau = document.getElementById('giaBatDau');
+            var giaKetThuc = document.getElementById('giaKetThuc');
+
+            if (giaKetThuc.value < 0) {
+                thongBao("alert-danger", "không thể nhập số bé hơn 0");
+                giaKetThuc.value = "";
+            } else {
+                let giaTemp = 0;
+                if (giaBatDau.value == 0 || giaBatDau.value == "") {
+                    giaTemp = 0;
+                } else {
+                    giaTemp = giaBatDau.value;
+                }
+                if (giaTemp > giaKetThuc.value) {
+                    thongBao("alert-danger", "không thể nhập số bé hơn giá tiền bắt đầu");
+                    giaKetThuc.value = "";
+                }
+
+
+            }
+
+        }
+
+
+
+
+
+
+
+
 
 
         function loc(idDanhMuc, trangDuocChon) {

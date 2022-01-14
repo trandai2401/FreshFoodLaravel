@@ -9,13 +9,22 @@ use App\Models\danhmuc;
 use App\Models\itemhoadon;
 use App\Models\nongsan as ModelsNongsan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class home extends Controller
 {
     //
     public function getHome()
     {
-        return view('pages.web.home');
+        $res = DB::select('SELECT id_nongsan,(SELECT count(ithd.id) FROM freshfood.itemhoadon as ithd where ithd.id_nongsan =freshfood.itemhoadon.id_nongsan ) as soluong FROM freshfood.itemhoadon group by id_nongsan order by soluong desc limit 4;');
+        $nongSanNoiBat =  array();
+        foreach ($res as $item) {
+            $nongSan = ModelsNongsan::find($item->id_nongsan);
+            $nongSanNoiBat[] = $nongSan;
+        }
+
+        // return $nongSanNoiBat;
+        return view('pages.web.home', ['nongSanNoiBat' => $nongSanNoiBat]);
     }
 
     public function  getSanPhamByDanhMuc($idDanhMuc)
