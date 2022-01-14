@@ -16,7 +16,9 @@ class home extends Controller
     //
     public function getHome()
     {
-        $res = DB::select('SELECT id_nongsan,(SELECT count(ithd.id) FROM freshfood.itemhoadon as ithd where ithd.id_nongsan =freshfood.itemhoadon.id_nongsan ) as soluong FROM freshfood.itemhoadon group by id_nongsan order by soluong desc limit 4;');
+        $res = DB::select('SELECT id_nongsan,(SELECT count(ithd.id) FROM itemhoadon as ithd 
+        where ithd.id_nongsan =itemhoadon.id_nongsan ) as soluong 
+        FROM itemhoadon group by id_nongsan order by soluong desc limit 4;');
         $nongSanNoiBat =  array();
         foreach ($res as $item) {
             $nongSan = ModelsNongsan::find($item->id_nongsan);
