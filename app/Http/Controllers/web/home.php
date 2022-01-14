@@ -68,8 +68,36 @@ class home extends Controller
             $trangDuocChon = $request->trangDuocChon;
         }
 
-        $binhLuan = binhluan::offset(($trangDuocChon - 1) * 3)->limit(3)->where('id_nongsan', $idNongSan)->orderByDesc('created_at')->get();
+        if ($request->locVoiSoSao == '0') {
+            $binhLuan = binhluan::offset(($trangDuocChon - 1) * 3)->limit(3)->where('id_nongsan', $idNongSan)->orderByDesc('created_at')->get();
+            $soBinhLuan = binhluan::where('id_nongsan', $idNongSan)->orderByDesc('created_at')->get();
+        } else {
+            $binhLuan = binhluan::offset(($trangDuocChon - 1) * 3)->limit(3)->where('id_nongsan', $idNongSan)->where('sosao', $request->locVoiSoSao)->orderByDesc('created_at')->get();
+            $soBinhLuan = binhluan::where('id_nongsan', $idNongSan)->where('sosao', $request->locVoiSoSao)->orderByDesc('created_at')->get();
+        }
+
+
+
+        // $binhLuan = binhluan::offset(($trangDuocChon - 1) * 3)->limit(3)->where('id_nongsan', $idNongSan)->orderByDesc('created_at')->get();
 
         return view('pages.web.ketquatimkiem.PhanTrangCommentNongSan', ['binhLuans' => $binhLuan]);
+    }
+
+    public function getCommentByNongSanByIDTheoSao($idNongSan, Request $request)
+    {
+        $trangDuocChon = 1;
+        if (isset($request->trangDuocChon)) {
+            $trangDuocChon = $request->trangDuocChon;
+        }
+        if ($request->locVoiSoSao == '0') {
+            $binhLuan = binhluan::offset(($trangDuocChon - 1) * 3)->limit(3)->where('id_nongsan', $idNongSan)->orderByDesc('created_at')->get();
+            $soBinhLuan = binhluan::where('id_nongsan', $idNongSan)->orderByDesc('created_at')->get();
+        } else {
+            $binhLuan = binhluan::offset(($trangDuocChon - 1) * 3)->limit(3)->where('id_nongsan', $idNongSan)->where('sosao', $request->locVoiSoSao)->orderByDesc('created_at')->get();
+            $soBinhLuan = binhluan::where('id_nongsan', $idNongSan)->where('sosao', $request->locVoiSoSao)->orderByDesc('created_at')->get();
+        }
+
+
+        return view('pages.web.ketquatimkiem.LocDanhGiaTheoSao', ['binhLuans' => $binhLuan, 'idNongSan' => $idNongSan, 'soBinhLuan' => $soBinhLuan]);
     }
 }

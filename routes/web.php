@@ -118,6 +118,7 @@ Route::prefix('/')->group(function () {
 
     Route::get('nongsan/{idNongSan}', [home::class, 'getNongSanByID'])->name('nongsan');
     Route::get('phantrangcomment/{idNongSan}', [home::class, 'getCommentByNongSanByID']);
+    Route::get('CmtTheoSao/{idNongSan}', [home::class, 'getCommentByNongSanByIDTheoSao']);
 });
 Route::post('/1234', function (Request $request) {
 
@@ -129,6 +130,8 @@ Route::post('/1234', function (Request $request) {
 });
 
 Route::post('/123', function (Request $request) {
+
+    // return $request->arrSoSao;
     $sortBy = $request->sortBy;
     $temp  = "";
     if ($request->giaTriKetThuc != '') {
@@ -141,10 +144,22 @@ Route::post('/123', function (Request $request) {
         foreach ($request->arrDiaDiem as $diaDiem) {
             $queryByAddress .= " freshfood.bodau(noisanxuat) like  freshfood.bodau('%" . $diaDiem .  "%')   or";
         }
-        $queryByAddress .= " false )";
+        $queryByAddress .= " false )  ";
     }
-    $res = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan  where gia >=  " . (int)$request->giaTribatDau .  $temp . "  and id_danhmuc = " . $request->idDanhMuc . $queryByAddress . " order by " . $sortBy . " LIMIT " . (($request->trangDuocChon - 1) * 6) . ",6");
-    $res2 = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan  where gia >=  " . (int)$request->giaTribatDau .  $temp . "  and id_danhmuc = " . $request->idDanhMuc . $queryByAddress . " order by " . $sortBy);
+
+    $queryBySoSao = " ";
+    if (isset($request->arrSoSao)) {
+
+        $queryBySoSao = " and (";
+        foreach ($request->arrSoSao as $soSao) {
+            $queryBySoSao .= " ( sosao >= " . $soSao . " and sosao < " . ((int)($soSao + 1)) . " )  or";
+        }
+        $queryBySoSao .= " false )  ";
+    }
+    // return $queryBySoSao;
+
+    $res = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan  where gia >=  " . (int)$request->giaTribatDau .  $temp . "  and id_danhmuc = " . $request->idDanhMuc . $queryByAddress . $queryBySoSao . " order by " . $sortBy . " LIMIT " . (($request->trangDuocChon - 1) * 6) . ",6");
+    $res2 = DB::select("SELECT nongsan.id,tenNongSan,gia,(select src from hinhanh where nongsan.id = hinhanh.id_nongsan limit 1) as sr FROM nongsan  where gia >=  " . (int)$request->giaTribatDau .  $temp . "  and id_danhmuc = " . $request->idDanhMuc . $queryByAddress . $queryBySoSao . " order by " . $sortBy);
     $idDanhMuc = $request->idDanhMuc;
     return view('pages.web.ketquatimkiem.ketquatimkiem', [
         'nongsans' => $res,

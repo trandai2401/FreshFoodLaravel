@@ -23,7 +23,7 @@
             <div class="slide-left">
 
                 <div class="heart_btn bg-transparent border-0">
-                    <label id="sosao_TB" for="">{{ $nongsan->sosao }}</label>
+                    <label id="sosao_TB" for="">{{ round($nongsan->sosao, 2) }}</label>
                     <span class="iconify" data-icon="bi:star-fill"
                         style="color: #ffb416; font-size: 20px; position: relative; top: -3px;"></span>
                 </div>
@@ -158,77 +158,99 @@
                 <label for="" style="font-size: 15px; font-weight: 800;"> Lọc theo sao đánh giá</label>
 
                 <div class="hienthi_text" style="font-size: 20px; font-weight: 800;color: #0e8b25">
-                    <label for="" id="sosao_chon">{{ $nongsan->sosao }}</label>
+                    <label for="" id="sosao_chon">{{ round($nongsan->sosao, 2) }}</label>
                     <label for="">sao trên 5 sao</label>
                 </div>
 
                 <div>
 
 
-                    <button onclick="chonSao(5);" id="btn_sao5" type="button" class="btn  px-4 mx-2 mb-4" value="5" style="font-size: 25px; background-color: #0e8b25; color:#ffff;">
-                        Tất cả 
+                    <button onclick="callApiLocCmtTheoSao(0);" id="btn_sao5" type="button" class="btn  px-4 mx-2 mb-4"
+                        value="5" style="font-size: 25px; background-color: #0e8b25; color:#ffff;">
+                        Tất cả
                     </button>
 
-                    <button onclick="chonSao(5);" id="btn_sao5" type="button" class="btn  px-4 mx-2 mb-4" value="5" style="font-size: 25px; background-color: #0e8b25; color:#ffff;">
-                        5 <span class="iconify" data-icon="clarity:star-solid" style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
+                    <button onclick="callApiLocCmtTheoSao(5);" id="btn_sao5" type="button" class="btn  px-4 mx-2 mb-4"
+                        value="5" style="font-size: 25px; background-color: #0e8b25; color:#ffff;">
+                        5 <span class="iconify" data-icon="clarity:star-solid"
+                            style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
                     </button>
-                    <button onclick="chonSao(4);" id="btn_sao4" type="button" class="btn  px-4 mx-2 mb-4" value="4" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
-                        4 <span class="iconify" data-icon="clarity:star-solid" style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
+                    <button onclick="callApiLocCmtTheoSao(4);" id="btn_sao4" type="button" class="btn  px-4 mx-2 mb-4"
+                        value="4" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
+                        4 <span class="iconify" data-icon="clarity:star-solid"
+                            style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
                     </button>
-                    <button onclick="chonSao(3);" id="btn_sao3" type="button" class="btn  px-4 mx-2  mb-4" value="3" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
-                        3 <span class="iconify" data-icon="clarity:star-solid" style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
+                    <button onclick="callApiLocCmtTheoSao(3);" id="btn_sao3" type="button" class="btn  px-4 mx-2  mb-4"
+                        value="3" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
+                        3 <span class="iconify" data-icon="clarity:star-solid"
+                            style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
                     </button>
-                    <button onclick="chonSao(2);" id="btn_sao2" type="button" class="btn px-4 mx-2 mb-4" value="2" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
-                        2 <span class="iconify" data-icon="clarity:star-solid" style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
+                    <button onclick="callApiLocCmtTheoSao(2);" id="btn_sao2" type="button" class="btn px-4 mx-2 mb-4"
+                        value="2" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
+                        2 <span class="iconify" data-icon="clarity:star-solid"
+                            style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
                     </button>
-                    <button onclick="chonSao(1);" id="btn_sao1" type="button" class="btn  px-4 mx-2 mb-4" value="1" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
-                        1 <span class="iconify" data-icon="clarity:star-solid" style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
+                    <button onclick="callApiLocCmtTheoSao(1);" id="btn_sao1" type="button" class="btn  px-4 mx-2 mb-4"
+                        value="1" style="font-size: 25px; background-color: #0e8b25;  color:#ffff;">
+                        1 <span class="iconify" data-icon="clarity:star-solid"
+                            style="color: #ffff; font-size: 30px; position: relative; top: -3px;"></span>
 
                 </div>
 
             </div>
-            <div class="title_BL mx-5">
-                <label for="" style="font-size: 15px; font-weight: 800;">Danh sách người bình luận</label>
-            </div>
-            <div class="nguoi_binhLuan mx-5">
+            {{-- <div class="title_BL mx-5">
+                <label for="" style="font-size: 15px; font-weight: 800;">Danh sách người đánh giá
+                    ( {{ count($nongsan->binhLuan) }} đánh giá )</label>
+            </div> --}}
+            <div id="locTheoSao">
+                <div class="title_BL mx-5">
+                    <label for="" style="font-size: 15px; font-weight: 800;">Danh sách người đánh giá
+                        ( {{ count($nongsan->binhLuan) }} đánh giá )</label>
+                </div>
+                <div class="nguoi_binhLuan mx-5">
 
-                @foreach ($binhLuans as $item)
-                    <div class="mx-3 my-2">
-                        <div class="d-flex user_comment">
-                            <span class="iconify" data-icon="carbon:user-avatar-filled-alt"
-                                style="color: #ffbf00; font-size: 30px;"></span>
-                            <strong><label class="mx-3" style="position: relative; top: 5px;"
-                                    for="">{{ $item->user->name }}</label></strong>
-                            <span for="" style="font-size: 20px;" id="sao_rate">{{ $item->sosao }}</span>
-                            <span class="iconify mx-1" data-icon="bi:star-fill"
-                                style="color: #ffb416; font-size: 17px; position: relative; top: 5px;"></span>
+                    @foreach ($binhLuans as $item)
+                        <div class="mx-3 my-2">
+                            <div class="d-flex user_comment">
+                                <span class="iconify" data-icon="carbon:user-avatar-filled-alt"
+                                    style="color: #ffbf00; font-size: 30px;"></span>
+                                <strong><label class="mx-3" style="position: relative; top: 5px;"
+                                        for="">{{ $item->user->name }}</label></strong>
+                                <span for="" style="font-size: 20px;" id="sao_rate">{{ $item->sosao }}</span>
+                                <span class="iconify mx-1" data-icon="bi:star-fill"
+                                    style="color: #ffb416; font-size: 17px; position: relative; top: 5px;"></span>
+                                <label class="mx-3" style="position: relative; top: 5px;"
+                                    for="">{{ substr($item->created_at, 0, 10) }}</label>
+                            </div>
+
+                            <div class="noidungBL">
+                                <p id="noidung_BL_text">{{ $item->noidung }}</p>
+                            </div>
                         </div>
+                    @endforeach
+                </div>
+                <!-- Pagination // phân trang button -->
+                <div class="container pagination  d-flex">
+                    <nav aria-label="Page navigation example" style="margin: auto;">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <?php $soLuongTrang = ceil(count($nongsan->binhLuan) / 3); ?>
+                            <a href=""></a>
+                            @for ($i = 1; $i <= $soLuongTrang; $i++)
 
-                        <div class="noidungBL">
-                            <p id="noidung_BL_text">{{ $item->noidung }}</p>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-            <!-- Pagination // phân trang button -->
-            <div class="container pagination  d-flex">
-                <nav aria-label="Page navigation example" style="margin: auto;">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                        <?php $soLuongTrang = ceil(count($nongsan->binhLuan) / 3); ?>
-                        <a href=""></a>
-                        @for ($i = 1; $i <= $soLuongTrang; $i++)
+                                <li class="page-item "><a id="page-item-{{ $i }}"
+                                        onclick="callPhanTrang({{ $nongsan->id }}, {{ $i }})"
+                                        class="page-link">{{ $i }}</a>
+                                </li>
+                            @endfor
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- Phân trang -->
 
-                            <li class="page-item "><a id="page-item-{{ $i }}"
-                                    onclick="callPhanTrang({{ $nongsan->id }}, {{ $i }})"
-                                    class="page-link">{{ $i }}</a>
-                            </li>
-                        @endfor
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                </nav>
             </div>
-            <!-- Phân trang -->
+
 
             <!-- Pagination // phân trang button -->
 
@@ -373,6 +395,7 @@
         var sosao_DG = 0;
         var noidung_DG = 0;
         var trungbinh_sao = document.getElementById("sosao_TB");
+        var locVoiSoSao = 0;
         //
         var sosao_Chon = document.getElementById("sosao_chon");
 
@@ -382,7 +405,9 @@
         }
 
         function capNhatSoSaotrungBinh(soSao) {
-            sosao_Chon.innerHTML = soSao;
+
+            sosao_Chon.innerHTML = Math.round(soSao * 100) / 100;
+            trungbinh_sao.innerHTML = Math.round(soSao * 100) / 100;
         };
 
         function hienThiComment(danhGia, nongSan, user) {
@@ -520,11 +545,12 @@
         }
 
         function callPhanTrang(idNongSan, trangDuocChon) {
+
             var form = new FormData();
             $.ajax({
                 method: 'get',
                 url: "http://localhost/FreshFoodLaravel/public/phantrangcomment/" + idNongSan +
-                    "?trangDuocChon=" + trangDuocChon,
+                    "?trangDuocChon=" + trangDuocChon + "&locVoiSoSao=" + locVoiSoSao,
                 context: document.body,
                 data: form,
                 contentType: false,
@@ -547,6 +573,42 @@
             }).fail(function(result) {
                 thongBao("alert-danger", "Đã có lỗi xãy ra");
             })
+        }
+
+        function callApiLocCmtTheoSao(soSaoCanLoc) {
+            locVoiSoSao = soSaoCanLoc;
+            var locTheoSao = document.getElementById('locTheoSao');
+            var form = new FormData();
+            $.ajax({
+                method: 'get',
+                url: "http://localhost/FreshFoodLaravel/public/CmtTheoSao/" + {{ $nongsan->id }} +
+                    "?trangDuocChon=" + 1 + "&locVoiSoSao=" + locVoiSoSao,
+                context: document.body,
+                data: form,
+                contentType: false,
+                processData: false
+            }).done(function(result) {
+                try {
+                    locTheoSao.innerHTML = result;
+
+                    let page_item = document.getElementsByClassName("page-item");
+                    for (let item of page_item) {
+                        item.children[0].style.backgroundColor = "#ffffff";
+                        item.children[0].style.color = "#216e38"
+                    }
+                    let page_item_phantrang = document.getElementById("page-item-" + 1);
+                    page_item_phantrang.style.backgroundColor = "#216e38";
+                    page_item_phantrang.style.color = "#ffffff"
+                } catch (error) {
+
+                }
+            }).fail(function(result) {
+                thongBao("alert-danger", "Đã có lỗi xãy ra");
+            })
+
+
+            // callPhanTrang({{ $nongsan->id }}, 1);
+
         }
     </script>
     <script type=" text/javascript " src=" ../js/home.js "></script>
