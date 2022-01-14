@@ -21,6 +21,6 @@ class danhmuc extends Model
     public function getNongSanLimit($id_danhmuc)
     {
 
-        return nongsan::select("*")->where('id_danhmuc', $id_danhmuc)->limit(4)->get();
+        return nongsan::select("*")->where('id_danhmuc', $id_danhmuc)->where('soluong', '>', 0)->limit(4)->get();
     }
 }
