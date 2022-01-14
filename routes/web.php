@@ -10,6 +10,7 @@ use App\Http\Controllers\DanhGiaController;
 use App\Http\Controllers\login;
 use App\Http\Controllers\SocialController;
 use App\Http\Controllers\ThanhToan;
+use App\Http\Controllers\ThongKeController;
 use App\Http\Controllers\web\GioHang;
 use App\Http\Controllers\web\home;
 use App\Http\Controllers\web\UserController;
@@ -44,45 +45,10 @@ use Illuminate\Support\Facades\App;
 
 Route::get('/', function () {
 });
-Route::get('/thongke', function () {
-    // $thongke = DB::select('SELECT ten, DATE_ADD(?, INTERVAL id DAY) AS ngay, (SELECT COUNT(id) FROM freshfood.hoadon WHERE created_at < DATE_ADD(?, INTERVAL (thu_table.id + 1) DAY) AND created_at >= DATE_ADD(?, INTERVAL thu_table.id DAY)) AS SOlUONG FROM thu_table;', ["'2022/1/9'", "'2022/1/9'", "'2022/1/9'"]);
-    $thongke = DB::select("SELECT ten, DATE_ADD('2022/1/9', INTERVAL id DAY) AS ngay, (SELECT COUNT(id) FROM hoadon WHERE created_at < DATE_ADD('2022/1/9', INTERVAL (thu_table.id + 1) DAY) AND created_at >= DATE_ADD('2022/1/9', INTERVAL thu_table.id DAY)) AS SOlUONG FROM thu_table;");
-    return $thongke;
-    // DB::select('select * from users where active = ?', [1]);
-});
+Route::get('/thongke', [ThongKeController::class, 'getBieuDoCot']);
+Route::get('/thongKeTron', [ThongKeController::class, 'getBieuDoTron']);
 
-Route::get('pdf', function (Request $request) {
-    $options = new Options();
-    $options->set('defaultFont', 'Time New Roman');
-    $options->set('isRemoteEnabled', TRUE);
-    $options->set('debugKeepTemp', TRUE);
-    $options->set('isHtml5ParserEnabled', true);
-    $options->set('isRemoteEnabled', true);
-    $dompdf = new Dompdf($options);
-    $dompdf->setPaper(array(0, 0, 800, 1200), 'potrait');
-    $dompdf->loadHtml('');
-
-    $dompdf->render();
-    return $dompdf->stream("'.haizz.'.pdf", array("Attachment" => 0));
-
-    // $pdf = App::make('dompdf.wrapper');
-
-    // $pdf->set_paper("DEFAULT_PDF_PAPER_SIZE", 'portrait');
-    // $pdf->loadHTML('<html>
-    // <head>
-    // <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    // <style>
-    //   body { font-family: DejaVu Sans, sans-serif; }
-    // </style>
-    // <title>č s š Š</title>
-    // </head>
-    // <body>
-    //   <p>để t nói mày nghe nè mòe Ny t bị đin lắm
-    //    <br></p>
-    // </body>
-    // </html>', 'UTF-8');
-    // return $pdf->stream();
-});
+Route::get('pdf', [PDFController::class, 'getgetPDF']);
 
 //LOGIN SIGNUP LOGOUT
 Route::get('/login', [login::class, 'getLogin'])->name("login");
@@ -141,6 +107,12 @@ Route::middleware('AuthAdmin', 'CheckLogin')->prefix('/admin')->group(function (
         $hoaDon->save();
         return $hoaDon;
     });
+
+
+    Route::get('gethoadon/{idHoaDon}', function ($idHoaDon) {
+        $hoaDon = hoadon::find($idHoaDon);
+        return $hoaDon;
+    })->name("getHoaDon");
 
 
     Route::get("thongke", function () {
