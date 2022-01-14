@@ -192,6 +192,9 @@
                 <div class="row product">
                     @foreach ($nongsans as $nongsan)
                         <div class="col-4 card_product">
+                            <div class="hethang">
+                                <p for="">Hết  hàng</p>
+                            </div>
                             <div class="card">
                                 <img class="card-img-top" src="{{ asset($nongsan->hinhanh[0]->src) }}"
                                     alt="Card image cap">
