@@ -316,7 +316,7 @@
 
                 <div class="form-group">
                     <label for="exampleFormControlSelect1" style="font-size: 10px; font-weight: 600;">Số nhà</label>
-                    <input style="font-size: 13px; font-weight: 600;" type="text" class="form-control" id="diachisonha"
+                    <input style="font-size: 13px; font-weight: 600;" value='{{$user->sonha}}' type="text" class="form-control" id="diachisonha"
                         placeholder="Địa chỉ số nhà">
                 </div>
                 <button onclick="thanhtoanGH();" id="btn_thanhtoan" type="button" class="btn btn-success w-100 mt-2"
@@ -381,6 +381,7 @@
                             <span class="iconify" data-icon="akar-icons:google-contained-fill" data-width="24"
                                 data-height="24"></span>
                             </span>
+
                         </a>
                     </div>
                 </div>
@@ -443,6 +444,10 @@
 
                 }
                 console.log(optionTT.value);
+                @if ($user->xaphuong_id)
+                formTT.value ='{{$user->xaPhuong->quanHuyen->tinhthanh->id}}';        
+                @endif
+                
             });
         }
 
@@ -706,7 +711,66 @@
                 thongBao("alert-danger", "Đã có lỗi xãy ra");
             })
         }
+
+        var f = new FormData();
+            f.append('province_id', {{$user->xaPhuong->quanHuyen->id}});
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://online-gateway.ghn.vn/shiip/public-api/master-data/district?province_id=' +
+                {{$user->xaPhuong->quanHuyen->tinhthanh->id}},
+                headers: {
+                    "token": "8d38601c-7035-11ec-9054-0a1729325323"
+                }
+            }).done(function(data) {
+                for (let i = 0; formQH.children.length > 0; i++) {
+                    formQH.children[0].remove();
+
+                }
+                var a = data.data;
+                for (let item = 0; item < a.length; item++) {
+                    var optionQH = document.createElement('OPTION');
+                    optionQH.value = a[item].DistrictID;
+                    optionQH.innerText = a[item].DistrictName;
+                    formQH.append(optionQH);
+
+                }
+               
+                console.log(a);
+                formQH.value ='{{$user->xaPhuong->quanHuyen->id}}'
+            })
+                
+                
+           
+
+            callApiPhuongXa({{$user->xaPhuong->quanHuyen->id}})
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://online-gateway.ghn.vn/shiip/public-api/v2/shipping-order/available-services',
+                headers: {
+                    "token": "8d38601c-7035-11ec-9054-0a1729325323"
+                },
+                data: {
+                    "shop_id": 2413843,
+                    "from_district": 3186,
+                    "to_district": {{$user->xaPhuong->quanHuyen->id}}
+                }
+
+            }).done(function(data) {
+                console.log(data);
+                var maPT = data.data[0].service_type_id;
+                console.log(maPT);
+
+                var maQH = formQH.value;
+                callApiGiaCuocVanChuyen(maPT, {{$user->xaPhuong->quanHuyen->id}});
+                maPT_sau = maPT;
+
+            });
     </script>
 
+<script>
+
+</script>
 
 @endsection

@@ -49,7 +49,7 @@
                 <div class="profile-personal">
                     <div class="personal-avt-full">
                         <div class="personal-avt">
-                            <img src="../image/Userprofile/avatar.jpg" alt="">
+                            <img src="https://media.istockphoto.com/photos/portrait-beautiful-young-woman-with-clean-fresh-skin-picture-id1329622588?b=1&k=20&m=1329622588&s=170667a&w=0&h=MrsM7nyIOW4Gt5PM5Vs6xYIMJ1nr1FLT9bvt0Sve-S4=" alt="">
                         </div>
                         <div class="personal-information">
                             <span class="iconify" data-icon="ant-design:camera-filled" data-width="18" data-height="18"></span>
@@ -91,7 +91,7 @@
                         </div>
                         <div class="personal-name-item">
                             <input type="text" name="Adress" id="" class="form-control">
-                            <button type="button" class="btn text   -white" style="margin-right: 155px; background-color: #216e38;" >Save changes</button>
+                            <button type="button" class="btn text-white" style="margin-right: 155px; background-color: #216e38;" >Lưu thay đổi</button>
                         </div>
                     </div>
                 </div>

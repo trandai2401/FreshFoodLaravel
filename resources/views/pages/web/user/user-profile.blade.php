@@ -56,7 +56,7 @@
                 <!-- Item 1 -->
                 <div class="profile-personal">
                     <div class="personal-avt">
-                        <img src="https://scontent.fdad3-5.fna.fbcdn.net/v/t39.30808-6/253820876_2683673498593359_7965052091545304256_n.jpg?_nc_cat=102&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=JwMlLGnAoIcAX8jCb8L&tn=_hwzGROOIBNPS-pg&_nc_ht=scontent.fdad3-5.fna&oh=05f3bd2ec18a8981ad2962b3e3d7241e&oe=61B9D25A"
+                        <img src="https://media.istockphoto.com/photos/portrait-beautiful-young-woman-with-clean-fresh-skin-picture-id1329622588?b=1&k=20&m=1329622588&s=170667a&w=0&h=MrsM7nyIOW4Gt5PM5Vs6xYIMJ1nr1FLT9bvt0Sve-S4="
                             alt="">
                     </div>
                     <div class="personal-information">

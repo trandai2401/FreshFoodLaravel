@@ -189,7 +189,7 @@
 
             <!-- Part 2.2.2: Card-product-right -->
             <div class="card_product_right">
-                <div class="row product">
+                <div class="row product" id="rowproduct">
                     @foreach ($nongsans as $nongsan)
                         <div class="col-4 card_product">
                             @if ($nongsan->soluong == 0)
@@ -229,7 +229,7 @@
 
                 </div>
 
-
+                <a id="nhaylentren" href="#exampleFormControlSelect1" ></a>
                 <!-- Pagination // phân trang button -->
                 <div class="container pagination  d-flex">
                     <nav aria-label="Page navigation example">
@@ -669,7 +669,7 @@
                 page_item_phantrang.style.backgroundColor = "#216e38";
                 page_item_phantrang.style.color = "#ffffff"
                 console.log(result);
-
+ document.getElementById("nhaylentren").click();
             }).fail(function(result) {
                 console.log("ThatBai");
                 console.log(result);

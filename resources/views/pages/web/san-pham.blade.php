@@ -172,7 +172,7 @@
 
                 <div>
 
-
+                    
                     <button onclick="callApiLocCmtTheoSao(0);" id="btn_sao0" type="button" class="btn  px-4 mx-2 mb-4"
                         value="5" style="font-size: 25px; background-color: #0e8b25; color:#ffff;">
                         Tất cả
@@ -271,68 +271,41 @@
                 <h4 class="mt-2 mx-3">Sản phẩm liên quan</h4>
             </div>
 
-            <div class="row product">
-                <div class="col-3 card_product">
-                    <div class="card">
-                        <img class="card-img-top" src="../image/landing/card/bơ.png" alt="Card image cap">
-                        <div class="middle d-flex">
-                            <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
-                                    style="color: #216e38;  font-size: 35px"></span></button>
-                            <input class="middle_cart mx-3" type="radio"><label class="fas fa-2x fa-heart mt-2"></lable>
-                                </input>
-                        </div>
-                        <div class="card-body text-center">
-                            <p class="card-text name_product"> <a href="#"> Cà rốt Đà Lạt Cà rốt Đà</a></p>
-                            <div class="text_price"><span class="mx-4"><b>50.000đ</b></span> </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3 card_product">
-                    <div class="card">
-                        <img class="card-img-top" src="../image/landing/card/bưởi.png" alt="Card image cap">
-                        <div class="middle d-flex">
-                            <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
-                                    style="color: #216e38;  font-size: 35px"></span></button>
-                            <input class="middle_cart mx-3" type="radio"><label class="fas fa-2x fa-heart mt-2"></lable>
-                                </input>
-                        </div>
-                        <div class="card-body text-center">
-                            <p class="card-text name_product"> <a href="#"> Cà rốt Đà Lạt</a></p>
-                            <div class="text_price"><span class="mx-4"><b>50.000đ</b></span> </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3 card_product">
-                    <div class="card">
-                        <img class="card-img-top" src="../image/landing/card/cam.png" alt="Card image cap">
-                        <div class="middle d-flex">
-                            <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
-                                    style="color: #216e38;  font-size: 35px"></span></button>
-                            <input class="middle_cart mx-3" type="radio"><label class="fas fa-2x fa-heart mt-2"></lable>
-                                </input>
-                        </div>
-                        <div class="card-body text-center">
-                            <p class="card-text name_product"> <a href="#"> Cà rốt Đà Lạt</a></p>
-                            <div class="text_price"><span class="mx-4"><b>50.000đ</b></span> </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3 card_product">
-                    <div class="card">
-                        <img class="card-img-top" src="../image/landing/card/cam.png" alt="Card image cap">
-                        <div class="middle d-flex">
-                            <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
-                                    style="color: #216e38;  font-size: 35px"></span></button>
-                            <input class="middle_cart mx-3" type="radio"><label class="fas fa-2x fa-heart mt-2"></lable>
-                                </input>
-                        </div>
-                        <div class="card-body text-center">
-                            <p class="card-text name_product"> <a href="#"> Cà rốt Đà Lạt</a></p>
-                            <div class="text_price"><span class="mx-4"><b>50.000đ</b></span> </div>
-                        </div>
-                    </div>
-                </div>
+            <?php
+            $sanPhamLienQuan = App\Models\nongsan::where('soluong', '>', 0)
+                ->where('id_danhmuc', $nongsan->danhmuc->id)
+                ->limit(4)
+                ->get();
+            
+            ?>
 
+
+            <div class="row product">
+                @foreach ($sanPhamLienQuan as $item)
+                    <div class="col-3 card_product">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ asset($item->hinhanh[0]->src) }}" alt="Card image cap">
+                            <div class="middle d-flex">
+                                <button class="middle_cart mx-3"><span class="iconify" data-icon="fa-solid:cart-plus"
+                                        style="color: #216e38; font-size: 35px"></span></button>
+                                <input class="middle_cart mx-3" type="radio"><label class="fas fa-2x fa-heart mt-2">
+                                    </lable>
+                                    </input>
+                            </div>
+                            <div class="card-body text-center">
+                                <p class="card-text name_product"> <a
+                                        href="{{ route('nongsan', ['idNongSan' => $item->id]) }}">{{ $item->tenNongSan }}</a>
+                                </p>
+                                <div class="text_price"><span
+                                        class="mx-4"><b>{{ number_format($item->gia, 0, ',', '.') }}
+                                            đ</b></span> </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                
+                
+               
             </div>
         </div>
     </div>

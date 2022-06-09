@@ -25,7 +25,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(hoadon::class, 'id_user', 'id');
     }
-
+    public function xaPhuong()
+    {
+        return $this->belongsTo(XaPhuong::class, 'xaphuong_id', 'id');
+    }
     /**
      * The attributes that are mass assignable.
      *
