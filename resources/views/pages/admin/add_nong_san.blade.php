@@ -170,10 +170,7 @@
         var inp = document.getElementById("file");
         var btn = document.getElementById("btn_anhNongSan");
         var divimg = document.getElementsByClassName("carousel-inner")[0];
-        // function chonFile() {
-        //     inp.click();
-        //     console.log("1");
-        // }
+
         var arrayFile = [];
         btn.addEventListener("click", function() {
             inp.click();

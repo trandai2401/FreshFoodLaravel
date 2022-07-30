@@ -51,7 +51,8 @@
                                 </tr>
 
                             @endforeach
-
+                            
+                            <div>Tổng tiền: </div>
 
 
 
